@@ -7,48 +7,44 @@
     <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: radial-gradient(circle at top, #1a1a2e, #16213e, #0f3460);
-        color: #e94560;
+        /* Fundo espacial mais profundo */
+        background: radial-gradient(circle at top, #0a0a12, #11112b, #000000);
+        color: #ffffff;
         margin: 0;
         padding: 0;
         min-height: 100vh;
     }
     .container {
         max-width: 800px;
-        margin: 30px auto;
-        padding: 20px;
+        margin: 20px auto;
+        padding: 15px;
     }
-    /* Efeito de Vidro nos Cards */
+    /* Cards com efeito de vidro MAIS FORTE */
     .card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        padding: 20px;
-        margin-bottom: 25px;
-        transition: 0.3s;
-    }
-    .card:hover {
-        transform: translateY(-5px);
-        border-color: #58a6ff;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    }
-    h1, h2 { color: #58a6ff; }
-    p { color: #c9d1d9; line-height: 1.6; }
-    .tag {
-        display: inline-block;
-        padding: 5px 12px;
+        background: rgba(255, 255, 255, 0.08); /* Aumentei a opacidade */
+        backdrop-filter: blur(15px); /* Desfoque mais forte */
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        background: #58a6ff;
-        color: #0d1117;
-        margin-bottom: 10px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
     }
-    .link {
-        color: #58a6ff;
-        text-decoration: none;
+    h1 { color: #ffffff; text-align: center; }
+    h2 { color: #58a6ff; margin-top: 15px; }
+    .tag {
+        background: #58a6ff;
+        color: #000;
+        padding: 5px 15px;
+        border-radius: 50px;
         font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    img {
+        width: 100%;
+        border-radius: 15px;
+        margin-top: 15px;
     }
 </style>
     
