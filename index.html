@@ -5,20 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Ferreira | Portal de Curiosidades</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #0d1117; color: #c9d1d9; }
-        header { background: linear-gradient(90deg, #1f2328, #238636); padding: 40px; text-align: center; border-bottom: 3px solid #58a6ff; }
-        h1 { margin: 0; color: white; font-size: 2.5em; }
-        .container { max-width: 900px; margin: 30px auto; padding: 20px; }
-        .card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px; margin-bottom: 25px; transition: 0.3s; }
-        .card:hover { border-color: #58a6ff; }
-        .tag { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 0.8em; font-weight: bold; margin-bottom: 10px; }
-        .tag-universo { background: #1f6feb; color: white; }
-        .tag-anime { background: #d15704; color: white; }
-        .tag-laboratorio { background: #238636; color: white; }
-        h2 { margin-top: 0; color: #58a6ff; }
-        p { line-height: 1.6; }
-        .link { color: #58a6ff; text-decoration: none; font-weight: bold; }
-    </style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: radial-gradient(circle at top, #1a1a2e, #16213e, #0f3460);
+        color: #e94560;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+    }
+    .container {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 20px;
+    }
+    /* Efeito de Vidro nos Cards */
+    .card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 25px;
+        transition: 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: #58a6ff;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    h1, h2 { color: #58a6ff; }
+    p { color: #c9d1d9; line-height: 1.6; }
+    .tag {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        background: #58a6ff;
+        color: #0d1117;
+        margin-bottom: 10px;
+    }
+    .link {
+        color: #58a6ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+</style>
+    
 </head>
 <body>
 
