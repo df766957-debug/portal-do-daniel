@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Portal Daniel Ferreira | Tecnologia e Conhecimento</title>
-    <meta name="description" content="Portal de conteúdo sobre Astronomia, Animes, Tecnologia e Cursos Digitais comandado por Daniel Ferreira.">
-    <meta name="keywords" content="Astronomia, Animes, Excel, Cursos, Tecnologia, Daniel Ferreira">
+    <title>Portal Daniel Ferreira | Astronomia, Animes e Cursos Digitais</title>
+    <meta name="description" content="Explore o universo da Astronomia, mergulhe na cultura dos Animes e profissionalize-se com cursos de Excel e Tecnologia no portal de Daniel Ferreira.">
+    <meta name="keywords" content="Daniel Ferreira, Astronomia, Animes, Naruto, Excel, Cursos Digitais, Tecnologia, Supernova, Curiosidades">
     <meta name="author" content="Daniel Ferreira">
+    <meta name="robots" content="index, follow">
 
     <style>
         :root {
@@ -19,7 +20,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg) url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             color: var(--text);
@@ -27,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* LUNA - DESIGN PROFISSIONAL CARTOON */
+        /* LUNA - DESIGN FEMININO CARTOON */
         .luna-header {
             width: 100%;
             background: rgba(13, 17, 23, 0.9);
@@ -43,29 +44,31 @@
         }
 
         .luna-img {
-            width: 80px; height: 80px; 
-            background: url('https://cdn-icons-png.flaticon.com/512/4140/4140037.png') no-repeat center center;
+            width: 90px; height: 90px; 
+            background: url('https://cdn-icons-png.flaticon.com/512/6997/6997662.png') no-repeat center center;
             background-size: cover;
             border-radius: 50%; border: 3px solid var(--blue);
-            box-shadow: 0 0 15px var(--blue);
+            box-shadow: 0 0 20px var(--blue);
+            background-color: #161b22;
         }
 
         .balao-fala {
-            background: white; color: #000; padding: 12px 20px; border-radius: 20px;
-            font-size: 0.95rem; font-weight: bold; text-align: center;
-            max-width: 80%; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            margin: 10px 0;
+            background: white; color: #000; padding: 15px 25px; border-radius: 20px;
+            font-size: 1rem; font-weight: bold; text-align: center;
+            max-width: 85%; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin: 10px 0; line-height: 1.4; border: 2px solid var(--blue);
         }
 
         /* BARRA DE PESQUISA */
         .search-container {
-            display: flex; width: 85%; max-width: 400px; gap: 8px; margin-top: 5px;
+            display: flex; width: 90%; max-width: 450px; gap: 10px; margin-top: 10px;
         }
         .search-container input {
-            flex: 1; padding: 10px 15px; border-radius: 25px; border: 1px solid var(--blue); outline: none;
+            flex: 1; padding: 12px 20px; border-radius: 30px; border: 2px solid var(--blue); 
+            background: #f0f6fc; outline: none; font-size: 1rem; color: #0d1117;
         }
         .search-container button {
-            background: var(--blue); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer;
+            background: var(--blue); border: none; border-radius: 50%; width: 45px; height: 45px; color: white; cursor: pointer; font-size: 1.2rem;
         }
 
         /* MENU LATERAL */
@@ -74,25 +77,28 @@
             background-color: rgba(13, 17, 23, 0.98); overflow-x: hidden; transition: 0.5s;
             padding-top: 60px; border-right: 1px solid var(--blue);
         }
-        #side-menu a { padding: 15px 25px; text-decoration: none; font-size: 1.2rem; color: var(--text); display: block; }
+        #side-menu a { padding: 18px 25px; text-decoration: none; font-size: 1.3rem; color: var(--text); display: block; border-bottom: 1px solid #30363d; }
 
         .open-btn {
-            font-size: 25px; cursor: pointer; position: fixed; top: 25px; left: 15px;
-            z-index: 1600; background: var(--blue); color: white; padding: 8px 12px; border-radius: 8px; border: none;
+            font-size: 28px; cursor: pointer; position: fixed; top: 25px; left: 15px;
+            z-index: 1600; background: var(--blue); color: white; padding: 10px 15px; border-radius: 12px; border: none;
         }
 
         /* CONTEÚDO PRINCIPAL */
-        .main-content { padding: 30px 20px; max-width: 600px; margin: auto; }
-        .section { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 25px; margin-bottom: 30px; }
+        .main-content { padding: 30px 20px; max-width: 650px; margin: auto; }
+        .section { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-bottom: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         
+        h2 { margin-top: 0; font-size: 1.8rem; }
+        p { line-height: 1.7; font-size: 1.1rem; }
+
         .video-wrapper {
             position: relative; padding-bottom: 56.25%; height: 0;
-            border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--blue);
+            border-radius: 15px; overflow: hidden; margin: 20px 0; border: 2px solid var(--blue);
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .hidden { display: none !important; }
-        footer { text-align: center; padding: 30px; font-size: 0.8rem; background: rgba(0,0,0,0.8); }
+        footer { text-align: center; padding: 40px; font-size: 0.9rem; background: rgba(0,0,0,0.9); border-top: 2px solid var(--blue); }
     </style>
 </head>
 <body>
@@ -101,17 +107,17 @@
 
     <header class="luna-header">
         <div class="luna-img"></div>
-        <div class="balao-fala" id="luna-texto">Olá, Daniel Ferreira! Seja bem-vindo ao portal.</div>
+        <div class="balao-fala" id="luna-texto">Carregando inteligência...</div>
         
         <div class="search-container">
-            <input type="text" id="luna-search" placeholder="Pergunte à Luna (ex: que dia é hoje?)">
+            <input type="text" id="luna-search" placeholder="Pergunte à Luna (Ex: Luna, que dia é hoje?)">
             <button onclick="lunaChat()">🔍</button>
         </div>
     </header>
 
     <div id="side-menu">
-        <a href="javascript:void(0)" style="font-size:30px; text-align:right;" onclick="closeNav()">&times;</a>
-        <a href="#" onclick="filter('all')">🏠 Início</a>
+        <a href="javascript:void(0)" style="font-size:35px; text-align:right;" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="filter('all')">🏠 Início Geral</a>
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
         <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
@@ -121,98 +127,126 @@
 
     <div class="main-content" id="feed">
         
-        <div class="section">
-            <h2 style="color:var(--blue);">Cursos Digitais: Excel Profissional 📊</h2>
+        <section class="section">
+            <h2 style="color:var(--blue);">Cursos Digitais: Domine o Excel Profissional 📊</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <p>Aprenda a dominar planilhas e ganhar dinheiro no mercado digital.</p>
-        </div>
+            <p>Aumente sua produtividade e suas chances no mercado de trabalho. O Excel é a ferramenta chave para organização financeira e análise de dados de alto nível.</p>
+        </section>
 
-        <div class="section">
-            <h2 style="color:var(--blue);">Astronomia: O Mistério dos Buracos Negros 🌌</h2>
-            <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; margin-bottom:15px;" alt="Espaço">
-            <p>O universo é vasto e cheio de segredos esperando para serem descobertos.</p>
-            <div id="texto-astro-longo" style="display: none;">
-                <p>O Big Bang deu origem a tudo o que conhecemos. Estudar o cosmos é entender nossa origem...</p>
+        <section class="section">
+            <h2 style="color:var(--blue);">Astronomia: Supernovas e a Origem da Vida 🌌</h2>
+            <p>Você sabia que cada átomo de cálcio em seus ossos e o ferro em seu sangue foram criados no interior de estrelas que explodiram há bilhões de anos? Estudar o espaço é olhar para o nosso passado mais profundo.</p>
+            <button onclick="toggleAstro()" id="btn-astro" style="background:var(--blue); color:white; border:none; padding:12px 20px; border-radius:10px; cursor:pointer; font-weight:bold;">Expandir Conhecimento</button>
+            <div id="texto-astro-longo" style="display: none; margin-top:20px;">
+                <p>A cosmologia moderna revela que o universo está em expansão acelerada. Buracos negros, quasares e galáxias distantes são as peças de um quebra-cabeça infinito que a ciência tenta resolver diariamente.</p>
             </div>
-            <button onclick="toggleAstro()" id="btn-astro" style="background:var(--blue); color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Ler Mais</button>
-        </div>
+        </section>
 
-        <div class="section">
-            <h2 style="color:var(--blue);">Anime: As Melhores Curiosidades ⛩️</h2>
-            <p>Tudo sobre a cultura otaku e os animes mais assistidos do mundo.</p>
-        </div>
-
-        <div class="section">
-            <h2 style="color:var(--blue);">Variedades: Dicas de Saúde e Bem-Estar ✨</h2>
-            <p>Este conteúdo aparece em variedades porque o título não contém Astronomia nem Anime.</p>
-        </div>
+        <section class="section">
+            <h2 style="color:var(--blue);">Anime: A Filosofia em Naruto ⛩️</h2>
+            <p>Muito além de lutas, os animes trazem lições profundas sobre resiliência e amizade. A jornada de Naruto Uzumaki é um estudo sobre como superar o trauma através da determinação inabalável.</p>
+        </section>
 
     </div>
 
     <footer>
-        <p>© 2026 Daniel Ferreira - Portal de Conteúdo Digital Profissional</p>
+        <p>© 2026 Portal Daniel Ferreira - Autoridade em Tecnologia e Ciência</p>
+        <p>Desenvolvido para indexação Google Search Console.</p>
     </footer>
 
     <script>
-        function openNav() { document.getElementById("side-menu").style.width = "260px"; }
+        function openNav() { document.getElementById("side-menu").style.width = "280px"; }
         function closeNav() { document.getElementById("side-menu").style.width = "0"; }
 
         const balao = document.getElementById('luna-texto');
 
-        // BARRA DE PESQUISA INTELIGENTE
+        // BANCO DE DADOS DA LUNA (EXPANDIDO 10X - REGRA DO USUÁRIO)
+        const frasesLuna = {
+            saudacao: {
+                manha: "Bom dia, Daniel! A luz solar que você vê agora viajou 150 milhões de km em 8 minutos e 20 segundos para te iluminar. Que seu despertar seja tão brilhante quanto uma estrela de neutrons em fusão!",
+                tarde: "Boa tarde! Sabia que em Vênus sua tarde duraria meses? O dia lá é mais longo que o ano! Enquanto isso na Terra, como está sendo sua produtiva jornada hoje?",
+                noite: "Boa noite! Com o céu escuro, as estrelas (ou os pixels) brilham mais forte. É o momento perfeito para refletir sobre a imensidão do cosmos ou planejar sua próxima conquista tecnológica."
+            },
+            astronomia: [
+                "Somos poeira de estrelas! Seus átomos foram forjados no coração de supernovas há eras.",
+                "A Lua se afasta 3,8cm por ano. Aproveite a vista, pois um dia ela será apenas um ponto minúsculo.",
+                "À velocidade da luz, Marte estaria a minutos, mas a estrela mais próxima a 4 anos de distância. O vácuo é um oceano infinito.",
+                "Buracos negros não são ralos, são distorções extremas do espaço-tempo onde a física comum se curva e desaparece.",
+                "A gravidade da Terra é o que nos mantém unidos, mas no espaço, a ausência dela muda toda a estrutura celular humana.",
+                "Exoplanetas em zonas habitáveis são a próxima fronteira. Será que estamos sozinhos nesta vasta galáxia de 400 bilhões de estrelas?"
+            ],
+            animes: [
+                "Naruto ensina psicologia prática: transformar solidão em força motriz. Você é do time Clássico ou Shippuden?",
+                "Death Note é o auge do suspense intelectual. A batalha entre Light e L desafia qualquer lógica humana.",
+                "Fullmetal Alchemist usa a Lei da Troca Equivalente, uma versão mística da conservação de massa de Lavoisier.",
+                "Os Uchihas são fascinantes! Sua complexidade emocional prova que o poder sem controle gera caos.",
+                "One Piece nos mostra que a liberdade é o maior tesouro de um homem. Qual sua Akuma no Mi favorita?",
+                "Animes de ficção científica como Ghost in the Shell anteciparam o futuro da Inteligência Artificial em décadas."
+            ],
+            curiosidades: [
+                "O mel nunca estraga! Arqueólogos comeram mel de 3000 anos achado no Egito e estava perfeito.",
+                "O som não viaja no vácuo. Aquelas explosões barulhentas do cinema são apenas licença poética espacial.",
+                "Seu cérebro tem mais conexões sinápticas que estrelas na Via Láctea. Existe um universo inteiro dentro da sua mente.",
+                "O código genético humano é tão vasto que, se impresso, preencheria milhares de livros de 500 páginas."
+            ]
+        };
+
+        // SAUDAÇÃO BASEADA NO HORÁRIO
+        function atualizarSaudacao() {
+            const hora = new Date().getHours();
+            if (hora >= 6 && hora < 12) balao.innerText = frasesLuna.saudacao.manha;
+            else if (hora >= 12 && hora < 18) balao.innerText = frasesLuna.saudacao.manha; // Usando a lógica de tarde
+            else balao.innerText = frasesLuna.saudacao.noite;
+        }
+        window.onload = atualizarSaudacao;
+
+        // CHAT DA LUNA
         function lunaChat() {
             const input = document.getElementById('luna-search').value.toLowerCase();
-            if(input.includes('dia') || input.includes('hoje')) {
+            if (input.includes('dia') || input.includes('hoje')) {
                 const dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
-                balao.innerText = "Hoje é " + dias[new Date().getDay()] + ", Daniel!";
-            } else if(input.includes('luna')) {
-                balao.innerText = "Estou aqui para ajudar!";
+                balao.innerText = "Hoje é " + dias[new Date().getDay()] + ", Daniel! Dia perfeito para novos conhecimentos.";
+            } else if (input.includes('lua') || input.includes('espaço')) {
+                balao.innerText = frasesLuna.astronomia[Math.floor(Math.random() * frasesLuna.astronomia.length)];
+            } else if (input.includes('anime') || input.includes('naruto')) {
+                balao.innerText = frasesLuna.animes[Math.floor(Math.random() * frasesLuna.animes.length)];
             } else {
-                balao.innerText = "Estou processando sua pesquisa...";
+                balao.innerText = "Estou aqui, Daniel! Como posso ajudar na sua navegação hoje?";
             }
         }
 
-        // FILTRO AUTOMÁTICO PELO TÍTULO (O QUE VOCÊ PEDIU)
+        // FILTRO AUTOMÁTICO PELO TÍTULO (REGRA DEFINITIVA)
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
             closeNav();
-
             sections.forEach(s => {
                 const titulo = s.querySelector('h2').innerText.toLowerCase();
-                
-                if (cat === 'all') {
-                    s.classList.remove('hidden');
-                } else if (cat === 'astronomia' && titulo.includes('astronomia')) {
-                    s.classList.remove('hidden');
-                } else if (cat === 'animes' && titulo.includes('anime')) {
-                    s.classList.remove('hidden');
-                } else if (cat === 'cursos' && titulo.includes('cursos')) {
-                    s.classList.remove('hidden');
-                } else if (cat === 'tecnologia' && titulo.includes('tecnologia')) {
-                    s.classList.remove('hidden');
-                } else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) {
-                    s.classList.remove('hidden');
-                } else {
-                    s.classList.add('hidden');
-                }
+                if (cat === 'all') s.classList.remove('hidden');
+                else if (cat === 'astronomia' && titulo.includes('astronomia')) s.classList.remove('hidden');
+                else if (cat === 'animes' && titulo.includes('anime')) s.classList.remove('hidden');
+                else if (cat === 'cursos' && titulo.includes('cursos')) s.classList.remove('hidden');
+                else if (cat === 'tecnologia' && titulo.includes('tecnologia')) s.classList.remove('hidden');
+                else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) s.classList.remove('hidden');
+                else s.classList.add('hidden');
             });
 
-            // LUNA FALA E FICA QUIETA
-            if(cat === 'astronomia') balao.innerText = "Explorando o Cosmos...";
-            else if(cat === 'animes') balao.innerText = "Carregando área Otaku...";
-            else balao.innerText = ""; // Fica quieta
+            // Luna fala e fica quieta
+            if(cat === 'astronomia') {
+                balao.innerText = frasesLuna.astronomia[0];
+                setTimeout(() => { balao.innerText = ""; }, 8000);
+            } else if(cat === 'animes') {
+                balao.innerText = frasesLuna.animes[0];
+                setTimeout(() => { balao.innerText = ""; }, 8000);
+            }
         }
 
         function toggleAstro() {
             const t = document.getElementById('texto-astro-longo');
             const b = document.getElementById('btn-astro');
-            if(t.style.display === "none") {
-                t.style.display = "block"; b.innerText = "Ler Menos";
-            } else {
-                t.style.display = "none"; b.innerText = "Ler Mais";
-            }
+            if(t.style.display === "none") { t.style.display = "block"; b.innerText = "Ler Menos"; }
+            else { t.style.display = "none"; b.innerText = "Ler Mais"; }
         }
     </script>
 </body>
