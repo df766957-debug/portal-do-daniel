@@ -3,60 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Ferreira - Projetos Digitais</title>
+    <meta name="description" content="Portal de Daniel Ferreira: Astronomia, Tecnologia, Animes e Cursos Digitais.">
+    <meta name="keywords" content="Daniel Ferreira, Astronomia, Tecnologia, Animes, Excel, Power BI">
+    <title>Portal Daniel Ferreira 🚀</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --primary-blue: #58a6ff;
-            --success-green: #238636;
-            --border-color: #30363d;
-            --text-main: #c9d1d9;
-            --text-gray: #8b949e;
+            --bg: #05070a;
+            --card: #161b22;
+            --blue: #58a6ff;
+            --text: #c9d1d9;
+            --border: #30363d;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg) url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text);
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        header {
-            width: 100%;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            background: var(--card-bg);
-            position: sticky;
+        /* MENU LATERAL (TRÊS RISQUINHOS) */
+        #side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
             top: 0;
-            z-index: 100;
+            left: 0;
+            background-color: rgba(13, 17, 23, 0.95);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            border-right: 1px solid var(--blue);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
+        #side-menu a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: var(--text);
+            display: block;
+            transition: 0.3s;
         }
 
-        main {
-            flex: 1;
-            width: 90%;
+        #side-menu a:hover { color: var(--blue); background: #21262d; }
+
+        .open-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            z-index: 1001;
+            background: var(--card);
+            padding: 5px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--blue);
+        }
+
+        /* IA LUNA */
+        .ia-box {
+            background: rgba(88, 166, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--blue);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 70px auto 20px;
             max-width: 500px;
-            padding: 30px 0;
+            text-align: center;
         }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+        .ia-avatar { font-size: 40px; }
+
+        /* CONTEÚDO */
+        .main-content {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .section {
+            background: rgba(22, 27, 34, 0.85);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             margin-bottom: 25px;
+            display: block;
         }
 
         .video-wrapper {
@@ -65,145 +99,115 @@
             height: 0;
             border-radius: 8px;
             overflow: hidden;
-            margin: 20px 0;
             background: #000;
         }
 
         .video-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+
+        .lua-img {
             width: 100%;
-            height: 100%;
-            border: 0;
+            border-radius: 10px;
+            border: 1px solid var(--blue);
         }
 
-        .cta-button {
-            display: block;
-            background-color: var(--success-green);
-            color: white;
-            text-align: center;
-            padding: 18px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: transform 0.2s;
-        }
+        .hidden { display: none !important; }
 
-        .cta-button:active { transform: scale(0.98); }
-
-        /* SEÇÃO DE CANAIS */
-        .tv-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .tv-link {
-            background: #21262d;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .tv-link:hover { border-color: var(--primary-blue); background: #30363d; }
-
-        .curiosity-box {
-            background: #0d1117;
-            padding: 15px;
-            border-left: 4px solid var(--primary-blue);
-            border-radius: 4px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            text-align: left;
-        }
-
-        footer {
-            width: 100%;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            border-top: 1px solid var(--border-color);
-        }
+        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #8b949e; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Daniel Ferreira 🚀</h1>
-        <p style="margin: 5px 0 0; font-size: 0.9rem; color: var(--text-gray);">Ciência, Tecnologia e Capacitação</p>
-    </header>
+    <div id="side-menu">
+        <a href="javascript:void(0)" style="position:absolute; top:10px; right:25px; font-size:36px;" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
+        <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
+        <a href="#" onclick="filter('animes')">⛩️ Animes</a>
+        <a href="#" onclick="filter('filmes')">🎬 Filmes e Séries</a>
+        <a href="#" onclick="filter('cursos')">📊 Cursos</a>
+        <a href="#" onclick="filter('all')">✨ Variedades (Ver Tudo)</a>
+    </div>
 
-    <main>
-        <div class="card">
-            <h2 style="text-align: center; font-size: 1.3rem; margin-top: 0;">Combo: Excel + Power BI 📊</h2>
+    <span class="open-btn" onclick="openNav()">&#9776;</span>
+
+    <div class="ia-box">
+        <div class="ia-avatar">👩‍🚀</div>
+        <h3 id="ia-name" style="margin:5px; color:var(--blue);">Luna IA</h3>
+        <p id="ia-comment">Olá Daniel! O que vamos explorar hoje no espaço?</p>
+    </div>
+
+    <div class="main-content">
+        <div class="section" data-cat="astronomia">
+            <h2>Astronomia 🌌</h2>
+            <img src="https://images.unsplash.com/photo-1522030239044-12f01413156e?auto=format&fit=crop&w=800" class="lua-img" alt="Foto da Lua">
+            <p>Observando os mistérios do universo e a beleza da nossa Lua.</p>
+        </div>
+
+        <div class="section" data-cat="cursos">
+            <h2>Combo: Excel + Power BI 📊</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" class="cta-button">
-                QUERO MEU ACESSO AGORA
-            </a>
+            <p>Acelere sua carreira no laboratório com dados inteligentes.</p>
+            <a href="https://go.hotmart.com/K102868779N" style="display:block; background:#238636; color:white; text-align:center; padding:15px; border-radius:8px; text-decoration:none; font-weight:bold;">QUERO MEU ACESSO</a>
         </div>
 
-        <div class="card">
-            <h2 style="font-size: 1.2rem;">Momento Futebol ⚽</h2>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/S_vLp_C6r_k" allowfullscreen></iframe>
-            </div>
+        <div class="section" data-cat="tecnologia">
+            <h2>Tecnologia 💻</h2>
+            <p>As últimas novidades em Inteligência Artificial e automação de processos industriais.</p>
         </div>
 
-        <div class="card">
-            <h2 style="font-size: 1.2rem;">💡 Curiosidades do Dia</h2>
-            <div id="curiosidade-content" class="curiosity-box">
-                Carregando fato incrível...
-            </div>
+        <div class="section" data-cat="animes">
+            <h2>Animes ⛩️</h2>
+            <p>Recomendações da temporada e clássicos que moldaram gerações.</p>
         </div>
 
-        <div class="card">
-            <h2 style="font-size: 1.2rem;">📺 Canais de TV ao Vivo</h2>
-            <p style="font-size: 0.8rem; color: var(--text-gray);">Assista direto no YouTube:</p>
-            <div class="tv-grid">
-                <a href="https://www.youtube.com/@recordnews/live" target="_blank" class="tv-link">Record News</a>
-                <a href="https://www.youtube.com/@jovempannews/live" target="_blank" class="tv-link">Jovem Pan</a>
-                <a href="https://www.youtube.com/@bandjornalismo/live" target="_blank" class="tv-link">Band News</a>
-                <a href="https://www.youtube.com/@sbtnews/live" target="_blank" class="tv-link">SBT News</a>
-                <a href="https://www.youtube.com/@cnnbrasil/live" target="_blank" class="tv-link">CNN Brasil</a>
-                <a href="https://www.youtube.com/@TVBrasil/live" target="_blank" class="tv-link">TV Brasil</a>
-            </div>
+        <div class="section" data-cat="filmes">
+            <h2>Filmes e Séries 🎬</h2>
+            <p>Análises de cinema e as séries mais maratonadas do momento.</p>
         </div>
-    </main>
+    </div>
 
     <footer>
-        <p>© 2026 Daniel Ferreira - Expert Cursos</p>
-        <p>Compra 100% Segura via Hotmart</p>
+        <p>© 2026 Daniel Ferreira | Santa Maria do Oeste - PR</p>
     </footer>
 
     <script>
-        // Sistema simples de Curiosidades
-        const fatos = [
-            "O DNA humano é 99% idêntico ao de um chimpanzé, mas compartilhamos 50% com as bananas!",
-            "O asfalto é um dos materiais mais reciclados do mundo, com quase 100% de reaproveitamento.",
-            "Uma colher de chá de uma estrela de nêutrons pesaria 6 bilhões de toneladas.",
-            "O Excel foi lançado primeiro para Mac em 1985, e só depois para Windows em 1987.",
-            "Existem mais árvores na Terra do que estrelas na nossa galáxia."
-        ];
+        function openNav() { document.getElementById("side-menu").style.width = "250px"; }
+        function closeNav() { document.getElementById("side-menu").style.width = "0"; }
 
-        function carregarCuriosidade() {
-            const index = Math.floor(Math.random() * fatos.length);
-            document.getElementById('curiosidade-content').innerText = fatos[index];
+        function filter(cat) {
+            const sections = document.querySelectorAll('.section');
+            const comment = document.getElementById('ia-comment');
+            
+            closeNav();
+
+            if (cat === 'all') {
+                sections.forEach(s => s.classList.remove('hidden'));
+                comment.innerText = "Mostrando todas as variedades do seu portal, Daniel!";
+                return;
+            }
+
+            sections.forEach(s => {
+                if (s.getAttribute('data-cat') === cat) {
+                    s.classList.remove('hidden');
+                } else {
+                    s.classList.add('hidden');
+                }
+            });
+
+            // Luna IA comenta a categoria
+            const falas = {
+                astronomia: "Estamos flutuando entre estrelas e galáxias agora...",
+                tecnologia: "Inovação é o futuro! O que achou dessas novidades?",
+                animes: "Prepare a pipoca, o mundo otaku é incrível!",
+                filmes: "Luz, câmera e ação! Ótimas escolhas.",
+                cursos: "Conhecimento é poder. Esse curso de Excel vai te ajudar muito no laboratório!"
+            };
+            comment.innerText = falas[cat];
         }
-
-        // Troca a curiosidade a cada visita ou refresh
-        carregarCuriosidade();
     </script>
-
 </body>
 </html>
