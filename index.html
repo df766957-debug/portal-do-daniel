@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portal de Daniel Ferreira: Astronomia, Tecnologia, Animes e Cursos Digitais.">
-    <meta name="keywords" content="Daniel Ferreira, Astronomia, Tecnologia, Animes, Excel, Power BI">
+    <meta name="description" content="Portal de Daniel Ferreira: Astronomia, Tecnologia e Conhecimento.">
     <title>Portal Daniel Ferreira 🚀</title>
     <style>
         :root {
             --bg: #05070a;
-            --card: #161b22;
+            --card: rgba(22, 27, 34, 0.95); /* Escuro para dar leitura */
             --blue: #58a6ff;
-            --text: #c9d1d9;
+            --text: #ffffff; /* Branco puro para brilhar no escuro */
             --border: #30363d;
         }
 
@@ -24,189 +23,156 @@
             overflow-x: hidden;
         }
 
-        /* MENU LATERAL (TRÊS RISQUINHOS) */
+        /* MENU LATERAL */
         #side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            background-color: rgba(13, 17, 23, 0.95);
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            border-right: 1px solid var(--blue);
+            height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0;
+            background-color: rgba(13, 17, 23, 0.98); overflow-x: hidden; transition: 0.5s;
+            padding-top: 60px; border-right: 1px solid var(--blue);
         }
 
         #side-menu a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            color: var(--text);
-            display: block;
-            transition: 0.3s;
+            padding: 15px 25px; text-decoration: none; font-size: 1.2rem;
+            color: var(--text); display: block; transition: 0.3s;
         }
 
         #side-menu a:hover { color: var(--blue); background: #21262d; }
 
         .open-btn {
-            font-size: 30px;
-            cursor: pointer;
-            position: fixed;
-            top: 15px;
-            left: 20px;
-            z-index: 1001;
-            background: var(--card);
-            padding: 5px 15px;
-            border-radius: 8px;
-            border: 1px solid var(--blue);
+            font-size: 25px; cursor: pointer; position: fixed; top: 15px; left: 15px;
+            z-index: 1001; background: var(--blue); color: white;
+            padding: 8px 12px; border-radius: 50%; border: none; box-shadow: 0 0 15px var(--blue);
         }
 
-        /* IA LUNA */
-        .ia-box {
-            background: rgba(88, 166, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--blue);
-            border-radius: 15px;
-            padding: 15px;
-            margin: 70px auto 20px;
-            max-width: 500px;
-            text-align: center;
+        /* LUNA - ATENDENTE ESPACIAL */
+        .luna-atendente {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1500;
+            display: flex; flex-direction: column; align-items: flex-end;
+            max-width: 250px;
         }
 
-        .ia-avatar { font-size: 40px; }
-
-        /* CONTEÚDO */
-        .main-content {
-            padding: 20px;
-            max-width: 600px;
-            margin: auto;
+        .balao-fala {
+            background: white; color: #000; padding: 12px; border-radius: 15px 15px 0 15px;
+            margin-bottom: 10px; font-size: 0.9rem; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid var(--blue);
+            position: relative;
         }
+
+        .luna-img {
+            width: 80px; height: 80px; background: var(--blue);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 45px; border: 3px solid white; box-shadow: 0 0 20px var(--blue);
+        }
+
+        /* CONTEÚDO PRINCIPAL COM ALTO CONTRASTE */
+        .main-content { padding: 80px 20px 20px; max-width: 600px; margin: auto; }
 
         .section {
-            background: rgba(22, 27, 34, 0.85);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-            display: block;
+            background: var(--card); border: 1px solid var(--blue);
+            border-radius: 15px; padding: 25px; margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
+
+        h1, h2 { color: var(--blue); text-shadow: 2px 2px 4px #000; }
+        
+        p { line-height: 1.6; font-size: 1.05rem; text-shadow: 1px 1px 2px #000; }
 
         .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #000;
+            position: relative; padding-bottom: 56.25%; height: 0;
+            border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--blue);
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
-
-        .lua-img {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid var(--blue);
-        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .hidden { display: none !important; }
 
-        footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #8b949e; }
+        .btn-green {
+            display: block; background: #238636; color: white; text-align: center;
+            padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold;
+            margin-top: 15px; transition: 0.3s;
+        }
+        .btn-green:hover { background: #2ea043; transform: scale(1.02); }
+
+        footer { text-align: center; padding: 40px; font-size: 0.85rem; background: rgba(0,0,0,0.7); }
     </style>
 </head>
 <body>
 
+    <button class="open-btn" onclick="openNav()">&#9776;</button>
+
     <div id="side-menu">
-        <a href="javascript:void(0)" style="position:absolute; top:10px; right:25px; font-size:36px;" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" style="font-size:30px; text-align:right;" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="filter('all')">🏠 Início (Ver Tudo)</a>
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
         <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
         <a href="#" onclick="filter('filmes')">🎬 Filmes e Séries</a>
-        <a href="#" onclick="filter('cursos')">📊 Cursos</a>
-        <a href="#" onclick="filter('all')">✨ Variedades (Ver Tudo)</a>
+        <a href="#" onclick="filter('cursos')">📊 Cursos Digitais</a>
     </div>
 
-    <span class="open-btn" onclick="openNav()">&#9776;</span>
-
-    <div class="ia-box">
-        <div class="ia-avatar">👩‍🚀</div>
-        <h3 id="ia-name" style="margin:5px; color:var(--blue);">Luna IA</h3>
-        <p id="ia-comment">Olá Daniel! O que vamos explorar hoje no espaço?</p>
+    <div class="luna-atendente">
+        <div class="balao-fala" id="luna-texto">Olá, Daniel! Bem-vindo ao seu portal espacial. Sou a Luna e vou te guiar!</div>
+        <div class="luna-img">👩‍🚀</div>
     </div>
 
     <div class="main-content">
-        <div class="section" data-cat="astronomia">
-            <h2>Astronomia 🌌</h2>
-            <img src="https://images.unsplash.com/photo-1522030239044-12f01413156e?auto=format&fit=crop&w=800" class="lua-img" alt="Foto da Lua">
-            <p>Observando os mistérios do universo e a beleza da nossa Lua.</p>
-        </div>
-
         <div class="section" data-cat="cursos">
-            <h2>Combo: Excel + Power BI 📊</h2>
+            <h2>Combo Profissional: Excel + Power BI 📊</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <p>Acelere sua carreira no laboratório com dados inteligentes.</p>
-            <a href="https://go.hotmart.com/K102868779N" style="display:block; background:#238636; color:white; text-align:center; padding:15px; border-radius:8px; text-decoration:none; font-weight:bold;">QUERO MEU ACESSO</a>
+            <p>Domine as ferramentas que transformam dados em decisões. Ideal para quem busca destaque no mercado!</p>
+            <a href="https://go.hotmart.com/K102868779N" class="btn-green">QUERO GARANTIR MINHA VAGA</a>
+        </div>
+
+        <div class="section" data-cat="astronomia">
+            <h2>Exploração Espacial 🌌</h2>
+            <img src="https://images.unsplash.com/photo-1522030239044-12f01413156e?auto=format&fit=crop&w=800" style="width:100%; border-radius:10px; border:1px solid var(--blue);" alt="Lua">
+            <p>O cosmos é tudo o que existe, existiu ou existirá. Nossa curiosidade nos leva a observar cada detalhe da Lua e além.</p>
         </div>
 
         <div class="section" data-cat="tecnologia">
-            <h2>Tecnologia 💻</h2>
-            <p>As últimas novidades em Inteligência Artificial e automação de processos industriais.</p>
+            <h2>Tecnologia e Futuro 💻</h2>
+            <p>A inteligência artificial não é mais o futuro, é o presente. Veja como ela está mudando o mundo ao nosso redor.</p>
         </div>
 
         <div class="section" data-cat="animes">
-            <h2>Animes ⛩️</h2>
-            <p>Recomendações da temporada e clássicos que moldaram gerações.</p>
-        </div>
-
-        <div class="section" data-cat="filmes">
-            <h2>Filmes e Séries 🎬</h2>
-            <p>Análises de cinema e as séries mais maratonadas do momento.</p>
+            <h2>Universo Anime ⛩️</h2>
+            <p>Histórias que inspiram e artes que impressionam. Confira os destaques do mundo da animação japonesa.</p>
         </div>
     </div>
 
     <footer>
         <p>© 2026 Daniel Ferreira | Santa Maria do Oeste - PR</p>
+        <p>Desenvolvido com Inteligência Artificial</p>
     </footer>
 
     <script>
-        function openNav() { document.getElementById("side-menu").style.width = "250px"; }
+        function openNav() { document.getElementById("side-menu").style.width = "260px"; }
         function closeNav() { document.getElementById("side-menu").style.width = "0"; }
 
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
-            const comment = document.getElementById('ia-comment');
-            
+            const luna = document.getElementById('luna-texto');
             closeNav();
 
-            if (cat === 'all') {
-                sections.forEach(s => s.classList.remove('hidden'));
-                comment.innerText = "Mostrando todas as variedades do seu portal, Daniel!";
-                return;
-            }
+            const falasLuna = {
+                all: "Estou mostrando todas as suas variedades, Daniel! Divirta-se.",
+                astronomia: "Olhe para as estrelas! Preparei a seção de astronomia para você.",
+                tecnologia: "Incrível! Vamos ver o que há de novo no mundo da tecnologia.",
+                animes: "Otaku mode ativado! Aqui estão os seus animes.",
+                filmes: "Luz, câmera e ação! Vamos ver os melhores filmes.",
+                cursos: "Excelente escolha! O conhecimento é o melhor investimento."
+            };
+
+            luna.innerText = falasLuna[cat] || "Estou aqui para ajudar!";
 
             sections.forEach(s => {
-                if (s.getAttribute('data-cat') === cat) {
+                if (cat === 'all' || s.getAttribute('data-cat') === cat) {
                     s.classList.remove('hidden');
                 } else {
                     s.classList.add('hidden');
                 }
             });
-
-            // Luna IA comenta a categoria
-            const falas = {
-                astronomia: "Estamos flutuando entre estrelas e galáxias agora...",
-                tecnologia: "Inovação é o futuro! O que achou dessas novidades?",
-                animes: "Prepare a pipoca, o mundo otaku é incrível!",
-                filmes: "Luz, câmera e ação! Ótimas escolhas.",
-                cursos: "Conhecimento é poder. Esse curso de Excel vai te ajudar muito no laboratório!"
-            };
-            comment.innerText = falas[cat];
         }
     </script>
 </body>
