@@ -3,143 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Daniel Ferreira - IA Integrada</title>
+    <title>Portal Daniel Ferreira - Multi-Conteúdo</title>
     <style>
-        :root {
-            --bg: #0d1117;
-            --card: #161b22;
-            --blue: #58a6ff;
-            --green: #238636;
-            --border: #30363d;
-            --white: #c9d1d9;
-        }
+        :root { --bg: #0d1117; --card: #161b22; --blue: #58a6ff; --green: #238636; --border: #30363d; --white: #c9d1d9; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--white); margin: 0; overflow-x: hidden; }
+        
+        /* MENU SUPERIOR */
+        nav { background: var(--card); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; padding: 10px; sticky; top: 0; z-index: 100; gap: 10px; }
+        nav button { background: var(--border); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; white-space: nowrap; }
+        nav button:hover { background: var(--blue); }
 
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--white); margin: 0; scroll-behavior: smooth; }
+        /* MENU LATERAL (3 RISQUINHOS) */
+        #sideMenu { position: fixed; right: -300px; top: 0; width: 280px; height: 100%; background: var(--card); border-left: 1px solid var(--border); transition: 0.3s; z-index: 200; padding: 20px; overflow-y: auto; }
+        #sideMenu.active { right: 0; }
+        .menu-btn { position: fixed; top: 15px; right: 15px; z-index: 250; background: var(--blue); border: none; color: white; padding: 10px; border-radius: 5px; cursor: pointer; }
 
-        /* MENU */
-        nav {
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a { color: var(--white); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.9rem; padding: 8px 12px; border-radius: 5px; }
-        nav a:hover { background: var(--border); color: var(--blue); }
+        /* SEÇÕES */
+        .content-section { display: none; padding: 20px; flex-direction: column; align-items: center; }
+        .content-section.active { display: flex; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 20px; width: 100%; max-width: 450px; text-align: center; margin-bottom: 20px; }
+        
+        /* JOGO */
+        canvas { background: #000; border: 2px solid var(--border); display: block; margin: auto; }
 
-        .container { padding: 20px; display: flex; flex-direction: column; align-items: center; }
-
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            padding: 20px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-
-        .video-box { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; margin: 15px 0; }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-        .btn { display: block; background: var(--green); color: white; text-align: center; padding: 15px; border-radius: 10px; font-weight: bold; text-decoration: none; margin-top: 10px; }
-
-        /* --- ESTILO DA INTELIGÊNCIA ARTIFICIAL (CHATBOT) --- */
-        #ia-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--blue);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-            font-size: 30px;
-        }
-
-        #chat-window {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 300px;
-            height: 400px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            display: none; /* Escondido por padrão */
-            flex-direction: column;
-            z-index: 1000;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        }
-
-        .chat-header { background: var(--blue); padding: 15px; border-radius: 15px 15px 0 0; font-weight: bold; text-align: center; }
-        .chat-content { flex: 1; padding: 15px; font-size: 0.85rem; overflow-y: auto; }
-        .chat-input { padding: 10px; border-top: 1px solid var(--border); display: flex; }
-        .chat-input input { flex: 1; background: #000; border: 1px solid var(--border); color: white; padding: 5px; border-radius: 5px; }
-
-        footer { text-align: center; padding: 20px; font-size: 0.7rem; color: #8b949e; }
+        .tv-link { display: block; background: #333; color: var(--blue); padding: 10px; margin: 5px; text-decoration: none; border-radius: 5px; }
     </style>
 </head>
 <body>
 
+    <button class="menu-btn" onclick="toggleMenu()">☰ O que dá Dinheiro</button>
+
+    <div id="sideMenu">
+        <h3>💰 Top 25 Rendas Reais 2026</h3>
+        <ol style="font-size: 0.85rem; line-height: 1.6;">
+            <li>Afiliado Hotmart/Eduzz</li><li>Gestor de Tráfego</li><li>Criação de Canais Dark</li><li>Dropshipping Nacional</li><li>Edição de Reels/TikTok</li><li>Social Media</li><li>Venda de Prompts IA</li><li>Copywriting</li><li>Análise de Dados</li><li>Desenvolvimento Web</li><li>Consultoria de TI</li><li>Venda de Infoprodutos</li><li>Staking de Cripto</li><li>Micro-SaaS</li><li>Aulas Particulares Online</li><li>UX Design</li><li>Assistente Virtual</li><li>E-commerce de Nicho</li><li>Tradução via IA</li><li>Ghostwriting</li><li>Criação de Apps</li><li>SEO para Youtube</li><li>Gestão de Comunidades</li><li>Venda de Artes Digitais</li><li>Cloud Computing</li>
+        </ol>
+        <button onclick="toggleMenu()" style="width:100%; padding:10px; background:red; color:white; border:none; border-radius:5px;">Fechar</button>
+    </div>
+
     <nav>
-        <a href="#cursos">CURSOS</a>
-        <a href="#astronomia">ASTRONOMIA</a>
-        <a href="#animes">ANIMES</a>
+        <button onclick="showSection('tempo')">☁️ Tempo</button>
+        <button onclick="showSection('cursos')">📚 Cursos</button>
+        <button onclick="showSection('astronomia')">🌌 Astronomia</button>
+        <button onclick="showSection('animes')">⛩️ Animes</button>
+        <button onclick="showSection('tv')">📺 TV Aberta</button>
+        <button onclick="showSection('jogo')">🎮 Jogo</button>
     </nav>
 
-    <div class="container">
-        
-        <div id="cursos" class="card">
-            <h2 style="color: var(--blue); text-align: center;">Excel + Power BI 📊</h2>
-            <div class="video-box">
-                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
-            </div>
-            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" class="btn">QUERO MEU ACESSO AGORA</a>
+    <section id="tempo" class="content-section active">
+        <div class="card">
+            <h2>Clima Agora</h2>
+            <iframe src="https://www.meteoblue.com/pt/tempo/widget/three?geoloc=detect" frameborder="0" style="width: 100%; height: 600px;"></iframe>
         </div>
+    </section>
 
-        <div id="astronomia" class="card">
-            <h2 style="color: var(--blue); text-align: center;">Astronomia 🌌</h2>
-            <p style="text-align: center;">Curiosidades sobre o Cosmos e Missões NASA.</p>
+    <section id="cursos" class="content-section">
+        <div class="card">
+            <h2>Combo Excel + Power BI</h2>
+            <iframe width="100%" height="250" src="https://www.youtube.com/embed/oXBANG0VMUs" frameborder="0" allowfullscreen></iframe>
+            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" style="display:block; background:var(--green); color:white; padding:15px; margin-top:15px; text-decoration:none; border-radius:10px; font-weight:bold;">ACESSAR CURSO</a>
         </div>
+    </section>
 
-    </div>
-
-    <div id="ia-button" onclick="toggleChat()">🤖</div>
-
-    <div id="chat-window">
-        <div class="chat-header">Assistente IA Daniel</div>
-        <div class="chat-content">
-            <p><strong>IA:</strong> Olá! Sou o assistente do Daniel. Em que posso ajudar hoje?</p>
+    <section id="tv" class="content-section">
+        <div class="card">
+            <h2>TV Aberta Online</h2>
+            <p>Créditos: Emissoras Oficiais via YouTube/Web</p>
+            <a class="tv-link" href="https://www.youtube.com/@jovempannews/live" target="_blank">Jovem Pan News Live</a>
+            <a class="tv-link" href="https://www.youtube.com/@recordnews/live" target="_blank">Record News Live</a>
+            <a class="tv-link" href="https://www.youtube.com/@bandjornalismo/live" target="_blank">Band Jornalismo</a>
+            <p style="font-size:0.7rem;">Nota: A disponibilidade depende das emissoras.</p>
         </div>
-        <div class="chat-input">
-            <input type="text" placeholder="Pergunte sobre os cursos...">
-        </div>
-    </div>
+    </section>
 
-    <footer>
-        <p>© 2026 Daniel Ferreira - Portal Inteligente</p>
-    </footer>
+    <section id="jogo" class="content-section">
+        <div class="card">
+            <h2>Triângulos Cadentes</h2>
+            <p>Use as setas para mover os triângulos!</p>
+            <canvas id="gameCanvas" width="240" height="400"></canvas>
+            <p style="font-size:0.8rem; margin-top:10px; color:#ffcc00;">💡 Educativo: Jogos de lógica ajudam no raciocínio matemático!</p>
+        </div>
+    </section>
 
     <script>
-        function toggleChat() {
-            var chat = document.getElementById('chat-window');
-            if (chat.style.display === 'flex') {
-                chat.style.display = 'none';
-            } else {
-                chat.style.display = 'flex';
-            }
+        function showSection(id) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
         }
-    </script>
 
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('active');
+        }
+
+        // Lógica simples do Jogo (Triângulos)
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let x = 100, y = 0;
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#58a6ff";
+            ctx.beginPath();
+            ctx.moveTo(x, y); ctx.lineTo(x+20, y+40); ctx.lineTo(x-20, y+40); ctx.fill();
+            y += 2; if(y > canvas.height) y = -40;
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
 </body>
 </html>
