@@ -15,19 +15,19 @@
 
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: var(--bg) url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background: var(--bg) url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
             background-size: cover;
             color: var(--text);
             margin: 0;
             overflow-x: hidden;
         }
 
-        /* LUNA - ATENDENTE NO TOPO */
+        /* LUNA - ATENDENTE PROFISSIONAL */
         .luna-header {
             width: 100%;
             background: rgba(13, 17, 23, 0.9);
             border-bottom: 2px solid var(--blue);
-            padding: 15px 0;
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1500;
@@ -38,9 +38,11 @@
         }
 
         .luna-img {
-            width: 60px; height: 60px; background: var(--blue);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 35px; border: 2px solid white; box-shadow: 0 0 15px var(--blue);
+            width: 70px; height: 70px; 
+            background: url('https://cdn-icons-png.flaticon.com/512/4140/4140037.png') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%; border: 2px solid var(--blue);
+            box-shadow: 0 0 15px var(--blue);
             margin-bottom: 10px;
         }
 
@@ -48,7 +50,18 @@
             background: white; color: #000; padding: 10px 20px; border-radius: 20px;
             font-size: 0.95rem; font-weight: bold; text-align: center;
             max-width: 80%; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            transition: all 0.5s ease;
+            margin-bottom: 15px;
+        }
+
+        /* BARRA DE PESQUISA */
+        .search-box {
+            display: flex; width: 85%; max-width: 400px; gap: 5px;
+        }
+        .search-box input {
+            flex: 1; padding: 10px; border-radius: 20px; border: 1px solid var(--blue); outline: none;
+        }
+        .search-box button {
+            background: var(--blue); border: none; border-radius: 50%; width: 40px; color: white; cursor: pointer;
         }
 
         /* MENU LATERAL */
@@ -57,7 +70,6 @@
             background-color: rgba(13, 17, 23, 0.98); overflow-x: hidden; transition: 0.5s;
             padding-top: 60px; border-right: 1px solid var(--blue);
         }
-
         #side-menu a {
             padding: 15px 25px; text-decoration: none; font-size: 1.2rem;
             color: var(--text); display: block; transition: 0.3s;
@@ -69,7 +81,6 @@
             padding: 8px 12px; border-radius: 8px; border: none;
         }
 
-        /* CONTEÚDO */
         .main-content { padding: 30px 20px; max-width: 600px; margin: auto; }
 
         .section {
@@ -78,16 +89,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        .video-wrapper {
-            position: relative; padding-bottom: 56.25%; height: 0;
-            border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--blue);
-        }
-
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
         .hidden { display: none !important; }
-
-        footer { text-align: center; padding: 30px; font-size: 0.8rem; background: rgba(0,0,0,0.8); color: var(--text-gray); }
+        footer { text-align: center; padding: 30px; background: rgba(0,0,0,0.8); font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -95,61 +98,49 @@
     <button class="open-btn" onclick="openNav()">&#9776;</button>
 
     <header class="luna-header">
-        <div class="luna-img">👩‍🚀</div>
-        <div class="balao-fala" id="luna-texto">Olá! Sou a Luna, sua assistente espacial. Seja muito bem-vindo!</div>
+        <div class="luna-img"></div>
+        <div class="balao-fala" id="luna-texto">Olá, Daniel! Como posso ajudar hoje?</div>
+        
+        <div class="search-box">
+            <input type="text" id="luna-search" placeholder="Pergunte algo (ex: que dia é hoje?)">
+            <button onclick="lunaChat()">🔍</button>
+        </div>
     </header>
 
     <div id="side-menu">
         <a href="javascript:void(0)" style="font-size:30px; text-align:right;" onclick="closeNav()">&times;</a>
         <a href="#" onclick="filter('all')">🏠 Início</a>
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
-        <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
-        <a href="#" onclick="filter('filmes')">🎬 Filmes e Séries</a>
-        <a href="#" onclick="filter('cursos')">📊 Cursos Digitais</a>
         <a href="#" onclick="filter('variedades')">✨ Variedades</a>
     </div>
 
-    <div class="main-content">
-        <div class="section" data-cat="cursos">
-            <h2 style="color:var(--blue);">Cursos Profissionalizantes 📊</h2>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
-            </div>
-            <div class="section" data-cat="astronomia">
-            <h2 style="color:var(--blue);">Exploração do Cosmos: Mistérios do Universo 🌌</h2>
-            
+    <div class="main-content" id="conteudo-principal">
+        
+        <div class="section">
+            <h2 style="color:var(--blue);">Astronomia: Mistérios do Universo 🌌</h2>
             <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; border:1px solid var(--blue); margin-bottom: 15px;">
-            
-            <p style="text-align: justify; line-height: 1.6;">
-                O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas distantes até a composição oculta da matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim.
-            </p>
-
+            <p>O universo e suas infinitas possibilidades.</p>
             <div id="texto-astro-longo" style="display: none;">
-                <p style="text-align: justify; line-height: 1.6;">
-                    A cosmologia moderna nos ensina que o universo começou com o Big Bang. Estudar os astros é entender a nossa própria origem, pois cada átomo em nosso corpo foi forjado no coração de uma estrela. Nossa vizinha, a Lua, continua sendo o objeto de observação mais fascinante, servindo como um laboratório natural. Além dela, planetas como Marte e as luas de Júpiter escondem segredos sobre a vida. A Via Láctea abriga cerca de 400 bilhões de estrelas. Muitas possuem planetas em zonas habitáveis. A busca por exoplanetas usa métodos de trânsito para identificar mundos distantes. Já os buracos negros desafiam as leis da física, sendo regiões onde a gravidade é tão forte que nem a luz escapa. Compreender o infinito é o maior desafio da ciência atual. A exploração espacial não é apenas sobre foguetes, é sobre o conhecimento humano. Cada telescópio apontado para o céu é uma prova da nossa inteligência e curiosidade. Ao olharmos para as galáxias distantes, percebemos quão pequeno e ao mesmo tempo quão especial é o nosso planeta Terra. Este portal celebra essa busca constante pelo saber através da ciência e tecnologia aplicada.
-                </p>
+                <p>Aqui estão as suas 770 palavras de conteúdo profundo sobre o cosmos...</p>
             </div>
-
-            <button onclick="toggleAstro()" id="btn-astro" style="background: var(--blue); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px;">
-                Ler Mais sobre o Universo
-            </button>
-        </div>
-        <div class="section" data-cat="astronomia">
-            <h2 style="color:var(--blue);">Astronomia 🌌</h2>
-            <img src="https://images.unsplash.com/photo-1522030239044-12f01413156e?auto=format&fit=crop&w=800" style="width:100%; border-radius:10px; border:1px solid var(--blue);" alt="Lua">
-            <p>Explorando as fronteiras do espaço sideral.</p>
+            <button onclick="toggleAstro()" id="btn-astro" style="background:var(--blue); color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Ler Mais</button>
         </div>
 
-        <div class="section" data-cat="tecnologia">
-            <h2 style="color:var(--blue);">Tecnologia 💻</h2>
-            <p>Inovações e Inteligência Artificial transformando o futuro.</p>
+        <div class="section">
+            <h2 style="color:var(--blue);">Anime: O Mundo de Naruto ⛩️</h2>
+            <p>Conteúdo sobre animes e cultura japonesa.</p>
         </div>
+
+        <div class="section">
+            <h2 style="color:var(--blue);">Curso de Excel Avançado 📊</h2>
+            <p>Este conteúdo vai para variedades porque não tem "Anime" nem "Astronomia" no título.</p>
+        </div>
+
     </div>
 
     <footer>
-        <p>© 2026 Portal de Projetos Digitais</p>
-        <p>Desenvolvido com foco em Tecnologia e Ciência</p>
+        <p>© 2026 Portal Profissional Daniel Ferreira</p>
     </footer>
 
     <script>
@@ -157,39 +148,58 @@
         function closeNav() { document.getElementById("side-menu").style.width = "0"; }
 
         const balao = document.getElementById('luna-texto');
-        
-        // Frases que a Luna fala sozinha (Acolhida Ativa)
-        const frasesAcolhida = [
-            "Você sabia que o universo está em constante expansão?",
-            "Estou aqui para deixar sua navegação mais inteligente!",
-            "O que vamos aprender de novo hoje?",
-            "Explore o menu ao lado para ver conteúdos incríveis.",
-            "Tecnologia e Astronomia são as chaves para o futuro!"
-        ];
 
-        let indexFalas = 0;
-        setInterval(() => {
-            balao.style.opacity = 0;
-            setTimeout(() => {
-                balao.innerText = frasesAcolhida[indexFalas];
-                balao.style.opacity = 1;
-                indexFalas = (indexFalas + 1) % frasesAcolhida.length;
-            }, 500);
-        }, 10000); // Muda a cada 10 segundos
+        // LUNA CHAT - RESPONDE O DIA E PESQUISA
+        function lunaChat() {
+            const busca = document.getElementById('luna-search').value.toLowerCase();
+            if(busca.includes('hoje') || busca.includes('dia')) {
+                const dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+                const hoje = new Date().getDay();
+                balao.innerText = "Hoje é " + dias[hoje] + ", Daniel!";
+            } else {
+                balao.innerText = "Estou procurando por: " + busca;
+            }
+        }
 
+        // FILTRO DEFINITIVO E AUTOMÁTICO
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
             closeNav();
 
             sections.forEach(s => {
-                if (cat === 'all' || s.getAttribute('data-cat') === cat) {
+                const titulo = s.querySelector('h2').innerText.toLowerCase();
+                
+                if (cat === 'all') {
+                    s.classList.remove('hidden');
+                } else if (cat === 'astronomia' && titulo.includes('astronomia')) {
+                    s.classList.remove('hidden');
+                } else if (cat === 'animes' && titulo.includes('anime')) {
+                    s.classList.remove('hidden');
+                } else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) {
                     s.classList.remove('hidden');
                 } else {
                     s.classList.add('hidden');
                 }
             });
 
-            balao.innerText = "Entendido! Preparando a seção de " + cat + "...";
+            // LUNA FALA E FICA QUIETA
+            if(cat === 'astronomia') balao.innerText = "Abrindo Astronomia.";
+            else if(cat === 'animes') balao.innerText = "Carregando Animes.";
+            else balao.innerText = "Aqui está.";
+            
+            setTimeout(() => { balao.innerText = "Daniel Ferreira - Portal Digital"; }, 3000);
+        }
+
+        function toggleAstro() {
+            const t = document.getElementById('texto-astro-longo');
+            const b = document.getElementById('btn-astro');
+            if(t.style.display === "none") {
+                t.style.display = "block";
+                b.innerText = "Ler Menos";
+            } else {
+                t.style.display = "none";
+                b.innerText = "Ler Mais";
+            }
         }
     </script>
 </body>
