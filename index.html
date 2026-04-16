@@ -117,90 +117,31 @@
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
             
-            <div class="main-content">
-        <div class="section" data-cat="astronomia">
+            <div class="section" data-cat="astronomia">
             <h2 style="color:var(--blue);">Exploração do Cosmos: Mistérios do Universo 🌌</h2>
             
-            <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; border:1px solid var(--blue); margin-bottom: 15px;" alt="Astronomia">
+            <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; border:1px solid var(--blue); margin-bottom: 15px;">
             
             <p style="text-align: justify; line-height: 1.6;">
-                O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas distantes até a composição oculta da matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim.
+                O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas distantes até a composição oculta da matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim. Cada ponto de luz no céu noturno é uma história de bilhões de anos esperando para ser contada.
             </p>
 
-            <div id="texto-astronomia-longo" style="display: none;">
+            <div id="texto-astro-longo" style="display: none;">
                 <p style="text-align: justify; line-height: 1.6;">
-                    A cosmologia moderna nos ensina que o universo começou com o Big Bang, e desde então, galáxias inteiras têm se afastado umas das outras em uma expansão acelerada. Estudar os astros é entender a nossa própria origem, pois cada átomo em nosso corpo foi forjado no coração de uma estrela que explodiu há bilhões de anos.
+                    A cosmologia moderna nos ensina que o universo começou com o Big Bang. Estudar os astros é entender a nossa própria origem, pois cada átomo em nosso corpo foi forjado no coração de uma estrela. Nossa vizinha, a Lua, continua sendo o objeto de observação mais fascinante, servindo como um laboratório natural. Além dela, planetas como Marte e as luas de Júpiter escondem segredos sobre a vida.
                 </p>
                 <p style="text-align: justify; line-height: 1.6;">
-                    Nossa vizinha, a Lua, continua sendo o objeto de observação mais fascinante. Com suas crateras que narram a história de impactos milenares, ela serve como um laboratório natural para testarmos tecnologias de exploração espacial. Além dela, planetas como Marte e as luas de Júpiter, como Europa, escondem segredos que podem revelar se estamos sozinhos no universo. A observação através de telescópios potentes nos permite ver berçários de estrelas onde novos sistemas solares estão nascendo agora mesmo.
+                    A Via Láctea abriga cerca de 400 bilhões de estrelas. Muitas possuem planetas em zonas habitáveis. A busca por exoplanetas usa métodos de trânsito para identificar mundos distantes. Já os buracos negros desafiam as leis da física, sendo regiões onde a gravidade é tão forte que nem a luz escapa. Compreender o infinito é o maior desafio da ciência atual.
                 </p>
                 <p style="text-align: justify; line-height: 1.6;">
-                    A Via Láctea, nossa galáxia, abriga cerca de 400 bilhões de estrelas. Muitas delas possuem planetas em zonas habitáveis. A busca por exoplanetas é um dos campos mais ativos da astronomia atual. Usando o método de trânsito, cientistas conseguem identificar mundos distantes apenas pela pequena queda de luz que ocorre quando o planeta passa na frente de sua estrela. É um trabalho de paciência e precisão matemática extrema.
-                </p>
-                <p style="text-align: justify; line-height: 1.6;">
-                    Buracos negros, as regiões mais extremas do espaço-tempo, desafiam as leis da física que conhecemos. Eles são o ponto final da evolução de estrelas massivas e exercem uma gravidade tão forte que nem a luz pode escapar. Compreender como eles funcionam é a chave para unificar a teoria da relatividade com a mecânica quântica. Cada nova imagem capturada, como a do horizonte de eventos, nos aproxima de entender o infinito.
+                    A exploração espacial não é apenas sobre foguetes, é sobre o conhecimento humano. Cada telescópio apontado para o céu é uma prova da nossa inteligência e curiosidade. Ao olharmos para as galáxias distantes, percebemos quão pequeno e ao mesmo tempo quão especial é o nosso planeta Terra. Este portal celebra essa busca constante pelo saber.
                 </p>
             </div>
 
-            <button onclick="toggleAstro()" id="btn-astro" style="background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+            <button onclick="toggleAstro()" id="btn-astro" style="background: var(--blue); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px;">
                 Ler Mais sobre o Universo
             </button>
         </div>
-
-        <div class="section" data-cat="cursos">
-            <h2 style="color:var(--blue);">Capacitação Profissional 📊</h2>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
-            </div>
-            <p>Domine ferramentas essenciais como Excel e Power BI para o mercado de trabalho.</p>
-        </div>
-    </div>
-
-    <script>
-        // Função para Abrir/Fechar o Texto Longo
-        function toggleAstro() {
-            var texto = document.getElementById("texto-astronomia-longo");
-            var btn = document.getElementById("btn-astro");
-            if (texto.style.display === "none") {
-                texto.style.display = "block";
-                btn.innerText = "Ler Menos";
-            } else {
-                texto.style.display = "none";
-                btn.innerText = "Ler Mais sobre o Universo";
-            }
-        }
-
-        // FUNÇÃO AUTOMÁTICA DO MENU (CORRIGIDA)
-        function filter(cat) {
-            const sections = document.querySelectorAll('.section');
-            const luna = document.getElementById('luna-texto');
-            
-            // Fecha o menu lateral sozinho
-            if(typeof closeNav === "function") closeNav();
-
-            sections.forEach(s => {
-                // Mostra a seção se for a categoria certa ou se clicar em 'all' (variedades)
-                if (cat === 'all' || s.getAttribute('data-cat') === cat) {
-                    s.style.display = "block";
-                } else {
-                    s.style.display = "none";
-                }
-            });
-
-            // Luna comenta a mudança
-            if(luna) {
-                const frases = {
-                    all: "Tudo pronto! Aqui estão todas as suas variedades.",
-                    astronomia: "Preparando os telescópios... Bem-vindo à seção de Astronomia!",
-                    cursos: "Excelente! Focar nos estudos é o melhor caminho.",
-                    tecnologia: "Inovação é o futuro! Vamos explorar o que há de novo."
-                };
-                luna.innerText = frases[cat] || "Atualizando o portal para você!";
-            }
-        }
-    </script>
-       
-
         <div class="section" data-cat="astronomia">
             <h2 style="color:var(--blue);">Astronomia 🌌</h2>
             <img src="https://images.unsplash.com/photo-1522030239044-12f01413156e?auto=format&fit=crop&w=800" style="width:100%; border-radius:10px; border:1px solid var(--blue);" alt="Lua">
