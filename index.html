@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Portal Daniel Ferreira | Tecnologia, Astronomia e Cursos</title>
-    <meta name="description" content="Aprenda Excel Profissional, Astronomia e Cultura Geek com Daniel Ferreira. Acesse os melhores cursos digitais aqui.">
-    <meta name="keywords" content="Curso Excel, Hotmart, Daniel Ferreira, Astronomia, Animes, Tecnologia">
+    <title>Portal Daniel Ferreira | Excel, Astronomia e Tecnologia</title>
+    <meta name="description" content="Aprenda Excel Profissional com Daniel Ferreira. Explore curiosidades sobre Astronomia, Animes e as últimas tendências em Tecnologia.">
+    <meta name="keywords" content="Curso Excel Daniel Ferreira, Hotmart Excel, Astronomia, Animes, Tecnologia, Assistente Leão">
     <meta name="author" content="Daniel Ferreira">
+    <meta name="robots" content="index, follow">
 
     <style>
         :root {
             --bg: #05070a;
             --card: rgba(22, 27, 34, 0.95);
+            --gold: #d4af37;
             --blue: #58a6ff;
             --green: #2ea44f;
             --text: #ffffff;
@@ -28,11 +30,11 @@
             overflow-x: hidden;
         }
 
-        /* LUNA - MULHER COM ROSTO DEFINIDO E ACOLHEDOR */
-        .luna-header {
+        /* HEADER DO LEÃO - IDENTIDADE FORTE */
+        .leao-header {
             width: 100%;
             background: rgba(13, 17, 23, 0.9);
-            border-bottom: 2px solid var(--blue);
+            border-bottom: 2px solid var(--gold);
             padding: 20px 0;
             position: sticky;
             top: 0;
@@ -43,140 +45,147 @@
             backdrop-filter: blur(10px);
         }
 
-        .luna-img {
-            width: 100px; height: 100px; 
-            /* Imagem feminina com olhos e rosto bem definidos */
-            background: url('https://img.freepik.com/vetores-premium/avatar-de-personagem-feminina-bonito-estilo-cartoon_491047-595.jpg') no-repeat center center;
+        .leao-img {
+            width: 110px; height: 110px; 
+            /* IMAGEM DE UM LEÃO REAL */
+            background: url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=300&q=80') no-repeat center center;
             background-size: cover;
-            border-radius: 50%; border: 3px solid var(--blue);
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+            border-radius: 50%; border: 3px solid var(--gold);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
         .balao-fala {
             background: white; color: #000; padding: 15px 25px; border-radius: 20px;
             font-size: 1rem; font-weight: bold; text-align: center;
             max-width: 85%; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            margin: 10px 0; border: 2px solid var(--blue);
+            margin: 10px 0; border: 2px solid var(--gold);
         }
 
-        /* BARRA DE PESQUISA */
+        /* PESQUISA */
         .search-container {
             display: flex; width: 90%; max-width: 400px; gap: 8px; margin-top: 5px;
         }
         .search-container input {
-            flex: 1; padding: 10px 15px; border-radius: 25px; border: 1px solid var(--blue); outline: none;
+            flex: 1; padding: 10px 15px; border-radius: 25px; border: 1px solid var(--gold); outline: none; background: #f0f6fc;
         }
         .search-container button {
-            background: var(--blue); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer;
+            background: var(--gold); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer;
         }
 
-        /* BOTAO DE COMPRA (HOTMART) */
+        /* BOTÃO HOTMART */
         .btn-compra {
             display: block; width: 100%; background: var(--green); color: white;
             text-align: center; padding: 15px; border-radius: 10px; text-decoration: none;
             font-weight: bold; font-size: 1.2rem; margin-top: 15px; transition: 0.3s;
             box-shadow: 0 4px 15px rgba(46, 164, 79, 0.4);
         }
-        .btn-compra:hover { transform: scale(1.02); background: #2c974b; }
+        .btn-compra:hover { transform: scale(1.02); filter: brightness(1.1); }
 
         /* MENU LATERAL */
         #side-menu {
             height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0;
             background-color: rgba(13, 17, 23, 0.98); overflow-x: hidden; transition: 0.5s;
-            padding-top: 60px; border-right: 1px solid var(--blue);
+            padding-top: 60px; border-right: 1px solid var(--gold);
         }
-        #side-menu a { padding: 15px 25px; text-decoration: none; font-size: 1.2rem; color: var(--text); display: block; }
+        #side-menu a { padding: 15px 25px; text-decoration: none; font-size: 1.2rem; color: var(--text); display: block; border-bottom: 1px solid #30363d; }
 
         .open-btn {
             font-size: 25px; cursor: pointer; position: fixed; top: 25px; left: 15px;
-            z-index: 1600; background: var(--blue); color: white; padding: 8px 12px; border-radius: 8px; border: none;
+            z-index: 1600; background: var(--gold); color: white; padding: 8px 12px; border-radius: 8px; border: none;
         }
 
         .main-content { padding: 30px 20px; max-width: 600px; margin: auto; }
         .section { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 25px; margin-bottom: 30px; }
         
+        h2 { margin-top: 0; color: var(--blue); }
+
         .video-wrapper {
             position: relative; padding-bottom: 56.25%; height: 0;
-            border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--blue);
+            border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--gold);
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         .hidden { display: none !important; }
-        footer { text-align: center; padding: 30px; font-size: 0.8rem; background: rgba(0,0,0,0.8); }
+        footer { text-align: center; padding: 30px; font-size: 0.8rem; background: rgba(0,0,0,0.8); border-top: 2px solid var(--gold); }
     </style>
 </head>
 <body>
 
     <button class="open-btn" onclick="openNav()">&#9776;</button>
 
-    <header class="luna-header">
-        <div class="luna-img"></div>
-        <div class="balao-fala" id="luna-texto">Olá! Seja bem-vindo ao portal.</div>
+    <header class="leao-header">
+        <div class="leao-img" title="Leão - Assistente Inteligente"></div>
+        <div class="balao-fala" id="leao-texto">Olá! Eu sou o Leão. Seja bem-vindo ao portal.</div>
         
         <div class="search-container">
-            <input type="text" id="luna-search" placeholder="Pergunte à Luna...">
-            <button onclick="lunaChat()">🔍</button>
+            <input type="text" id="leao-search" placeholder="Pergunte ao Leão...">
+            <button onclick="leaoChat()">🔍</button>
         </div>
     </header>
 
     <div id="side-menu">
         <a href="javascript:void(0)" style="font-size:30px; text-align:right;" onclick="closeNav()">&times;</a>
-        <a href="#" onclick="filter('all')">🏠 Início</a>
+        <a href="#" onclick="filter('all')">🏠 Início Geral</a>
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
         <a href="#" onclick="filter('cursos')">📊 Cursos Digitais</a>
-        <a href="#" onclick="filter('variedades')">✨ Variedades</a>
+        <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
     </div>
 
     <div class="main-content">
         
         <div class="section">
-            <h2 style="color:var(--blue);">Cursos Digitais: Excel Profissional 📊</h2>
+            <h2>Excel Profissional: Domine as Planilhas 📊</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <p>Garanta sua vaga no curso que vai transformar sua carreira!</p>
-            <a href="https://go.hotmart.com/K102868779N?redirectionUr" target="_blank" class="btn-compra">🚀 QUERO COMPRAR O CURSO AGORA!</a>
+            <p>Seja referência no trabalho com o curso de Excel mais completo da Hotmart.</p>
+            <a href="https://go.hotmart.com/K102868779N?redirectionUr" target="_blank" class="btn-compra">🚀 COMPRAR CURSO DE EXCEL AGORA!</a>
         </div>
 
         <div class="section">
-            <h2 style="color:var(--blue);">Astronomia: O Universo em Expansão 🌌</h2>
-            <p>Somos feitos de poeira de estrelas. Cada átomo do seu corpo nasceu no coração de uma supernova explodindo bilhões de anos atrás.</p>
+            <h2>Astronomia: O Cosmos e Você 🌌</h2>
+            <p>Cada partícula de ferro no seu sangue foi forjada em explosões de estrelas massivas. O universo não está apenas "lá fora", ele está em você.</p>
         </div>
 
         <div class="section">
-            <h2 style="color:var(--blue);">Anime: Superação e Lições de Vida ⛩️</h2>
-            <p>Os animes não são apenas desenhos, são histórias de resiliência e amizade profunda.</p>
+            <h2>Anime: A Arte da Resiliência ⛩️</h2>
+            <p>Histórias de superação que inspiram gerações. Os animes mostram que o esforço vence o talento natural.</p>
         </div>
 
     </div>
 
     <footer>
-        <p>© 2026 Portal Daniel Ferreira - Foco em Tecnologia e Ciência</p>
+        <p>© 2026 Portal Daniel Ferreira - Autoridade em Ciência e Tecnologia</p>
+        <p>Desenvolvido com foco em SEO e conversão.</p>
     </footer>
 
     <script>
         function openNav() { document.getElementById("side-menu").style.width = "260px"; }
         function closeNav() { document.getElementById("side-menu").style.width = "0"; }
 
-        const balao = document.getElementById('luna-texto');
+        const balao = document.getElementById('leao-texto');
 
-        // SAUDAÇÃO INTELIGENTE
+        // SAUDAÇÃO DO LEÃO
         function saudacaoIncial() {
             const hora = new Date().getHours();
-            if (hora >= 6 && hora < 12) balao.innerText = "Bom dia! Sabia que a luz do Sol leva 8 minutos para chegar aqui? Como está seu despertar?";
-            else if (hora >= 12 && hora < 18) balao.innerText = "Boa tarde! Sabia que em Vênus a tarde duraria meses? Como vai sua jornada terrestre hoje?";
-            else balao.innerText = "Boa noite! Momento perfeito para olhar as estrelas ou os pixels. Qual o plano de hoje?";
+            let msg = "";
+            if (hora >= 6 && hora < 12) msg = "Bom dia! Preparado para caçar conhecimento hoje?";
+            else if (hora >= 12 && hora < 18) msg = "Boa tarde! A jornada do conhecimento não para. Como posso ajudar?";
+            else msg = "Boa noite! O céu está estrelado e o portal está pronto para você.";
+            balao.innerText = msg;
         }
         window.onload = saudacaoIncial;
 
-        function lunaChat() {
-            const input = document.getElementById('luna-search').value.toLowerCase();
-            if(input.includes('dia')) {
+        function leaoChat() {
+            const input = document.getElementById('leao-search').value.toLowerCase();
+            if(input.includes('dia') || input.includes('hoje')) {
                 const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-                balao.innerText = "Hoje é " + dias[new Date().getDay()] + "!";
+                balao.innerText = "Hoje é " + dias[new Date().getDay()] + "! Dia de progresso.";
+            } else if(input.includes('excel') || input.includes('curso')) {
+                balao.innerText = "O curso de Excel é o melhor investimento para sua carreira. Clique no botão verde!";
             } else {
-                balao.innerText = "Estou aqui para te ajudar a explorar!";
+                balao.innerText = "Sou o Leão, o guardião do conhecimento deste portal. O que deseja explorar?";
             }
         }
 
@@ -186,14 +195,11 @@
             sections.forEach(s => {
                 const titulo = s.querySelector('h2').innerText.toLowerCase();
                 if (cat === 'all') s.classList.remove('hidden');
-                else if (cat === 'astronomia' && titulo.includes('astronomia')) s.classList.remove('hidden');
-                else if (cat === 'animes' && titulo.includes('anime')) s.classList.remove('hidden');
-                else if (cat === 'cursos' && titulo.includes('cursos')) s.classList.remove('hidden');
-                else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) s.classList.remove('hidden');
+                else if (titulo.includes(cat)) s.classList.remove('hidden');
                 else s.classList.add('hidden');
             });
-            balao.innerText = "Carregando a seção de " + cat + "...";
-            setTimeout(() => { balao.innerText = ""; }, 5000);
+            balao.innerText = "Organizando o território para: " + cat.toUpperCase();
+            setTimeout(() => { balao.innerText = "Leão Assistant: Pronto."; }, 3000);
         }
     </script>
 </body>
