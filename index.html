@@ -3,166 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Inteligente Daniel Ferreira</title>
+    <title>Portal Daniel Ferreira - IA Live</title>
     <style>
         :root { --bg: #0d1117; --card: #161b22; --blue: #58a6ff; --green: #238636; --border: #30363d; --white: #c9d1d9; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--white); margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
         
-        /* MENU */
-        nav { background: var(--card); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; padding: 10px; gap: 10px; flex-shrink: 0; }
-        nav button { background: var(--border); color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-weight: bold; }
-        nav button:hover { background: var(--blue); }
-
-        /* LAYOUT PRINCIPAL (DIVIDIDO IGUAL TIKTOK) */
-        main { display: flex; flex: 1; overflow: hidden; position: relative; }
+        /* Ajuste para a tela rolar livremente */
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--white); margin: 0; padding: 0; overflow-x: hidden; }
         
-        .content-area { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        nav { background: var(--card); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; padding: 10px; gap: 10px; sticky; top: 0; z-index: 1000; }
+        nav button { background: var(--border); color: white; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-weight: bold; }
+
+        /* Layout em colunas para Desktop e empilhado para Celular */
+        .main-container { display: flex; flex-wrap: wrap; width: 100%; }
         
-        /* CHAT DE 10 IAs (ESTILO LIVE) */
-        .chat-sidebar { width: 300px; background: rgba(0,0,0,0.5); border-left: 1px solid var(--border); display: flex; flex-direction: column; padding: 10px; font-size: 0.85rem; }
-        .chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
-        .msg { padding: 8px; border-radius: 5px; background: #222; border-left: 3px solid var(--blue); }
-        .bot-name { font-weight: bold; color: var(--blue); margin-right: 5px; }
+        .content-area { flex: 1; min-width: 320px; padding: 20px; box-sizing: border-box; }
+        
+        /* Chat estilo TikTok Live */
+        .chat-sidebar { width: 350px; background: rgba(0,0,0,0.3); border-left: 1px solid var(--border); height: 90vh; position: sticky; top: 60px; display: flex; flex-direction: column; padding: 10px; }
+        @media (max-width: 768px) { .chat-sidebar { width: 100%; position: static; height: 300px; } }
 
-        /* BONEQUINHO IA */
-        .ia-bot { text-align: center; background: var(--card); border: 1px solid var(--blue); border-radius: 15px; padding: 15px; margin-bottom: 20px; width: 100%; max-width: 500px; }
-        .robot-anim { font-size: 40px; animation: bounce 2s infinite; display: inline-block; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column-reverse; gap: 10px; padding: 10px; }
+        .msg { padding: 10px; border-radius: 8px; background: #222; border-left: 4px solid var(--blue); animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .bot-name { font-weight: bold; color: var(--blue); }
 
-        /* BUSCA */
-        .search-box { display: flex; gap: 5px; margin-top: 10px; width: 100%; }
-        .search-box input { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid var(--border); background: #000; color: white; }
+        /* IA Bot e Busca */
+        .ia-bot { background: var(--card); border: 2px solid var(--blue); border-radius: 15px; padding: 20px; margin-bottom: 20px; text-align: center; }
+        .search-box { display: flex; gap: 5px; margin-top: 15px; }
+        .search-box input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: #000; color: white; }
 
-        /* SEÇÕES */
-        .section { display: none; width: 100%; max-width: 600px; }
+        /* Seções */
+        .section { display: none; }
         .active { display: block; }
         .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        
-        .tv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .tv-btn { background: #333; color: var(--blue); padding: 10px; text-decoration: none; border-radius: 5px; text-align: center; font-size: 0.8rem; border: 1px solid var(--border); }
 
-        footer { background: #000; padding: 10px; text-align: center; color: #00ff00; font-family: monospace; }
+        /* JOGO DA BOLINHA E TRIÂNGULO */
+        #gameCanvas { background: #000; border: 2px solid var(--blue); width: 100%; max-width: 300px; height: 400px; margin: auto; display: block; }
+
+        footer { background: #000; padding: 15px; text-align: center; color: #00ff00; font-family: monospace; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav id="topNav">
         <button onclick="show('cursos')">📚 Cursos</button>
         <button onclick="show('universo')">🌌 Universo</button>
         <button onclick="show('animes')">⛩️ Animes</button>
         <button onclick="show('tempo')">☁️ Tempo</button>
-        <button onclick="show('tv')">📺 TV</button>
+        <button onclick="show('tv')">📺 TV Aberta</button>
+        <button onclick="show('jogo')">🎮 Jogo IA</button>
     </nav>
 
-    <main>
+    <div class="main-container">
         <div class="content-area">
             <div class="ia-bot">
-                <div class="robot-anim">🤖</div>
-                <div id="ia-status">Estou processando as novidades de hoje...</div>
+                <span style="font-size: 50px;">🤖</span>
+                <h3 id="ia-status">Daniel, pergunte algo e eu e meus amigos responderemos!</h3>
                 <div class="search-box">
-                    <input type="text" id="userInput" placeholder="Pergunte algo sobre o Universo...">
-                    <button onclick="askIA()" style="background:var(--blue); border:none; padding:10px; color:white; border-radius:5px; cursor:pointer;">🔍</button>
+                    <input type="text" id="userInput" placeholder="O que quer saber sobre o universo?">
+                    <button onclick="askIA()" style="background:var(--blue); border:none; padding:12px 20px; color:white; border-radius:8px; cursor:pointer; font-weight:bold;">ENVIAR</button>
                 </div>
             </div>
 
             <div id="cursos" class="section active">
                 <div class="card">
                     <h2>Combo Excel + Power BI 📊</h2>
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/oXBANG0VMUs" frameborder="0" allowfullscreen></iframe>
-                    <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" style="display:block; background:var(--green); color:white; padding:15px; margin-top:15px; text-decoration:none; border-radius:10px; text-align:center; font-weight:bold;">QUERO MEU ACESSO</a>
+                    <iframe width="100%" height="300" src="https://www.youtube.com/embed/oXBANG0VMUs" frameborder="0" allowfullscreen></iframe>
+                    <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" style="display:block; background:var(--green); color:white; padding:18px; margin-top:15px; text-decoration:none; border-radius:10px; text-align:center; font-weight:bold;">ACESSAR AGORA</a>
                 </div>
             </div>
 
             <div id="universo" class="section">
                 <div class="card">
-                    <h2 id="uni-titulo">Carregando Mistérios...</h2>
-                    <p id="uni-texto"></p>
+                    <h2>🌌 Relatório Cósmico: <span id="data-uni"></span></h2>
+                    <p id="texto-uni">Carregando dados da NASA e processando...</p>
                 </div>
             </div>
 
             <div id="animes" class="section">
                 <div class="card">
-                    <h2 id="anime-titulo">Notícias Otaku</h2>
-                    <p id="anime-texto"></p>
+                    <h2>⛩️ Novidades Otaku de Hoje</h2>
+                    <p id="texto-anime">A IA está rastreando os lançamentos no Japão...</p>
                 </div>
             </div>
 
             <div id="tempo" class="section">
                 <div class="card">
-                    <h2>Mapa do Clima em Tempo Real</h2>
-                    <iframe width="100%" height="400" src="https://embed.windy.com/embed2.html?lat=-15.783&lon=-47.917&zoom=4&level=surface&overlay=rain&product=ecmwf" frameborder="0"></iframe>
+                    <h2>Mapa do Clima (Pesquisável)</h2>
+                    <iframe width="100%" height="400" src="https://embed.windy.com/embed2.html?lat=-15.783&lon=-47.917&zoom=4&overlay=rain" frameborder="0"></iframe>
                 </div>
             </div>
 
             <div id="tv" class="section">
                 <div class="card">
-                    <h2>Canais de TV Aberta</h2>
-                    <div class="tv-grid" id="tvList"></div>
+                    <h2>📺 Display de Canais</h2>
+                    <div id="tvGrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;"></div>
+                </div>
+            </div>
+
+            <div id="jogo" class="section">
+                <div class="card">
+                    <h2>Bolinha no Triângulo 🎮</h2>
+                    <canvas id="gameCanvas"></canvas>
+                    <p>Clique/Toque para mover o triângulo e rebater a bola!</p>
                 </div>
             </div>
         </div>
 
         <div class="chat-sidebar">
-            <div style="font-weight:bold; border-bottom:1px solid var(--border); padding-bottom:5px; margin-bottom:10px;">💬 Live Chat IAs (10 Ativas)</div>
+            <div style="font-weight:bold; border-bottom:1px solid var(--border); padding:10px;">💬 LIVE CHAT: 10 IAs ONLINE</div>
             <div class="chat-messages" id="chat"></div>
         </div>
-    </main>
+    </div>
 
-    <footer id="cronometro">00:00:00</footer>
+    <footer id="relogio">00:00:00</footer>
 
     <script>
-        // LISTA DE 10 IAs
         const bots = ["RoboLink", "LunaIA", "Nexa", "AstroBot", "Zion", "Cortex", "PixelIA", "Giga", "Nova", "Orion"];
         const chat = document.getElementById('chat');
 
-        function addChatMessage(name, text) {
-            const m = document.createElement('div');
-            m.className = 'msg';
-            m.innerHTML = `<span class="bot-name">${name}:</span> ${text}`;
-            chat.prepend(m);
-            if(chat.children.length > 15) chat.lastChild.remove();
+        function addMsg(name, text) {
+            const div = document.createElement('div');
+            div.className = 'msg';
+            div.innerHTML = `<span class="bot-name">${name}:</span> ${text}`;
+            chat.prepend(div);
+            if(chat.children.length > 20) chat.lastChild.remove();
         }
 
-        // Simula as IAs interagindo
-        setInterval(() => {
-            const bot = bots[Math.floor(Math.random() * bots.length)];
-            const falas = ["O Universo é incrível!", "Viram a nova notícia de One Piece?", "Excel ajuda muito na carreira.", "Estou analisando os dados agora...", "Daniel, o site está ficando top!", "Já conferiram o tempo hoje?"];
-            addChatMessage(bot, falas[Math.floor(Math.random() * falas.length)]);
-        }, 4000);
+        // Sistema de conversa entre IAs (Lento - uma por vez)
+        function botConversation() {
+            const bot1 = bots[Math.floor(Math.random() * bots.length)];
+            const falas = [
+                "Vocês viram que o Daniel atualizou o site hoje?",
+                "O Universo é vasto, mas o conhecimento em Excel é o que paga as contas kkk",
+                "LunaIA, o que você acha da nova temporada de Solo Leveling?",
+                "Analisando os dados... o clima no Brasil está mudando rápido!",
+                "Alguém aí já testou o jogo da bolinha? É viciante.",
+                "Nexa, você reparou como a Astronomia é o tema favorito do Daniel?"
+            ];
+            addMsg(bot1, falas[Math.floor(Math.random() * falas.length)]);
+            setTimeout(botConversation, 8000); // Uma mensagem a cada 8 segundos
+        }
+        botConversation();
 
         function askIA() {
             const input = document.getElementById('userInput');
             if(!input.value) return;
-            addChatMessage("VOCÊ", input.value);
-            setTimeout(() => {
-                addChatMessage("RoboIA", "Interessante! Analisando sua dúvida sobre '" + input.value + "'... O universo guarda segredos que a ciência ainda está desvendando!");
-            }, 1000);
+            const query = input.value;
+            addMsg("DANIEL", query);
             input.value = "";
+
+            // As IAs reagem à sua pergunta
+            setTimeout(() => {
+                addMsg("Cortex", "Processando sua pergunta sobre '"+query+"'...");
+                setTimeout(() => {
+                    addMsg("AstroBot", "Daniel, sobre isso, a ciência diz que o segredo está na observação constante!");
+                }, 2000);
+            }, 1000);
         }
 
         function show(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // GERADOR DE CONTEÚDO DIÁRIO (Simulado via Data)
-        const hoje = new Date().toLocaleDateString();
-        document.getElementById('uni-titulo').innerText = "Mistério do Dia: " + hoje;
-        document.getElementById('uni-texto').innerText = "Hoje, as lentes da IA detectaram uma anomalia em Proxima Centauri. Cientistas acreditam que a radiação cósmica está criando padrões nunca vistos. É um dia perfeito para estudar buracos negros!";
-        
-        document.getElementById('anime-texto').innerText = "BOMBA: Foi confirmado hoje ("+hoje+") um novo trailer para a temporada final de Demon Slayer. Além disso, boatos indicam que One Piece terá um hiato para melhorar a animação da luta final!";
+        // Conteúdo Diário
+        const d = new Date();
+        document.getElementById('data-uni').innerText = d.toLocaleDateString();
+        document.getElementById('texto-uni').innerText = "RELATÓRIO: Hoje as estrelas indicam que a análise de dados (Power BI) é a habilidade mais importante do sistema solar. Não perca o curso!";
+        document.getElementById('texto-anime').innerText = "NOTÍCIA: Vazamentos de hoje indicam que o próximo filme de Dragon Ball focará no multiverso. Fiquem ligados!";
 
-        // CRONÔMETRO
-        setInterval(() => {
-            document.getElementById('cronometro').innerText = new Date().toLocaleTimeString();
-        }, 1000);
+        // Relógio
+        setInterval(() => { document.getElementById('relogio').innerText = new Date().toLocaleTimeString(); }, 1000);
 
-        // LISTA TV
+        // Canais
         const canais = ["Record News", "Jovem Pan", "Band", "SBT News", "CNN Brasil", "TV Brasil", "RedeTV", "TV Cultura", "Gazeta", "Canal Rural", "Terra Viva", "Rede Vida", "TV Câmara", "TV Senado", "Canal Futura"];
-        const tvList = document.getElementById('tvList');
         canais.forEach(c => {
-            tvList.innerHTML += `<a class="tv-btn" href="#">${c}</a>`;
+            document.getElementById('tvGrid').innerHTML += `<a href="#" style="background:#333; color:white; padding:10px; border-radius:5px; text-decoration:none; text-align:center; font-size:12px;">${c}</a>`;
         });
+
+        // JOGO DA BOLINHA E TRIÂNGULO
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let ballX = 150, ballY = 50, dx = 2, dy = 2;
+        let triX = 130;
+
+        canvas.onmousemove = (e) => { 
+            let rect = canvas.getBoundingClientRect();
+            triX = e.clientX - rect.left - 20;
+        };
+
+        function drawGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Bola
+            ctx.beginPath(); ctx.arc(ballX, ballY, 10, 0, Math.PI*2); ctx.fillStyle = "white"; ctx.fill(); ctx.closePath();
+            // Triângulo (Raque)
+            ctx.beginPath(); ctx.moveTo(triX, 380); ctx.lineTo(triX+40, 380); ctx.lineTo(triX+20, 350); ctx.fillStyle = var(--blue); ctx.fill(); ctx.closePath();
+
+            ballX += dx; ballY += dy;
+            if(ballX < 10 || ballX > canvas.width - 10) dx = -dx;
+            if(ballY < 10) dy = -dy;
+            // Colisão com Triângulo
+            if(ballY > 340 && ballX > triX && ballX < triX + 40) { dy = -dy; addMsg("JogoIA", "Boa rebatida, Daniel!"); }
+            if(ballY > canvas.height) { ballY = 50; dy = 2; }
+            requestAnimationFrame(drawGame);
+        }
+        drawGame();
     </script>
 </body>
 </html>
