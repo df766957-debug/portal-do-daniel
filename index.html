@@ -3,181 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Curiosidades - Daniel Ferreira</title>
+    <title>Daniel Ferreira - Projetos Digitais</title>
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --blue: #58a6ff; --green: #238636; --border: #30363d; --white: #c9d1d9; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--white); margin: 0; padding: 0; overflow-y: auto; }
-        
-        nav { background: var(--card); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; padding: 10px; gap: 10px; position: sticky; top: 0; z-index: 1000; }
-        nav button { background: var(--border); color: white; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-weight: bold; }
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --primary-blue: #58a6ff;
+            --success-green: #238636;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-gray: #8b949e;
+        }
 
-        .container { padding: 20px; max-width: 800px; margin: auto; }
-        .section { display: none; }
-        .active { display: block; }
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-        /* GALERIA DE IMAGENS */
-        .img-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
-        .img-gallery img { width: 100%; border-radius: 8px; border: 1px solid var(--blue); }
+        header {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--card-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-        /* JOGOS */
-        canvas { background: #000; border: 2px solid var(--blue); display: block; margin: 10px auto; width: 100%; max-width: 320px; height: 350px; touch-action: none; }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
 
-        /* CHAT IA */
-        #chat-icon { position: fixed; bottom: 20px; right: 20px; background: var(--blue); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; cursor: pointer; z-index: 2000; }
-        #chat-window { position: fixed; bottom: 90px; right: 20px; width: 300px; height: 400px; background: var(--card); border: 1px solid var(--border); border-radius: 15px; display: none; flex-direction: column; z-index: 2000; }
-        .chat-msgs { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column-reverse; gap: 8px; font-size: 0.85rem; }
-        .msg { padding: 8px; border-radius: 8px; background: #222; border-left: 3px solid var(--blue); text-align: left; }
+        main {
+            flex: 1;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px 0;
+        }
 
-        footer { background: #000; padding: 15px; text-align: center; color: #00ff00; font-family: monospace; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .cta-button {
+            display: block;
+            background-color: var(--success-green);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:active { transform: scale(0.98); }
+
+        /* SEÇÃO DE CANAIS */
+        .tv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tv-link {
+            background: #21262d;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .tv-link:hover { border-color: var(--primary-blue); background: #30363d; }
+
+        .curiosity-box {
+            background: #0d1117;
+            padding: 15px;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        footer {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            border-top: 1px solid var(--border-color);
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <button onclick="show('inicio')">⚽ Futebol & Cursos</button>
-        <button onclick="show('curiosidades')">💡 Curiosidades</button>
-        <button onclick="show('tempo')">☁️ Tempo</button>
-        <button onclick="show('tv')">📺 TV Aberta</button>
-        <button onclick="show('jogos')">🎮 Games IA</button>
-    </nav>
+    <header>
+        <h1>Daniel Ferreira 🚀</h1>
+        <p style="margin: 5px 0 0; font-size: 0.9rem; color: var(--text-gray);">Ciência, Tecnologia e Capacitação</p>
+    </header>
 
-    <div class="container">
-        <div id="inicio" class="section active">
-            <div class="card">
-                <h2>Paixão Nacional: Futebol ⚽</h2>
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/S_vLp_C6r_k" frameborder="0" allowfullscreen></iframe>
-                <div class="img-gallery">
-                    <img src="https://via.placeholder.com/150/0000FF/808080?text=Daniel+Esportes" alt="Imagem 1">
-                    <img src="https://via.placeholder.com/150/0000FF/808080?text=Laboratório" alt="Imagem 2">
-                </div>
+    <main>
+        <div class="card">
+            <h2 style="text-align: center; font-size: 1.3rem; margin-top: 0;">Combo: Excel + Power BI 📊</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <div class="card">
-                <h2>Combo Excel + Power BI 📊</h2>
-                <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" style="display:block; background:var(--green); color:white; padding:15px; text-decoration:none; border-radius:10px; font-weight:bold;">QUERO MEU ACESSO</a>
+            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" class="cta-button">
+                QUERO MEU ACESSO AGORA
+            </a>
+        </div>
+
+        <div class="card">
+            <h2 style="font-size: 1.2rem;">Momento Futebol ⚽</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/S_vLp_C6r_k" allowfullscreen></iframe>
             </div>
         </div>
 
-        <div id="curiosidades" class="section">
-            <div class="card">
-                <h2 id="cur-title">Você Sabia?</h2>
-                <p id="cur-news">A IA está buscando fatos incríveis no banco de dados...</p>
-                <div id="cur-text" style="text-align:justify; color: #ccc; line-height: 1.6;"></div>
+        <div class="card">
+            <h2 style="font-size: 1.2rem;">💡 Curiosidades do Dia</h2>
+            <div id="curiosidade-content" class="curiosity-box">
+                Carregando fato incrível...
             </div>
         </div>
 
-        <div id="tempo" class="section">
-            <div class="card">
-                <h2>Clima em Tempo Real</h2>
-                <iframe width="100%" height="400" src="https://embed.windy.com/embed2.html?lat=-15.78&lon=-47.91&zoom=4&overlay=rain" frameborder="0"></iframe>
+        <div class="card">
+            <h2 style="font-size: 1.2rem;">📺 Canais de TV ao Vivo</h2>
+            <p style="font-size: 0.8rem; color: var(--text-gray);">Assista direto no YouTube:</p>
+            <div class="tv-grid">
+                <a href="https://www.youtube.com/@recordnews/live" target="_blank" class="tv-link">Record News</a>
+                <a href="https://www.youtube.com/@jovempannews/live" target="_blank" class="tv-link">Jovem Pan</a>
+                <a href="https://www.youtube.com/@bandjornalismo/live" target="_blank" class="tv-link">Band News</a>
+                <a href="https://www.youtube.com/@sbtnews/live" target="_blank" class="tv-link">SBT News</a>
+                <a href="https://www.youtube.com/@cnnbrasil/live" target="_blank" class="tv-link">CNN Brasil</a>
+                <a href="https://www.youtube.com/@TVBrasil/live" target="_blank" class="tv-link">TV Brasil</a>
             </div>
         </div>
+    </main>
 
-        <div id="tv" class="section">
-            <div class="card">
-                <h2>Canais Digitais</h2>
-                <div id="tvGrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
-            </div>
-        </div>
-
-        <div id="jogos" class="section">
-            <div class="card">
-                <h3>Jogo 1: Estoure o Balão 🎈</h3>
-                <canvas id="game1"></canvas>
-            </div>
-            <div class="card">
-                <h3>Jogo 2: Defesa de Nave 🚀</h3>
-                <canvas id="game2"></canvas>
-                <p>Toque para atirar e mover!</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="chat-icon" onclick="toggleChat()">🤖</div>
-    <div id="chat-window">
-        <div style="background:var(--blue); padding:10px; font-weight:bold; border-radius:15px 15px 0 0;">Live Chat IA</div>
-        <div class="chat-msgs" id="msgs"></div>
-    </div>
-
-    <footer id="relogio">00:00:00</footer>
+    <footer>
+        <p>© 2026 Daniel Ferreira - Expert Cursos</p>
+        <p>Compra 100% Segura via Hotmart</p>
+    </footer>
 
     <script>
-        // CURIOSIDADES DIÁRIAS
-        const curiosidades = [
-            {t: "O DNA Humano", d: "Se você desenrolasse todo o DNA do seu corpo, ele chegaria até Plutão e voltaria! A natureza é um laboratório perfeito."},
-            {t: "Asfalto Inteligente", d: "Existem tipos de asfalto que podem carregar carros elétricos enquanto eles dirigem. O futuro das estradas é tecnológico!"},
-            {t: "O Olho das Abelhas", d: "As abelhas têm cinco olhos! Três pequenos no topo da cabeça e dois grandes na frente. Elas enxergam cores que humanos nem imaginam."}
+        // Sistema simples de Curiosidades
+        const fatos = [
+            "O DNA humano é 99% idêntico ao de um chimpanzé, mas compartilhamos 50% com as bananas!",
+            "O asfalto é um dos materiais mais reciclados do mundo, com quase 100% de reaproveitamento.",
+            "Uma colher de chá de uma estrela de nêutrons pesaria 6 bilhões de toneladas.",
+            "O Excel foi lançado primeiro para Mac em 1985, e só depois para Windows em 1987.",
+            "Existem mais árvores na Terra do que estrelas na nossa galáxia."
         ];
-        const day = new Date().getDay() % curiosidades.length;
-        document.getElementById('cur-title').innerText = curiosidades[day].t;
-        document.getElementById('cur-text').innerText = curiosidades[day].d;
 
-        // CHAT
-        function toggleChat() {
-            const w = document.getElementById('chat-window');
-            w.style.display = w.style.display === 'flex' ? 'none' : 'flex';
-        }
-        function addMsg(name, text) {
-            const m = document.getElementById('msgs');
-            const d = document.createElement('div');
-            d.className = 'msg';
-            d.innerHTML = `<b>${name}:</b> ${text}`;
-            m.prepend(d);
-            if(m.children.length > 15) m.lastChild.remove();
-        }
-        setInterval(() => {
-            const f = ["Vi uma curiosidade nova!", "O jogo de naves está difícil?", "O vídeo de futebol é clássico!", "IA processando dados..."];
-            addMsg("BotIA", f[Math.floor(Math.random()*f.length)]);
-        }, 10000);
-
-        function show(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+        function carregarCuriosidade() {
+            const index = Math.floor(Math.random() * fatos.length);
+            document.getElementById('curiosidade-content').innerText = fatos[index];
         }
 
-        // JOGO 1: BALÃO
-        const c1 = document.getElementById('game1');
-        const ctx1 = c1.getContext('2d');
-        let bx=150, by=0, tx=130;
-        c1.onmousemove = (e) => { tx = (e.clientX - c1.getBoundingClientRect().left) - 20; };
-        c1.ontouchmove = (e) => { tx = (e.touches[0].clientX - c1.getBoundingClientRect().left) - 20; };
-        function draw1() {
-            ctx1.clearRect(0,0,320,350);
-            ctx1.beginPath(); ctx1.arc(bx, by, 15, 0, 7); ctx1.fillStyle="red"; ctx1.fill();
-            ctx1.fillStyle="#58a6ff"; ctx1.fillRect(tx, 330, 40, 10);
-            by += 3;
-            if(by > 320 && bx > tx && bx < tx + 40) { by=0; bx=Math.random()*280+20; addMsg("JogoIA", "POP! Boa!"); }
-            if(by > 350) { by=0; bx=Math.random()*280+20; }
-            requestAnimationFrame(draw1);
-        }
-        draw1();
-
-        // JOGO 2: NAVE (CÓDIGO NOVO)
-        const c2 = document.getElementById('game2');
-        const ctx2 = c2.getContext('2d');
-        let nx=150, bullets=[], enemies=[];
-        c2.onclick = () => bullets.push({x: nx+15, y: 320});
-        c2.onmousemove = (e) => { nx = (e.clientX - c2.getBoundingClientRect().left) - 15; };
-        function draw2() {
-            ctx2.clearRect(0,0,320,350);
-            ctx2.fillStyle="lime"; ctx2.fillRect(nx, 320, 30, 20); // Nave
-            bullets.forEach((b,i) => { b.y-=5; ctx2.fillStyle="yellow"; ctx2.fillRect(b.x, b.y, 3, 10); if(b.y<0) bullets.splice(i,1); });
-            if(Math.random()<0.02) enemies.push({x: Math.random()*300, y: 0});
-            enemies.forEach((en,i) => { 
-                en.y+=2; ctx2.fillStyle="red"; ctx2.fillRect(en.x, en.y, 20, 20); 
-                bullets.forEach((b,bi) => {
-                    if(b.x > en.x && b.x < en.x+20 && b.y < en.y+20) { enemies.splice(i,1); bullets.splice(bi,1); }
-                });
-                if(en.y>350) enemies.splice(i,1);
-            });
-            requestAnimationFrame(draw2);
-        }
-        draw2();
-
-        // TV E RELÓGIO
-        const canais = ["Record News", "Jovem Pan", "Band", "SBT News", "CNN Brasil", "TV Brasil", "RedeTV", "TV Cultura", "Gazeta", "Canal Rural", "Terra Viva", "Rede Vida", "TV Câmara", "TV Senado", "Canal Futura"];
-        canais.forEach(c => { document.getElementById('tvGrid').innerHTML += `<div style="background:#333; padding:8px; border-radius:5px; font-size:0.7rem; text-align:center;">${c}</div>`; });
-        setInterval(() => { document.getElementById('relogio').innerText = new Date().toLocaleTimeString(); }, 1000);
+        // Troca a curiosidade a cada visita ou refresh
+        carregarCuriosidade();
     </script>
+
 </body>
-</html>               
+</html>
