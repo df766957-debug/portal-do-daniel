@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Ferreira | Ciência & Capacitação</title>
+    <title>Daniel Ferreira | Ciência & Tecnologia</title>
     <style>
         :root {
             --bg-deep: #0a0a12;
-            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.1);
             --primary-blue: #58a6ff;
             --success-green: #238636;
             --text-main: #ffffff;
-            --text-muted: #8b949e;
         }
 
         body {
@@ -20,54 +19,23 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
 
-        /* HEADER ORGANIZADO */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(0,0,0,0.3);
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
 
-        header h1 { margin: 0; font-size: 2.5rem; color: var(--text-main); }
-        header p { color: var(--primary-blue); font-weight: bold; }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* NAVEGAÇÃO RÁPIDA (Conceito do PDF) */
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            background: var(--glass-bg);
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* CARDS ESTILO VIDRO */
         .card {
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 25px;
+            padding: 0; /* Padding zero para a imagem encostar no topo */
             margin-bottom: 30px;
+            overflow: hidden;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
         }
+
+        .card-content { padding: 20px; }
 
         .tag {
             background: var(--primary-blue);
@@ -79,23 +47,15 @@
             text-transform: uppercase;
         }
 
-        h2 { color: var(--primary-blue); }
+        h2 { color: var(--primary-blue); margin-top: 10px; }
 
-        /* VÍDEO RESPONSIVO */
-        .video-box {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            margin: 20px 0;
+        .img-top {
+            width: 100%;
+            height: 250px;
+            object-fit: cover; /* Faz a foto preencher o espaço sem distorcer */
+            border-bottom: 2px solid var(--primary-blue);
         }
 
-        .video-box iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
-
-        /* BOTÕES */
         .btn-venda {
             display: block;
             background-color: var(--success-green);
@@ -105,104 +65,69 @@
             border-radius: 12px;
             font-weight: bold;
             text-decoration: none;
-            font-size: 1.1rem;
             margin: 15px 0;
         }
 
-        .btn-whatsapp {
+        .btn-whats {
             background: #25d366;
             color: white;
             border: none;
             padding: 12px;
             border-radius: 8px;
-            cursor: pointer;
             width: 100%;
             font-weight: bold;
-            margin-top: 10px;
-        }
-
-        /* LINK RESERVA */
-        .caixa-copia {
-            background: #000;
-            border: 1px dashed var(--primary-blue);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 0.8rem;
-        }
-
-        .link-url { color: var(--primary-blue); word-break: break-all; font-weight: bold; }
-
-        img { width: 100%; border-radius: 15px; margin: 15px 0; }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-muted);
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-<header>
+<header style="text-align: center; padding: 30px;">
     <h1>Daniel Ferreira 🚀</h1>
-    <p>Ciência • Tecnologia • Carreira</p>
 </header>
 
 <div class="container">
-    
-    <div class="nav-links">
-        <a href="#vendas">📊 CURSOS</a>
-        <a href="#engenharia">🧪 ENGENHARIA</a>
-        <a href="#universo">🌌 UNIVERSO</a>
-    </div>
 
-    <section id="vendas">
-        <div class="card" style="border: 2px solid var(--primary-blue);">
-            <span class="tag">Oportunidade</span>
-            <h2 style="text-align: center;">Combo: Excel + Power BI 📊</h2>
-            <div class="video-box">
-                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
-            </div>
-            <p>Domine as ferramentas mais exigidas do mercado. Deixe de apenas coletar dados e comece a gerar inteligência!</p>
-            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" class="btn-venda">QUERO MEU ACESSO AGORA</a>
-            <div class="caixa-copia">
-                <p>Se o botão falhar, copie e cole no Google:</p>
-                <span class="link-url">https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="engenharia">
-        <div class="card">
+    <div class="card">
+        <img src="bio-concreto.jpg" alt="Bio-Concreto" class="img-top">
+        <div class="card-content">
             <span class="tag">Engenharia Avançada</span>
-            <h2>Bio-Concreto: A Tecnologia que "Cura" a si Mesma</h2>
-            <p>Bactérias específicas podem viver 200 anos dentro do concreto. Quando surge uma rachadura, a umidade as "acorda", e elas produzem calcário para selar a fissura automaticamente!</p>
-            <button class="btn-whatsapp" onclick="window.open('https://api.whatsapp.com/send?text=Olha que tecnologia incrível: Bio-concreto! Visto no Portal do Daniel Ferreira.')">🟢 Compartilhar no WhatsApp</button>
-        </div>
-    </section>
-
-    <div class="card" style="border-left: 5px solid var(--primary-blue);">
-        <h2>🤔 Curiosidade: Nem tudo é Futebol!</h2>
-        <p>Você sabia que existe uma explicação psicológica para quem foca em ciência e conhecimento em vez da paixão nacional?</p>
-        <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/6UXFPkrF1pQ" allowfullscreen></iframe>
+            <h2>O Concreto que se Cura</h2>
+            <p>Bactérias "dormem" no concreto por 200 anos e acordam para fechar rachaduras!</p>
+            <button class="btn-whats">🟢 Partilhar Tecnologia</button>
         </div>
     </div>
 
-    <section id="universo">
-        <div class="card">
-            <span class="tag">Universo</span>
-            <h2>Saturno: O Planeta que Flutuaria</h2>
-            <p>Apesar de ser imenso, Saturno é composto quase totalmente de gás. Se existisse uma banheira gigante o suficiente, ele flutuaria como um patinho de borracha!</p>
+    <div class="card" style="padding: 20px;">
+        <span class="tag">Carreira</span>
+        <h2>Combo: Excel + Power BI 📊</h2>
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:15px 0;">
+            <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe>
         </div>
-    </section>
+        <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" class="btn-venda">QUERO MEU ACESSO</a>
+    </div>
+
+    <div class="card">
+        <img src="espaco.jpg" alt="Espaço" class="img-top">
+        <div class="card-content">
+            <span class="tag">Universo</span>
+            <h2>O Afastamento da Lua</h2>
+            <p>A Lua afasta-se da Terra 3,8 cm por ano. No passado, os dias duravam apenas 6 horas!</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="herois.jpg" alt="Anime" class="img-top">
+        <div class="card-content">
+            <span class="tag">Anime</span>
+            <h2>A Resiliência dos Heróis</h2>
+            <p>Histórias que nos ensinam que a verdadeira força vem de enfrentar os nossos limites.</p>
+        </div>
+    </div>
 
 </div>
 
-<footer>
-    <p>Daniel Ferreira | Portal de Curiosidades & Tecnologia</p>
+<footer style="text-align: center; padding: 20px;">
     <img src="https://hitwebcounter.com/counter/counter.php?page=DANIEL_FERREIRA_PORTAL&style=0005&nbdigits=5&type=ip&initCount=0" border="0" />
 </footer>
 
