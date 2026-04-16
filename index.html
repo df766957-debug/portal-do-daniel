@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portal de Daniel Ferreira: Astronomia, Tecnologia e Conhecimento.">
-    <title>Portal Daniel Ferreira 🚀</title>
+    <title>Portal de Conteúdo Digital 🚀</title>
     <style>
         :root {
             --bg: #05070a;
-            --card: rgba(22, 27, 34, 0.95); /* Escuro para dar leitura */
+            --card: rgba(22, 27, 34, 0.95);
             --blue: #58a6ff;
-            --text: #ffffff; /* Branco puro para brilhar no escuro */
+            --text: #ffffff;
             --border: #30363d;
         }
 
@@ -21,6 +20,35 @@
             color: var(--text);
             margin: 0;
             overflow-x: hidden;
+        }
+
+        /* LUNA - ATENDENTE NO TOPO */
+        .luna-header {
+            width: 100%;
+            background: rgba(13, 17, 23, 0.9);
+            border-bottom: 2px solid var(--blue);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .luna-img {
+            width: 60px; height: 60px; background: var(--blue);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 35px; border: 2px solid white; box-shadow: 0 0 15px var(--blue);
+            margin-bottom: 10px;
+        }
+
+        .balao-fala {
+            background: white; color: #000; padding: 10px 20px; border-radius: 20px;
+            font-size: 0.95rem; font-weight: bold; text-align: center;
+            max-width: 80%; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: all 0.5s ease;
         }
 
         /* MENU LATERAL */
@@ -35,46 +63,20 @@
             color: var(--text); display: block; transition: 0.3s;
         }
 
-        #side-menu a:hover { color: var(--blue); background: #21262d; }
-
         .open-btn {
-            font-size: 25px; cursor: pointer; position: fixed; top: 15px; left: 15px;
-            z-index: 1001; background: var(--blue); color: white;
-            padding: 8px 12px; border-radius: 50%; border: none; box-shadow: 0 0 15px var(--blue);
+            font-size: 25px; cursor: pointer; position: fixed; top: 25px; left: 15px;
+            z-index: 1600; background: var(--blue); color: white;
+            padding: 8px 12px; border-radius: 8px; border: none;
         }
 
-        /* LUNA - ATENDENTE ESPACIAL */
-        .luna-atendente {
-            position: fixed; bottom: 20px; right: 20px; z-index: 1500;
-            display: flex; flex-direction: column; align-items: flex-end;
-            max-width: 250px;
-        }
-
-        .balao-fala {
-            background: white; color: #000; padding: 12px; border-radius: 15px 15px 0 15px;
-            margin-bottom: 10px; font-size: 0.9rem; font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 2px solid var(--blue);
-            position: relative;
-        }
-
-        .luna-img {
-            width: 80px; height: 80px; background: var(--blue);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 45px; border: 3px solid white; box-shadow: 0 0 20px var(--blue);
-        }
-
-        /* CONTEÚDO PRINCIPAL COM ALTO CONTRASTE */
-        .main-content { padding: 80px 20px 20px; max-width: 600px; margin: auto; }
+        /* CONTEÚDO */
+        .main-content { padding: 30px 20px; max-width: 600px; margin: auto; }
 
         .section {
-            background: var(--card); border: 1px solid var(--blue);
+            background: var(--card); border: 1px solid var(--border);
             border-radius: 15px; padding: 25px; margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
-
-        h1, h2 { color: var(--blue); text-shadow: 2px 2px 4px #000; }
-        
-        p { line-height: 1.6; font-size: 1.05rem; text-shadow: 1px 1px 2px #000; }
 
         .video-wrapper {
             position: relative; padding-bottom: 56.25%; height: 0;
@@ -85,86 +87,83 @@
 
         .hidden { display: none !important; }
 
-        .btn-green {
-            display: block; background: #238636; color: white; text-align: center;
-            padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold;
-            margin-top: 15px; transition: 0.3s;
-        }
-        .btn-green:hover { background: #2ea043; transform: scale(1.02); }
-
-        footer { text-align: center; padding: 40px; font-size: 0.85rem; background: rgba(0,0,0,0.7); }
+        footer { text-align: center; padding: 30px; font-size: 0.8rem; background: rgba(0,0,0,0.8); color: var(--text-gray); }
     </style>
 </head>
 <body>
 
     <button class="open-btn" onclick="openNav()">&#9776;</button>
 
+    <header class="luna-header">
+        <div class="luna-img">👩‍🚀</div>
+        <div class="balao-fala" id="luna-texto">Olá! Sou a Luna, sua assistente espacial. Seja muito bem-vindo!</div>
+    </header>
+
     <div id="side-menu">
         <a href="javascript:void(0)" style="font-size:30px; text-align:right;" onclick="closeNav()">&times;</a>
-        <a href="#" onclick="filter('all')">🏠 Início (Ver Tudo)</a>
+        <a href="#" onclick="filter('all')">🏠 Início</a>
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
         <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
         <a href="#" onclick="filter('filmes')">🎬 Filmes e Séries</a>
         <a href="#" onclick="filter('cursos')">📊 Cursos Digitais</a>
-    </div>
-
-    <div class="luna-atendente">
-        <div class="balao-fala" id="luna-texto">Olá, Daniel! Bem-vindo ao seu portal espacial. Sou a Luna e vou te guiar!</div>
-        <div class="luna-img">👩‍🚀</div>
+        <a href="#" onclick="filter('variedades')">✨ Variedades</a>
     </div>
 
     <div class="main-content">
         <div class="section" data-cat="cursos">
-            <h2>Combo Profissional: Excel + Power BI 📊</h2>
+            <h2 style="color:var(--blue);">Cursos Profissionalizantes 📊</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <p>Domine as ferramentas que transformam dados em decisões. Ideal para quem busca destaque no mercado!</p>
-            <a href="https://go.hotmart.com/K102868779N" class="btn-green">QUERO GARANTIR MINHA VAGA</a>
+            <p>Conhecimento técnico de alto nível para o mercado de trabalho.</p>
         </div>
 
         <div class="section" data-cat="astronomia">
-            <h2>Exploração Espacial 🌌</h2>
+            <h2 style="color:var(--blue);">Astronomia 🌌</h2>
             <img src="https://images.unsplash.com/photo-1522030239044-12f01413156e?auto=format&fit=crop&w=800" style="width:100%; border-radius:10px; border:1px solid var(--blue);" alt="Lua">
-            <p>O cosmos é tudo o que existe, existiu ou existirá. Nossa curiosidade nos leva a observar cada detalhe da Lua e além.</p>
+            <p>Explorando as fronteiras do espaço sideral.</p>
         </div>
 
         <div class="section" data-cat="tecnologia">
-            <h2>Tecnologia e Futuro 💻</h2>
-            <p>A inteligência artificial não é mais o futuro, é o presente. Veja como ela está mudando o mundo ao nosso redor.</p>
-        </div>
-
-        <div class="section" data-cat="animes">
-            <h2>Universo Anime ⛩️</h2>
-            <p>Histórias que inspiram e artes que impressionam. Confira os destaques do mundo da animação japonesa.</p>
+            <h2 style="color:var(--blue);">Tecnologia 💻</h2>
+            <p>Inovações e Inteligência Artificial transformando o futuro.</p>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Daniel Ferreira | Santa Maria do Oeste - PR</p>
-        <p>Desenvolvido com Inteligência Artificial</p>
+        <p>© 2026 Portal de Projetos Digitais</p>
+        <p>Desenvolvido com foco em Tecnologia e Ciência</p>
     </footer>
 
     <script>
         function openNav() { document.getElementById("side-menu").style.width = "260px"; }
         function closeNav() { document.getElementById("side-menu").style.width = "0"; }
 
+        const balao = document.getElementById('luna-texto');
+        
+        // Frases que a Luna fala sozinha (Acolhida Ativa)
+        const frasesAcolhida = [
+            "Você sabia que o universo está em constante expansão?",
+            "Estou aqui para deixar sua navegação mais inteligente!",
+            "O que vamos aprender de novo hoje?",
+            "Explore o menu ao lado para ver conteúdos incríveis.",
+            "Tecnologia e Astronomia são as chaves para o futuro!"
+        ];
+
+        let indexFalas = 0;
+        setInterval(() => {
+            balao.style.opacity = 0;
+            setTimeout(() => {
+                balao.innerText = frasesAcolhida[indexFalas];
+                balao.style.opacity = 1;
+                indexFalas = (indexFalas + 1) % frasesAcolhida.length;
+            }, 500);
+        }, 10000); // Muda a cada 10 segundos
+
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
-            const luna = document.getElementById('luna-texto');
             closeNav();
-
-            const falasLuna = {
-                all: "Estou mostrando todas as suas variedades, Daniel! Divirta-se.",
-                astronomia: "Olhe para as estrelas! Preparei a seção de astronomia para você.",
-                tecnologia: "Incrível! Vamos ver o que há de novo no mundo da tecnologia.",
-                animes: "Otaku mode ativado! Aqui estão os seus animes.",
-                filmes: "Luz, câmera e ação! Vamos ver os melhores filmes.",
-                cursos: "Excelente escolha! O conhecimento é o melhor investimento."
-            };
-
-            luna.innerText = falasLuna[cat] || "Estou aqui para ajudar!";
 
             sections.forEach(s => {
                 if (cat === 'all' || s.getAttribute('data-cat') === cat) {
@@ -173,6 +172,8 @@
                     s.classList.add('hidden');
                 }
             });
+
+            balao.innerText = "Entendido! Preparando a seção de " + cat + "...";
         }
     </script>
 </body>
