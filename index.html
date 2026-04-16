@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Portal Daniel Ferreira | Tecnologia, Astronomia e Cursos</title>
-    <meta name="description" content="Explore conteúdos sobre Astronomia, Animes, Tecnologia e Cursos Profissionalizantes de Excel e Power BI com a assistência da Luna IA.">
-    <meta name="keywords" content="Astronomia, Animes, Cursos Digitais, Excel, Power BI, Tecnologia, Daniel Ferreira, Luna IA">
+    <title>Portal Daniel Ferreira | Tecnologia e Conhecimento</title>
+    <meta name="description" content="Portal de conteúdo sobre Astronomia, Animes, Tecnologia e Cursos Digitais comandado por Daniel Ferreira.">
+    <meta name="keywords" content="Astronomia, Animes, Excel, Cursos, Tecnologia, Daniel Ferreira">
     <meta name="author" content="Daniel Ferreira">
-    <link rel="canonical" href="https://seusite.com"> <style>
+
+    <style>
         :root {
             --bg: #05070a;
             --card: rgba(22, 27, 34, 0.95);
@@ -26,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* LUNA - ATENDENTE EM ANIMAÇÃO PROFISSIONAL */
+        /* LUNA - DESIGN PROFISSIONAL CARTOON */
         .luna-header {
             width: 100%;
             background: rgba(13, 17, 23, 0.9);
@@ -42,46 +43,56 @@
         }
 
         .luna-img {
-            width: 85px; height: 85px; 
-            /* Imagem estilo animação/cartoon profissional */
+            width: 80px; height: 80px; 
             background: url('https://cdn-icons-png.flaticon.com/512/4140/4140037.png') no-repeat center center;
             background-size: cover;
             border-radius: 50%; border: 3px solid var(--blue);
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
-            margin-bottom: 10px;
+            box-shadow: 0 0 15px var(--blue);
         }
 
         .balao-fala {
-            background: white; color: #000; padding: 12px 25px; border-radius: 20px;
+            background: white; color: #000; padding: 12px 20px; border-radius: 20px;
             font-size: 0.95rem; font-weight: bold; text-align: center;
-            max-width: 85%; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            margin-bottom: 15px; border: 2px solid var(--blue);
+            max-width: 80%; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin: 10px 0;
         }
 
-        .search-box {
-            display: flex; width: 85%; max-width: 400px; gap: 8px;
+        /* BARRA DE PESQUISA */
+        .search-container {
+            display: flex; width: 85%; max-width: 400px; gap: 8px; margin-top: 5px;
         }
-        .search-box input {
-            flex: 1; padding: 12px; border-radius: 25px; border: 2px solid var(--blue); background: #f0f0f0; outline: none; font-weight: bold;
+        .search-container input {
+            flex: 1; padding: 10px 15px; border-radius: 25px; border: 1px solid var(--blue); outline: none;
         }
-        .search-box button {
-            background: var(--blue); border: none; border-radius: 50%; width: 45px; height: 45px; color: white; cursor: pointer; font-size: 1.2rem;
+        .search-container button {
+            background: var(--blue); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer;
         }
 
-        /* MENU E CONTEÚDO */
+        /* MENU LATERAL */
         #side-menu {
             height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0;
             background-color: rgba(13, 17, 23, 0.98); overflow-x: hidden; transition: 0.5s;
             padding-top: 60px; border-right: 1px solid var(--blue);
         }
         #side-menu a { padding: 15px 25px; text-decoration: none; font-size: 1.2rem; color: var(--text); display: block; }
-        .open-btn { font-size: 25px; cursor: pointer; position: fixed; top: 25px; left: 15px; z-index: 1600; background: var(--blue); color: white; padding: 8px 12px; border-radius: 8px; border: none; }
+
+        .open-btn {
+            font-size: 25px; cursor: pointer; position: fixed; top: 25px; left: 15px;
+            z-index: 1600; background: var(--blue); color: white; padding: 8px 12px; border-radius: 8px; border: none;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
         .main-content { padding: 30px 20px; max-width: 600px; margin: auto; }
-        .section { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 25px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--blue); }
+        .section { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 25px; margin-bottom: 30px; }
+        
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--blue);
+        }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
         .hidden { display: none !important; }
-        footer { text-align: center; padding: 30px; background: rgba(0,0,0,0.9); font-size: 0.8rem; border-top: 1px solid var(--border); }
+        footer { text-align: center; padding: 30px; font-size: 0.8rem; background: rgba(0,0,0,0.8); }
     </style>
 </head>
 <body>
@@ -90,9 +101,9 @@
 
     <header class="luna-header">
         <div class="luna-img"></div>
-        <div class="balao-fala" id="luna-texto">Olá, Daniel Ferreira! Sou a Luna. Digite sua dúvida abaixo ou use o menu lateral!</div>
+        <div class="balao-fala" id="luna-texto">Olá, Daniel Ferreira! Seja bem-vindo ao portal.</div>
         
-        <div class="search-box">
+        <div class="search-container">
             <input type="text" id="luna-search" placeholder="Pergunte à Luna (ex: que dia é hoje?)">
             <button onclick="lunaChat()">🔍</button>
         </div>
@@ -104,18 +115,105 @@
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
         <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
-        <a href="#" onclick="filter('filmes')">🎬 Filmes e Séries</a>
         <a href="#" onclick="filter('cursos')">📊 Cursos Digitais</a>
         <a href="#" onclick="filter('variedades')">✨ Variedades</a>
     </div>
 
-    <div class="main-content">
+    <div class="main-content" id="feed">
         
         <div class="section">
-            <h2 style="color:var(--blue);">Astronomia: Os Segredos do Universo 🌌</h2>
-            <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; border:1px solid var(--blue); margin-bottom: 15px;" alt="Astronomia Profissional">
-            <p>Descubra como a ciência e a observação espacial estão revelando o futuro da humanidade.</p>
-            <div id="texto-astro-longo" style="display: none; text-align: justify; line-height: 1.6;">
-                <p>Aqui entra o seu conteúdo rico de 770 palavras para o Google indexar...</p>
+            <h2 style="color:var(--blue);">Cursos Digitais: Excel Profissional 📊</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <button onclick="toggleAstro()" id="btn-astro" style="background:var(--blue); color
+            <p>Aprenda a dominar planilhas e ganhar dinheiro no mercado digital.</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color:var(--blue);">Astronomia: O Mistério dos Buracos Negros 🌌</h2>
+            <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; margin-bottom:15px;" alt="Espaço">
+            <p>O universo é vasto e cheio de segredos esperando para serem descobertos.</p>
+            <div id="texto-astro-longo" style="display: none;">
+                <p>O Big Bang deu origem a tudo o que conhecemos. Estudar o cosmos é entender nossa origem...</p>
+            </div>
+            <button onclick="toggleAstro()" id="btn-astro" style="background:var(--blue); color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Ler Mais</button>
+        </div>
+
+        <div class="section">
+            <h2 style="color:var(--blue);">Anime: As Melhores Curiosidades ⛩️</h2>
+            <p>Tudo sobre a cultura otaku e os animes mais assistidos do mundo.</p>
+        </div>
+
+        <div class="section">
+            <h2 style="color:var(--blue);">Variedades: Dicas de Saúde e Bem-Estar ✨</h2>
+            <p>Este conteúdo aparece em variedades porque o título não contém Astronomia nem Anime.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Daniel Ferreira - Portal de Conteúdo Digital Profissional</p>
+    </footer>
+
+    <script>
+        function openNav() { document.getElementById("side-menu").style.width = "260px"; }
+        function closeNav() { document.getElementById("side-menu").style.width = "0"; }
+
+        const balao = document.getElementById('luna-texto');
+
+        // BARRA DE PESQUISA INTELIGENTE
+        function lunaChat() {
+            const input = document.getElementById('luna-search').value.toLowerCase();
+            if(input.includes('dia') || input.includes('hoje')) {
+                const dias = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+                balao.innerText = "Hoje é " + dias[new Date().getDay()] + ", Daniel!";
+            } else if(input.includes('luna')) {
+                balao.innerText = "Estou aqui para ajudar!";
+            } else {
+                balao.innerText = "Estou processando sua pesquisa...";
+            }
+        }
+
+        // FILTRO AUTOMÁTICO PELO TÍTULO (O QUE VOCÊ PEDIU)
+        function filter(cat) {
+            const sections = document.querySelectorAll('.section');
+            closeNav();
+
+            sections.forEach(s => {
+                const titulo = s.querySelector('h2').innerText.toLowerCase();
+                
+                if (cat === 'all') {
+                    s.classList.remove('hidden');
+                } else if (cat === 'astronomia' && titulo.includes('astronomia')) {
+                    s.classList.remove('hidden');
+                } else if (cat === 'animes' && titulo.includes('anime')) {
+                    s.classList.remove('hidden');
+                } else if (cat === 'cursos' && titulo.includes('cursos')) {
+                    s.classList.remove('hidden');
+                } else if (cat === 'tecnologia' && titulo.includes('tecnologia')) {
+                    s.classList.remove('hidden');
+                } else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) {
+                    s.classList.remove('hidden');
+                } else {
+                    s.classList.add('hidden');
+                }
+            });
+
+            // LUNA FALA E FICA QUIETA
+            if(cat === 'astronomia') balao.innerText = "Explorando o Cosmos...";
+            else if(cat === 'animes') balao.innerText = "Carregando área Otaku...";
+            else balao.innerText = ""; // Fica quieta
+        }
+
+        function toggleAstro() {
+            const t = document.getElementById('texto-astro-longo');
+            const b = document.getElementById('btn-astro');
+            if(t.style.display === "none") {
+                t.style.display = "block"; b.innerText = "Ler Menos";
+            } else {
+                t.style.display = "none"; b.innerText = "Ler Mais";
+            }
+        }
+    </script>
+</body>
+</html>
