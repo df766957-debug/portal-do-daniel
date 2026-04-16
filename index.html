@@ -3,185 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Inteligente - Daniel Ferreira</title>
+    <title>Portal Inteligente Daniel Ferreira</title>
     <style>
         :root { --bg: #0d1117; --card: #161b22; --blue: #58a6ff; --green: #238636; --border: #30363d; --white: #c9d1d9; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--white); margin: 0; overflow-x: hidden; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--white); margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
         
-        /* MENU SUPERIOR */
-        nav { background: var(--card); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; padding: 10px; position: sticky; top: 0; z-index: 100; gap: 10px; }
-        nav button { background: var(--border); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-weight: bold; }
+        /* MENU */
+        nav { background: var(--card); border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; padding: 10px; gap: 10px; flex-shrink: 0; }
+        nav button { background: var(--border); color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-weight: bold; }
         nav button:hover { background: var(--blue); }
 
-        /* MENU LATERAL (3 PONTINHOS) */
-        #sideMenu { position: fixed; right: -350px; top: 0; width: 320px; height: 100%; background: var(--card); border-left: 2px solid var(--blue); transition: 0.4s; z-index: 300; padding: 25px; overflow-y: auto; box-shadow: -5px 0 15px rgba(0,0,0,0.7); }
-        #sideMenu.active { right: 0; }
-        .menu-dots { position: fixed; top: 15px; right: 15px; z-index: 350; background: none; border: none; color: var(--blue); font-size: 30px; cursor: pointer; }
+        /* LAYOUT PRINCIPAL (DIVIDIDO IGUAL TIKTOK) */
+        main { display: flex; flex: 1; overflow: hidden; position: relative; }
+        
+        .content-area { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        
+        /* CHAT DE 10 IAs (ESTILO LIVE) */
+        .chat-sidebar { width: 300px; background: rgba(0,0,0,0.5); border-left: 1px solid var(--border); display: flex; flex-direction: column; padding: 10px; font-size: 0.85rem; }
+        .chat-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+        .msg { padding: 8px; border-radius: 5px; background: #222; border-left: 3px solid var(--blue); }
+        .bot-name { font-weight: bold; color: var(--blue); margin-right: 5px; }
 
-        /* ROBOZINHO IA ANIMADO */
-        .ia-welcome { text-align: center; padding: 20px; background: rgba(88, 166, 255, 0.1); border-radius: 15px; margin: 15px; border: 1px solid var(--blue); }
-        .robot { font-size: 50px; animation: float 2s infinite ease-in-out; display: inline-block; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        /* BONEQUINHO IA */
+        .ia-bot { text-align: center; background: var(--card); border: 1px solid var(--blue); border-radius: 15px; padding: 15px; margin-bottom: 20px; width: 100%; max-width: 500px; }
+        .robot-anim { font-size: 40px; animation: bounce 2s infinite; display: inline-block; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* BUSCA */
+        .search-box { display: flex; gap: 5px; margin-top: 10px; width: 100%; }
+        .search-box input { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid var(--border); background: #000; color: white; }
 
         /* SEÇÕES */
-        .content-section { display: none; padding: 20px; flex-direction: column; align-items: center; min-height: 80vh; }
-        .content-section.active { display: flex; }
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 20px; width: 100%; max-width: 500px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .section { display: none; width: 100%; max-width: 600px; }
+        .active { display: block; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
         
-        /* TV DISPLAY LIST */
-        .tv-display { display: flex; flex-direction: column; gap: 10px; width: 100%; max-height: 500px; overflow-y: auto; padding: 10px; background: #000; border-radius: 10px; }
-        .tv-item { background: #222; color: var(--blue); padding: 15px; text-decoration: none; border-radius: 8px; border-left: 5px solid var(--blue); font-weight: bold; display: flex; justify-content: space-between; }
-        .tv-item:hover { background: #333; }
+        .tv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .tv-btn { background: #333; color: var(--blue); padding: 10px; text-decoration: none; border-radius: 5px; text-align: center; font-size: 0.8rem; border: 1px solid var(--border); }
 
-        /* JOGO IA */
-        #gameContainer { position: relative; width: 240px; height: 350px; border: 3px solid var(--blue); background: #000; }
-        .triangle { position: absolute; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-bottom: 40px solid var(--blue); transition: top 0.1s linear; }
-
-        /* CRONÔMETRO */
-        .timer { background: #000; color: #00ff00; padding: 15px; font-family: monospace; font-size: 1.5rem; border-radius: 10px; border: 1px solid #00ff00; margin-top: 30px; }
+        footer { background: #000; padding: 10px; text-align: center; color: #00ff00; font-family: monospace; }
     </style>
 </head>
 <body>
 
-    <button class="menu-dots" onclick="toggleMenu()">⋮</button>
-
-    <div id="sideMenu">
-        <h2 style="color: var(--blue);">Guia do Portal 📖</h2>
-        <div style="font-size: 0.95rem; line-height: 1.6; text-align: justify;">
-            <h3>Página 1: O Propósito</h3>
-            <p>Este site foi criado para ser sua central de conhecimento e diversão. Aqui, a inteligência artificial ajuda a organizar cursos de alta demanda (Excel e Power BI) para acelerar sua carreira.</p>
-            <h3>Página 2: Ferramentas</h3>
-            <p>Temos monitoramento de tempo em tempo real, acesso a canais de TV aberta para informação e um observatório astronômico para os curiosos do cosmos.</p>
-            <h3>Página 3: Entretenimento</h3>
-            <p>Os animes e o jogo educativo de lógica foram integrados para manter seu cérebro ativo. Use cada aba como uma pasta organizada para o seu sucesso.</p>
-        </div>
-        <button onclick="toggleMenu()" style="width:100%; padding:12px; background:red; color:white; border:none; border-radius:8px; cursor:pointer;">FECHAR LEITURA</button>
-    </div>
-
-    <div class="ia-welcome" id="welcomeBox">
-        <div class="robot">🤖</div>
-        <h3 id="iaText">Olá Daniel! Bem-vindo ao seu novo lar digital. Eu sou sua IA e vou te mostrar como tudo funciona...</h3>
-        <p style="font-size: 0.8rem; color: var(--blue);">[Áudio Simulado: Ative o som do seu sistema]</p>
-    </div>
-
     <nav>
-        <button onclick="showSection('cursos')">📚 Cursos</button>
-        <button onclick="showSection('tempo')">☁️ Tempo</button>
-        <button onclick="showSection('astronomia')">🌙 Astronomia</button>
-        <button onclick="showSection('animes')">🏯 Animes</button>
-        <button onclick="showSection('tv')">📺 TV Aberta</button>
-        <button onclick="showSection('jogo')">🎮 Jogo IA</button>
+        <button onclick="show('cursos')">📚 Cursos</button>
+        <button onclick="show('universo')">🌌 Universo</button>
+        <button onclick="show('animes')">⛩️ Animes</button>
+        <button onclick="show('tempo')">☁️ Tempo</button>
+        <button onclick="show('tv')">📺 TV</button>
     </nav>
 
-    <section id="cursos" class="content-section active">
-        <div class="card">
-            <h2>Excel + Power BI 📊</h2>
-            <iframe width="100%" height="280" src="https://www.youtube.com/embed/oXBANG0VMUs" frameborder="0" allowfullscreen></iframe>
-            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" style="display:block; background:var(--green); color:white; padding:18px; margin-top:15px; text-decoration:none; border-radius:10px; font-weight:bold; font-size: 1.2rem;">PEGAR MEU CURSO AGORA</a>
-        </div>
-    </section>
+    <main>
+        <div class="content-area">
+            <div class="ia-bot">
+                <div class="robot-anim">🤖</div>
+                <div id="ia-status">Estou processando as novidades de hoje...</div>
+                <div class="search-box">
+                    <input type="text" id="userInput" placeholder="Pergunte algo sobre o Universo...">
+                    <button onclick="askIA()" style="background:var(--blue); border:none; padding:10px; color:white; border-radius:5px; cursor:pointer;">🔍</button>
+                </div>
+            </div>
 
-    <section id="tempo" class="content-section">
-        <div class="card" style="max-width: 800px;">
-            <h2>Previsão e Mapa do Brasil</h2>
-            <iframe src="https://www.windy.com/?-15.783,-47.917,4" width="100%" height="450" frameborder="0"></iframe>
-            <p>Pesquise sua cidade no mapa acima 👆</p>
-        </div>
-    </section>
+            <div id="cursos" class="section active">
+                <div class="card">
+                    <h2>Combo Excel + Power BI 📊</h2>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/oXBANG0VMUs" frameborder="0" allowfullscreen></iframe>
+                    <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" style="display:block; background:var(--green); color:white; padding:15px; margin-top:15px; text-decoration:none; border-radius:10px; text-align:center; font-weight:bold;">QUERO MEU ACESSO</a>
+                </div>
+            </div>
 
-    <section id="tv" class="content-section">
-        <div class="card">
-            <h2>TV Digital Gratuita</h2>
-            <div class="tv-display">
-                <a class="tv-item" href="https://www.youtube.com/@recordnews/live" target="_blank">Record News <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@jovempannews/live" target="_blank">Jovem Pan News <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@bandjornalismo/live" target="_blank">Band News <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@sbtnews/live" target="_blank">SBT News <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@cnnbrasil/live" target="_blank">CNN Brasil <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@tvbrasil/live" target="_blank">TV Brasil <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@RedeTV/live" target="_blank">Rede TV <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@canancao/live" target="_blank">Canal Canção <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@tvcultura/live" target="_blank">TV Cultura <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@gazetajornalismo/live" target="_blank">Gazeta News <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@terraviva/live" target="_blank">Terra Viva <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@canalrural/live" target="_blank">Canal Rural <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@tvevangelizar/live" target="_blank">TV Evangelizar <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@tvcamara/live" target="_blank">TV Câmara <span>🔴 AO VIVO</span></a>
-                <a class="tv-item" href="https://www.youtube.com/@tvsenado/live" target="_blank">TV Senado <span>🔴 AO VIVO</span></a>
+            <div id="universo" class="section">
+                <div class="card">
+                    <h2 id="uni-titulo">Carregando Mistérios...</h2>
+                    <p id="uni-texto"></p>
+                </div>
+            </div>
+
+            <div id="animes" class="section">
+                <div class="card">
+                    <h2 id="anime-titulo">Notícias Otaku</h2>
+                    <p id="anime-texto"></p>
+                </div>
+            </div>
+
+            <div id="tempo" class="section">
+                <div class="card">
+                    <h2>Mapa do Clima em Tempo Real</h2>
+                    <iframe width="100%" height="400" src="https://embed.windy.com/embed2.html?lat=-15.783&lon=-47.917&zoom=4&level=surface&overlay=rain&product=ecmwf" frameborder="0"></iframe>
+                </div>
+            </div>
+
+            <div id="tv" class="section">
+                <div class="card">
+                    <h2>Canais de TV Aberta</h2>
+                    <div class="tv-grid" id="tvList"></div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="astronomia" class="content-section">
-        <div class="card">
-            <h2>Observatório Lunar 🌙</h2>
-            <iframe src="https://www.moongiant.com/phase/today/" width="100%" height="350" frameborder="0"></iframe>
-            <p>Fase atual da Lua e mapa estelar.</p>
+        <div class="chat-sidebar">
+            <div style="font-weight:bold; border-bottom:1px solid var(--border); padding-bottom:5px; margin-bottom:10px;">💬 Live Chat IAs (10 Ativas)</div>
+            <div class="chat-messages" id="chat"></div>
         </div>
-    </section>
+    </main>
 
-    <section id="animes" class="content-section">
-        <div class="card">
-            <h2>Mundo Anime ⛩️</h2>
-            <p>Os mais assistidos da temporada:</p>
-            <ul style="text-align: left;">
-                <li>Solo Leveling</li>
-                <li>One Piece</li>
-                <li>Jujutsu Kaisen</li>
-                <li>Demon Slayer</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="jogo" class="content-section">
-        <div class="card">
-            <h2>Desafio Lógico IA</h2>
-            <div id="gameContainer">
-                <div id="player" class="triangle" style="top: 300px; left: 100px; border-bottom-color: var(--green);"></div>
-            </div>
-            <p>Use os botões abaixo para desviar!</p>
-            <button onclick="move(-20)">⬅️</button> <button onclick="move(20)">➡️</button>
-        </div>
-    </section>
-
-    <div class="timer" id="clock">00:00:00</div>
+    <footer id="cronometro">00:00:00</footer>
 
     <script>
-        function showSection(id) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
+        // LISTA DE 10 IAs
+        const bots = ["RoboLink", "LunaIA", "Nexa", "AstroBot", "Zion", "Cortex", "PixelIA", "Giga", "Nova", "Orion"];
+        const chat = document.getElementById('chat');
+
+        function addChatMessage(name, text) {
+            const m = document.createElement('div');
+            m.className = 'msg';
+            m.innerHTML = `<span class="bot-name">${name}:</span> ${text}`;
+            chat.prepend(m);
+            if(chat.children.length > 15) chat.lastChild.remove();
         }
 
-        function toggleMenu() {
-            document.getElementById('sideMenu').classList.toggle('active');
-        }
-
-        // Relógio Cronômetro
+        // Simula as IAs interagindo
         setInterval(() => {
-            document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+            const bot = bots[Math.floor(Math.random() * bots.length)];
+            const falas = ["O Universo é incrível!", "Viram a nova notícia de One Piece?", "Excel ajuda muito na carreira.", "Estou analisando os dados agora...", "Daniel, o site está ficando top!", "Já conferiram o tempo hoje?"];
+            addChatMessage(bot, falas[Math.floor(Math.random() * falas.length)]);
+        }, 4000);
+
+        function askIA() {
+            const input = document.getElementById('userInput');
+            if(!input.value) return;
+            addChatMessage("VOCÊ", input.value);
+            setTimeout(() => {
+                addChatMessage("RoboIA", "Interessante! Analisando sua dúvida sobre '" + input.value + "'... O universo guarda segredos que a ciência ainda está desvendando!");
+            }, 1000);
+            input.value = "";
+        }
+
+        function show(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        // GERADOR DE CONTEÚDO DIÁRIO (Simulado via Data)
+        const hoje = new Date().toLocaleDateString();
+        document.getElementById('uni-titulo').innerText = "Mistério do Dia: " + hoje;
+        document.getElementById('uni-texto').innerText = "Hoje, as lentes da IA detectaram uma anomalia em Proxima Centauri. Cientistas acreditam que a radiação cósmica está criando padrões nunca vistos. É um dia perfeito para estudar buracos negros!";
+        
+        document.getElementById('anime-texto').innerText = "BOMBA: Foi confirmado hoje ("+hoje+") um novo trailer para a temporada final de Demon Slayer. Além disso, boatos indicam que One Piece terá um hiato para melhorar a animação da luta final!";
+
+        // CRONÔMETRO
+        setInterval(() => {
+            document.getElementById('cronometro').innerText = new Date().toLocaleTimeString();
         }, 1000);
 
-        // Movimento do Jogo
-        let pX = 100;
-        function move(dir) {
-            pX += dir;
-            if(pX < 0) pX = 0; if(pX > 200) pX = 200;
-            document.getElementById('player').style.left = pX + 'px';
-        }
-
-        // IA Boas Vindas Falada (Letra)
-        const frases = [
-            "Daniel, o setor de CURSOS é onde você evolui sua carreira.",
-            "Nos TRÊS PONTINHOS você entende tudo sobre o site.",
-            "Confira o TEMPO no mapa interativo antes de sair!",
-            "E não esqueça de relaxar na aba de ANIMES. Aproveite!"
-        ];
-        let fIndex = 0;
-        setInterval(() => {
-            fIndex = (fIndex + 1) % frases.length;
-            document.getElementById('iaText').innerText = frases[fIndex];
-        }, 5000);
+        // LISTA TV
+        const canais = ["Record News", "Jovem Pan", "Band", "SBT News", "CNN Brasil", "TV Brasil", "RedeTV", "TV Cultura", "Gazeta", "Canal Rural", "Terra Viva", "Rede Vida", "TV Câmara", "TV Senado", "Canal Futura"];
+        const tvList = document.getElementById('tvList');
+        canais.forEach(c => {
+            tvList.innerHTML += `<a class="tv-btn" href="#">${c}</a>`;
+        });
     </script>
 </body>
 </html>
