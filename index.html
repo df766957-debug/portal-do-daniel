@@ -3,212 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Ferreira | Portal de Curiosidades</title>
-    <meta name="description" content="Portal de Curiosidades do Daniel Ferreira: Ciência, Engenharia, Astronomia e muito mais.">
-    <meta name="keywords" content="Daniel Ferreira, Engenharia, Astronomia, Curiosidades, Bio-concreto, Psicologia">
-    <meta name="author" content="Daniel Ferreira">
+    <title>Daniel Ferreira | Ciência & Capacitação</title>
     <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        /* Fundo espacial mais profundo */
-        background: radial-gradient(circle at top, #0a0a12, #11112b, #000000);
-        color: #ffffff;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-    }
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 15px;
-    }
-    /* Cards com efeito de vidro MAIS FORTE */
-    .card {
-        background: rgba(255, 255, 255, 0.08); /* Aumentei a opacidade */
-        backdrop-filter: blur(15px); /* Desfoque mais forte */
-        <div class="card">
-    <span class="tag">Engenharia Avançada</span>
-    <h2>A Revolução do Concreto: A Tecnologia que "Cura" a si Mesma</h2>
-    
-    <p>O concreto é o material mais utilizado pelo ser humano depois da água. Por mais de um século, nossa maior luta na engenharia civil tem sido contra as <strong>fissuras e infiltrações</strong>. No laboratório, sabemos que uma pequena rachadura pode ser o começo do fim de uma estrutura de grande porte, permitindo que a água alcance a armadura de aço e inicie o processo de corrosão.</p>
+        :root {
+            --bg-deep: #0a0a12;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --primary-blue: #58a6ff;
+            --success-green: #238636;
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+        }
 
-    <h3>A Grande Novidade: O Bio-Concreto</h3>
-    <p>A fronteira final da tecnologia de materiais agora é o <strong>Concreto Autocicatrizante</strong>. Pesquisadores desenvolveram uma técnica que mistura bactérias específicas (como a <em>Bacillus pseudofirmus</em>) e lactato de cálcio diretamente na massa do concreto durante a mistura.</p>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: radial-gradient(circle at top, #0a0a12, #11112b, #000000);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-    <p><strong>Como funciona a mágica?</strong><br>
-    Essas bactérias podem sobreviver "dormindo" dentro do concreto por mais de 200 anos. Quando uma rachadura surge e a água da chuva ou a umidade penetra nela, as bactérias "acordam" e começam a consumir o lactato de cálcio. O resultado desse processo químico é a produção de <strong>calcário (calcita)</strong>, que preenche e sela a fissura automaticamente em poucas semanas.</p>
+        /* HEADER ORGANIZADO */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.3);
+        }
 
-    <h3>Por que isso muda o jogo?</h3>
-    <p>Para quem trabalha com infraestrutura, as vantagens são astronômicas:</p>
-    <ul>
-        <li><strong>Redução de Custos:</strong> Bilhões de reais são gastos anualmente em manutenção de pontes e túneis. Com a autorregeneração, o custo de manutenção cai drasticamente.</li>
-        <li><strong>Sustentabilidade:</strong> A indústria do cimento é uma das maiores emissoras de CO2. Estruturas que duram mais significam menos reformas e menor impacto ambiental.</li>
-        <li><strong>Segurança:</strong> Prédios e viadutos tornam-se muito mais resilientes, "fechando" suas próprias feridas antes que o problema se torne estrutural.</li>
-    </ul>
+        header h1 { margin: 0; font-size: 2.5rem; color: var(--text-main); }
+        header p { color: var(--primary-blue); font-weight: bold; }
 
-    <p>No laboratório do futuro, o nosso papel deixa de ser apenas testar a resistência à compressão e passa a ser o monitoramento da saúde biológica das nossas construções. Estamos saindo da era das pedras para a era dos materiais inteligentes.</p>
-    
-    <button onclick="compartilhar()" style="background: #25d366; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 15px;">
-        🟢 Compartilhar essa tecnologia no WhatsApp
-    </button>
-</div>
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 25px;
-        margin-bottom: 30px;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-    }
-    h1 { color: #ffffff; text-align: center; }
-    h2 { color: #58a6ff; margin-top: 15px; }
-    .tag {
-        background: #58a6ff;
-        color: #000;
-        padding: 5px 15px;
-        border-radius: 50px;
-        font-weight: bold;
-        font-size: 12px;
-        text-transform: uppercase;
-    }
-    img {
-        width: 100%;
-        border-radius: 15px;
-        margin-top: 15px;
-    }
-</style>
-    
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* NAVEGAÇÃO RÁPIDA (Conceito do PDF) */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            background: var(--glass-bg);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* CARDS ESTILO VIDRO */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .tag {
+            background: var(--primary-blue);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        h2 { color: var(--primary-blue); }
+
+        /* VÍDEO RESPONSIVO */
+        .video-box {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .video-box iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+
+        /* BOTÕES */
+        .btn-venda {
+            display: block;
+            background-color: var(--success-green);
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin: 15px 0;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* LINK RESERVA */
+        .caixa-copia {
+            background: #000;
+            border: 1px dashed var(--primary-blue);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .link-url { color: var(--primary-blue); word-break: break-all; font-weight: bold; }
+
+        img { width: 100%; border-radius: 15px; margin: 15px 0; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 <body>
 
 <header>
     <h1>Daniel Ferreira 🚀</h1>
-    <p>Ciência, Astronomia, Animes e Descobertas do Laboratório</p>
+    <p>Ciência • Tecnologia • Carreira</p>
 </header>
 
 <div class="container">
     
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Ferreira - Expert Cursos</title>
-    <style>
-        body { font-family: sans-serif; background-color: #0d1117; color: white; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .perfil { text-align: center; margin-bottom: 20px; }
-        .perfil h1 { font-size: 1.8rem; color: #58a6ff; margin: 5px 0; }
-        .card { background: #161b22; border: 1px solid #30363d; border-radius: 15px; padding: 20px; width: 100%; max-width: 400px; box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
-        .video-box { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; margin-bottom: 15px; }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .btn { display: block; background-color: #238636; color: white; text-align: center; padding: 18px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 1.1rem; margin-top: 10px; }
-        .caixa-copia { margin-top: 25px; padding: 12px; background: #000; border: 1px dashed #58a6ff; border-radius: 8px; text-align: center; }
-        .link-url { color: #58a6ff; word-break: break-all; font-size: 0.8rem; display: block; margin-top: 5px; font-weight: bold; }
-    </style>
-</head>
-<body>
-
-    <div class="perfil">
-        <h1>Daniel Ferreira 🚀</h1>
-        <p>Indicações de Tecnologia e Carreira</p>
+    <div class="nav-links">
+        <a href="#vendas">📊 CURSOS</a>
+        <a href="#engenharia">🧪 ENGENHARIA</a>
+        <a href="#universo">🌌 UNIVERSO</a>
     </div>
 
-    <div class="card">
-        <h3 style="text-align: center; margin-bottom: 15px; color: #58a6ff;">Combo: Excel + Power BI 📊</h3>
-        
-        <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
+    <section id="vendas">
+        <div class="card" style="border: 2px solid var(--primary-blue);">
+            <span class="tag">Oportunidade</span>
+            <h2 style="text-align: center;">Combo: Excel + Power BI 📊</h2>
+            <div class="video-box">
+                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
+            </div>
+            <p>Domine as ferramentas mais exigidas do mercado. Deixe de apenas coletar dados e comece a gerar inteligência!</p>
+            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" class="btn-venda">QUERO MEU ACESSO AGORA</a>
+            <div class="caixa-copia">
+                <p>Se o botão falhar, copie e cole no Google:</p>
+                <span class="link-url">https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi</span>
+            </div>
         </div>
+    </section>
 
-        <a href="https://go.hotmart.com/K102868779N?redirectio" class="btn">QUERO MEU ACESSO AGORA</a>
-
-        <div class="caixa-copia">
-            <p style="font-size: 0.85rem; margin: 0;">Se o botão não abrir, copie o link e cole no Google:</p>
-            <span class="link-url">https://go.hotmart.com/K102868779N?redirectio</span>
-        </div>
-
-        <p style="font-size: 0.7rem; color: #8b949e; text-align: center; margin-top: 15px;">✅ Compra 100% Segura via Hotmart</p>
-    </div>
-
-</body>
-</html>
-    
-    <div style="margin-top: 30px; padding: 20px; border-radius: 15px; background: #1c2128; border-left: 5px solid #58a6ff;">
-    <h2 style="color: #58a6ff; margin-top: 0;">🤔 Curiosidade: Nem tudo é Futebol!</h2>
-    <p style="color: #c9d1d9; line-height: 1.6;">
-        Você sabia que existe uma explicação psicológica para as pessoas que não se conectam com a paixão nacional? 
-        Enquanto muitos focam no campo, outros focam em diferentes áreas da ciência e do conhecimento. 
-        Confira essa análise interessante sobre o comportamento dos brasileiros:
-    </p>
-
-    <div style="margin-top: 15px; border-radius: 10px; overflow: hidden; border: 1px solid #30363d;">
-        <iframe width="100%" height="215" src="https://www.youtube.com/embed/6UXFPkrF1pQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <p style="font-size: 0.75rem; color: #8b949e; margin-top: 10px; text-align: right;">
-        <strong>Créditos:</strong> Canal Psicologia Descomplicada Oficial
-    </p>
-</div>
-    
-        <span class="tag tag-universo">🌌 UNIVERSO</span>
-        <h2>o assunto da lua </h2>
-        <img src="espaco.jpg" style="width:100%; border-radius:8px; margin-bottom:15px;">
-        <p>A Lua está se afastando da Terra cerca de 3,8 cm por ano! No passado, ela estava tão perto que os dias duravam apenas 6 horas. Imagine só como seria o céu naquela época!</p>
-        <a href="#" class="link">Ler artigo completo →</a>
-    
-   <div class="card">
-    <span class="tag tag-anime">⛩️ ANIME</span>
-    <h2>Por que amamos os Heróis de Anime?</h2>
-    <img src="herois.jpg" style="width:100%; border-radius:8px; margin-bottom:15px;">
-    <p>Mais do que poderes, os heróis nos ensinam a nunca desistir. Seja a persistência do Naruto ou a vontade do Goku, essas histórias nos mostram que a verdadeira força vem de enfrentar os nossos próprios limites!</p>
-    <a href="#" class="link">Ver curiosidades →</a>
-</div>
-   
-    <div class="card">
-            <span class="tag tag-laboratorio">🧪 CIÊNCIA APLICADA</span>
-            <h2>A Física dos Materiais de Construção</h2>
-            
-            <img src="laboratorio.jpg" style="width:100%; border-radius:8px; margin-bottom:15px;">
-            
-            <p>Você sabia que o asfalto é um líquido extremamente viscoso? Entenda como a densidade e o pH influenciam na qualidade das estradas e construções que vemos todos os dias.</p>
-            
-            <a href="#" class="link">Bastidores do Lab →</a>
-       
+    <section id="engenharia">
         <div class="card">
-            <span class="tag tag-universo">🪐 SISTEMA SOLAR</span>
-            <h2>O Planeta que Flutuaria na Água</h2>
-            
-            <img src="sistema-solar.jpg" style="width:100%; border-radius:8px; margin-bottom:15px;">
-            
-            <p>Saturno é tão imenso que caberiam 760 Terras dentro dele. Mas aqui está o segredo: ele é composto quase totalmente de gás. Se você encontrasse uma banheira gigante o suficiente para colocá-lo dentro, Saturno flutuaria como um patinho de borracha!</p>
-            
-            <a href="#" class="link">Explorar planetas →</a>
+            <span class="tag">Engenharia Avançada</span>
+            <h2>Bio-Concreto: A Tecnologia que "Cura" a si Mesma</h2>
+            <p>Bactérias específicas podem viver 200 anos dentro do concreto. Quando surge uma rachadura, a umidade as "acorda", e elas produzem calcário para selar a fissura automaticamente!</p>
+            <button class="btn-whatsapp" onclick="window.open('https://api.whatsapp.com/send?text=Olha que tecnologia incrível: Bio-concreto! Visto no Portal do Daniel Ferreira.')">🟢 Compartilhar no WhatsApp</button>
         </div>
+    </section>
+
+    <div class="card" style="border-left: 5px solid var(--primary-blue);">
+        <h2>🤔 Curiosidade: Nem tudo é Futebol!</h2>
+        <p>Você sabia que existe uma explicação psicológica para quem foca em ciência e conhecimento em vez da paixão nacional?</p>
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/6UXFPkrF1pQ" allowfullscreen></iframe>
         </div>
+    </div>
+
+    <section id="universo">
+        <div class="card">
+            <span class="tag">Universo</span>
+            <h2>Saturno: O Planeta que Flutuaria</h2>
+            <p>Apesar de ser imenso, Saturno é composto quase totalmente de gás. Se existisse uma banheira gigante o suficiente, ele flutuaria como um patinho de borracha!</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>Daniel Ferreira | Portal de Curiosidades & Tecnologia</p>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=DANIEL_FERREIRA_PORTAL&style=0005&nbdigits=5&type=ip&initCount=0" border="0" />
+</footer>
 
 </body>
 </html>
-<div class="card" style="overflow: hidden; padding: 0;">
-    
-    <img src="bio-concreto.jpg" style="width: 100%; height: auto; display: block; border-bottom: 2px solid rgba(88, 166, 255, 0.3);">
-
-    <div style="padding: 20px;">
-        <span class="tag">Engenharia Avançada</span>
-        <h2 style="margin-top: 10px;">Bio-Concreto: A Tecnologia que "Cura" a si Mesma</h2>
-        
-        <p>O concreto é o material mais utilizado pelo ser humano depois da água. Por mais de um século, nossa luta tem sido contra as <strong>fissuras e infiltrações</strong>.</p>
-
-        <p><strong>Como funciona a mágica?</strong><br>
-        Bactérias "dormem" no concreto por até 200 anos. Quando surge uma rachadura e entra água, elas acordam e produzem <strong>calcário</strong>, selando a fenda automaticamente.</p>
-
-        <button onclick="compartilhar()" style="background: #25d366; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 15px;">
-            🟢 Compartilhar no WhatsApp
-        </button>
-    </div>
-</div>
-<div style="text-align: center; margin-top: 20px; padding: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
-    <p style="font-size: 0.8rem; color: #8b949e; margin-bottom: 5px;">Visualizações do Portal</p>
-    <img src="https://hitwebcounter.com/counter/counter.php?page=DANIEL_FERREIRA_PORTAL&style=0005&nbdigits=5&type=ip&initCount=0" 
-         title="Free Counter" 
-         Alt="web counter"   
-         border="0" />
-</div>
