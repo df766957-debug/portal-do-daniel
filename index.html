@@ -117,46 +117,88 @@
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
             
-            <div class="section" data-cat="astronomia">
-            <h2 style="color:var(--blue);">A Fronteira Final: Astronomia e IA 🌌</h2>
+            <div class="main-content">
+        <div class="section" data-cat="astronomia">
+            <h2 style="color:var(--blue);">Exploração do Cosmos: Mistérios do Universo 🌌</h2>
             
-            <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; border:1px solid var(--blue); margin-bottom: 15px;" alt="Plataforma de Observação">
+            <img src="astro-plataforma.jpg" style="width:100%; border-radius:10px; border:1px solid var(--blue); margin-bottom: 15px;" alt="Astronomia">
             
             <p style="text-align: justify; line-height: 1.6;">
-                A observação do cosmos sempre foi a maior ambição da humanidade. Hoje, a astronomia não depende apenas de lentes potentes, mas de algoritmos e Inteligência Artificial...
+                O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas distantes até a composição oculta da matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim.
             </p>
 
-            <div id="texto-extra" style="display: none;">
+            <div id="texto-astronomia-longo" style="display: none;">
                 <p style="text-align: justify; line-height: 1.6;">
-                    Antigamente, um astrônomo passava a vida analisando placas fotográficas. Hoje, telescópios como o James Webb geram tantos dados que seriam necessários milhares de anos para um ser humano analisar sozinho. É aqui que entra a <b>Inteligência Artificial</b>. A IA atua como uma extensão do nosso cérebro, filtrando o ruído cósmico para encontrar exoplanetas ou detectar ondas gravitacionais.
+                    A cosmologia moderna nos ensina que o universo começou com o Big Bang, e desde então, galáxias inteiras têm se afastado umas das outras em uma expansão acelerada. Estudar os astros é entender a nossa própria origem, pois cada átomo em nosso corpo foi forjado no coração de uma estrela que explodiu há bilhões de anos.
                 </p>
                 <p style="text-align: justify; line-height: 1.6;">
-                    Se a tecnologia está mudando as estrelas, ela muda ainda mais o mercado de trabalho na Terra. A automação das indústrias modernas segue a mesma lógica. No laboratório, a precisão depende da organização de variáveis. Dominar ferramentas como <b>Excel e Power BI</b> é essencial para transformar dados em conhecimento real, assim como a IA identifica uma supernova entre bilhões de estrelas.
+                    Nossa vizinha, a Lua, continua sendo o objeto de observação mais fascinante. Com suas crateras que narram a história de impactos milenares, ela serve como um laboratório natural para testarmos tecnologias de exploração espacial. Além dela, planetas como Marte e as luas de Júpiter, como Europa, escondem segredos que podem revelar se estamos sozinhos no universo. A observação através de telescópios potentes nos permite ver berçários de estrelas onde novos sistemas solares estão nascendo agora mesmo.
                 </p>
                 <p style="text-align: justify; line-height: 1.6;">
-                    O surgimento da Luna IA em nosso portal representa o topo dessa evolução. Não estamos mais apenas dando comandos; estamos colaborando com as máquinas. O conhecimento é a única moeda real. Investir em educação, seja estudando buracos negros ou lógica de dados, é o único investimento com retorno garantido. Este portal une o céu estrelado ao teclado do computador.
+                    A Via Láctea, nossa galáxia, abriga cerca de 400 bilhões de estrelas. Muitas delas possuem planetas em zonas habitáveis. A busca por exoplanetas é um dos campos mais ativos da astronomia atual. Usando o método de trânsito, cientistas conseguem identificar mundos distantes apenas pela pequena queda de luz que ocorre quando o planeta passa na frente de sua estrela. É um trabalho de paciência e precisão matemática extrema.
                 </p>
-                </div>
+                <p style="text-align: justify; line-height: 1.6;">
+                    Buracos negros, as regiões mais extremas do espaço-tempo, desafiam as leis da física que conhecemos. Eles são o ponto final da evolução de estrelas massivas e exercem uma gravidade tão forte que nem a luz pode escapar. Compreender como eles funcionam é a chave para unificar a teoria da relatividade com a mecânica quântica. Cada nova imagem capturada, como a do horizonte de eventos, nos aproxima de entender o infinito.
+                </p>
+            </div>
 
-            <button onclick="toggleLerMais()" id="btn-ler-mais" style="background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;">
-                Ler Mais...
+            <button onclick="toggleAstro()" id="btn-astro" style="background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                Ler Mais sobre o Universo
             </button>
         </div>
 
-        <script>
-            function toggleLerMais() {
-                var extra = document.getElementById("texto-extra");
-                var btn = document.getElementById("btn-ler-mais");
+        <div class="section" data-cat="cursos">
+            <h2 style="color:var(--blue);">Capacitação Profissional 📊</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
+            </div>
+            <p>Domine ferramentas essenciais como Excel e Power BI para o mercado de trabalho.</p>
+        </div>
+    </div>
 
-                if (extra.style.display === "none") {
-                    extra.style.display = "block";
-                    btn.innerText = "Ler Menos";
-                } else {
-                    extra.style.display = "none";
-                    btn.innerText = "Ler Mais...";
-                }
+    <script>
+        // Função para Abrir/Fechar o Texto Longo
+        function toggleAstro() {
+            var texto = document.getElementById("texto-astronomia-longo");
+            var btn = document.getElementById("btn-astro");
+            if (texto.style.display === "none") {
+                texto.style.display = "block";
+                btn.innerText = "Ler Menos";
+            } else {
+                texto.style.display = "none";
+                btn.innerText = "Ler Mais sobre o Universo";
             }
-        </script>
+        }
+
+        // FUNÇÃO AUTOMÁTICA DO MENU (CORRIGIDA)
+        function filter(cat) {
+            const sections = document.querySelectorAll('.section');
+            const luna = document.getElementById('luna-texto');
+            
+            // Fecha o menu lateral sozinho
+            if(typeof closeNav === "function") closeNav();
+
+            sections.forEach(s => {
+                // Mostra a seção se for a categoria certa ou se clicar em 'all' (variedades)
+                if (cat === 'all' || s.getAttribute('data-cat') === cat) {
+                    s.style.display = "block";
+                } else {
+                    s.style.display = "none";
+                }
+            });
+
+            // Luna comenta a mudança
+            if(luna) {
+                const frases = {
+                    all: "Tudo pronto! Aqui estão todas as suas variedades.",
+                    astronomia: "Preparando os telescópios... Bem-vindo à seção de Astronomia!",
+                    cursos: "Excelente! Focar nos estudos é o melhor caminho.",
+                    tecnologia: "Inovação é o futuro! Vamos explorar o que há de novo."
+                };
+                luna.innerText = frases[cat] || "Atualizando o portal para você!";
+            }
+        }
+    </script>
        
 
         <div class="section" data-cat="astronomia">
