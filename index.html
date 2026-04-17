@@ -117,11 +117,7 @@
         <div class="leao-img" title="Leão - Assistente Inteligente"></div>
         <div class="balao-fala" id="leao-texto">Olá! Eu sou o Leão. Seja bem-vindo ao portal.</div>
         
-        <div class="search-container">
-            <input type="text" id="leao-search" placeholder="Pergunte ao Leão...">
-            <button onclick="leaoChat()">🔍</button>
-        </div>
-    </header>
+        
 
     <div id="side-menu">
         <a href="javascript:void(0)" style="font-size:30px; text-align:right;" onclick="closeNav()">&times;</a>
@@ -147,12 +143,25 @@
             <h2>Astronomia: O Cosmos e Você 🌌</h2>
             <p>Cada partícula de ferro no seu sangue foi forjada em explosões de estrelas massivas. O universo não está apenas "lá fora", ele está em você.</p>
         </div>
+        
+           <div class="section" data-cat="astronomia">
+            <h2 style="color:var(--blue);">Astronomia: Mistérios do Universo 🌌</h2>
+            
+            <img src="astro-plataforma.jpg" style="width:100%; border-radius:15px; margin-bottom: 15px;" alt="Plataforma de Observação">
+            
+            <p style="text-align: justify;">O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Estudar os astros é entender a nossa própria origem.</p>
 
-        <div class="section">
-            <h2>Anime: A Arte da Resiliência ⛩️</h2>
-            <p>Histórias de superação que inspiram gerações. Os animes mostram que o esforço vence o talento natural.</p>
+            <div id="texto-universo-completo" style="display: none;">
+                <p style="text-align: justify;">
+                    (Aqui você cola o texto gigante de 770 palavras que te mandei antes sobre o Big Bang, galáxias e buracos negros...)
+                </p>
+            </div>
+
+            <button onclick="expandirUniverso()" id="btn-universo" style="background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px;">
+                Ler Mais sobre o Universo
+            </button>
         </div>
-
+        
     </div>
 
     <footer>
@@ -188,7 +197,68 @@
                 balao.innerText = "Sou o Leão, o guardião do conhecimento deste portal. O que deseja explorar?";
             }
         }
+<script>
+// 1. Lógica da Barra de Pesquisa (Luna responde)
+function leaoChat() {
+    const query = document.getElementById('leao-search').value.toLowerCase();
+    const lunaTexto = document.getElementById('luna-texto');
+    
+    if (query.includes('dia') || query.includes('hoje')) {
+        const hoje = new Date();
+        const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+        lunaTexto.innerText = "Hoje é " + dias[hoje.getDay()] + ", Daniel!";
+    } else {
+        lunaTexto.innerText = "Estou processando sua dúvida sobre: " + query;
+    }
+}
 
+// 2. Filtro Automático por Título (O que você pediu!)
+function filter(cat) {
+    const sections = document.querySelectorAll('.section');
+    const lunaTexto = document.getElementById('luna-texto');
+
+    sections.forEach(s => {
+        const titulo = s.querySelector('h2').innerText.toLowerCase();
+        
+        if (cat === 'all') {
+            s.style.display = "block";
+            lunaTexto.innerText = "Bem-vindo ao Portal!";
+        } 
+        // Se clicar em Astronomia, ele procura a palavra no título
+        else if (cat === 'astronomia' && titulo.includes('astronomia')) {
+            s.style.display = "block";
+            lunaTexto.innerText = "Carregando Astronomia...";
+        } 
+        // Se clicar em Animes, procura anime no título
+        else if (cat === 'animes' && titulo.includes('anime')) {
+            s.style.display = "block";
+            lunaTexto.innerText = "Carregando Animes!";
+        } 
+        // Se não for nenhum dos dois, cai em Variedades
+        else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) {
+            s.style.display = "block";
+        } else {
+            s.style.display = "none";
+        }
+    });
+    closeNav(); 
+}
+
+// 3. Função do botão Ler Mais
+function expandirUniverso() {
+    var texto = document.getElementById("texto-universo-completo");
+    var btn = document.getElementById("btn-universo");
+    if (texto.style.display === "none") {
+        texto.style.display = "block";
+        btn.innerText = "Ler Menos";
+    } else {
+        texto.style.display = "none";
+        btn.innerText = "Ler Mais sobre o Universo";
+    }
+}
+</script>
+
+        
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
             closeNav();
