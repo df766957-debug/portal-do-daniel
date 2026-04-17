@@ -3,103 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Daniel 🦁 | Astronomia, Animes e Conhecimento</title>
     
-    <title>Portal Daniel 🦁 | Astronomia, Animes e Cursos Profissionais</title>
-    <meta name="description" content="Acompanhe as últimas notícias sobre o Telescópio James Webb, lançamentos de animes como Solo Leveling e cursos de Excel e Power BI com Daniel Ferreira.">
-    <meta name="keywords" content="Astronomia, Animes, Solo Leveling, James Webb, Curso de Excel, Power BI, Portal Daniel">
+    <meta name="description" content="Portal Daniel - Novidades sobre Astronomia, Animes, Variedades e Cursos Profissionais de Excel.">
+    <meta name="keywords" content="Portal Daniel, Astronomia, Animes, Curso Excel, James Webb, Solo Leveling, Curiosidades">
     <meta name="author" content="Daniel Ferreira">
-    <link rel="canonical" href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">
 
     <style>
-        :root { --blue: #007bff; --bg-light: #f8f9fa; --card: #ffffff; --text: #333; --green: #28a745; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg-light); color: var(--text); line-height: 1.6; }
-        
-        /* Menu */
+        :root { --blue: #007bff; --bg: #f8f9fa; --white: #ffffff; --text: #333; --green: #28a745; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); }
+
+        /* Menu Lateral */
         .sidenav { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
         .sidenav a { padding: 12px 32px; text-decoration: none; font-size: 20px; color: #818181; display: block; transition: 0.3s; }
         .sidenav a:hover { color: #f1f1f1; }
         .sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
 
         /* Header */
-        .header { background: var(--card); padding: 15px 20px; display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .perfil-img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--blue); object-fit: cover; }
+        .header { background: var(--white); padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        
+        /* Barra de Pesquisa */
+        .search-container { padding: 15px; max-width: 800px; margin: auto; display: flex; gap: 10px; }
+        #searchBar { flex: 1; padding: 12px; border-radius: 25px; border: 1px solid #ddd; outline: none; }
+        .btn-search { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; }
 
-        .main-content { padding: 20px; max-width: 800px; margin: auto; }
-        .section { background: var(--card); padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        /* Area do IA Leão */
+        .leao-box { background: #eef6ff; padding: 15px; border-radius: 10px; border-left: 5px solid var(--blue); margin: 10px auto; max-width: 770px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+
+        .main-content { padding: 10px; max-width: 800px; margin: auto; }
+        .section { background: var(--white); padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
         .section img, .video-container { width: 100%; border-radius: 10px; margin-bottom: 15px; }
         
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
-        h2 { color: var(--blue); margin-top: 0; font-size: 1.5rem; }
-
-        /* Sistema Ler Mais */
-        .extra-content { display: none; margin-top: 15px; padding: 15px; background: #f1f1f1; border-radius: 8px; border-left: 5px solid var(--blue); }
-
-        .btn-acao { background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px; }
+        h2 { color: var(--blue); margin-top: 0; }
+        .extra-content { display: none; margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+        .btn-acao { background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; text-decoration: none; display: inline-block; }
         .btn-compra { background: var(--green); width: 100%; text-align: center; box-sizing: border-box; font-size: 18px; }
-
-        .footer { text-align: center; padding: 30px; color: #666; font-size: 14px; }
+        .footer { text-align: center; padding: 30px; color: #666; }
     </style>
 </head>
-<body>
-
-    <div id="mySidenav" class="sidenav">
+<body onclick="iniciarVoz()"> <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="#" onclick="filter('all')">🏠 Início</a>
-        <a href="#" onclick="filter('cursos')">📊 Cursos (Excel)</a>
+        <a href="#" onclick="filter('cursos')">📊 Cursos</a>
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
+        <a href="#" onclick="filter('variedades')">💡 Variedades</a>
     </div>
 
     <header class="header">
-        <span style="font-size:30px;cursor:pointer;color:var(--blue); margin-right: 15px;" onclick="openNav()">&#9776;</span>
-        <div style="text-align: center; flex: 1;">
-            <h1 style="margin:0; color:var(--blue); font-size: 22px;">Portal Daniel 🦁</h1>
-        </div>
-        <img src="luna-perfil.jpg" class="perfil-img" alt="Logo Portal Daniel">
-    </header>
+        <span style="font-size:30px;cursor:pointer;color:var(--blue);" onclick="openNav()">&#9776;</span>
+        <h1 style="margin:0; color:var(--blue); font-size: 24px; flex: 1; text-align: center;">Portal Daniel 🦁</h1>
+        <div style="width: 30px;"></div> </header>
+
+    <div class="leao-box">
+        <span>🦁 IA Leão:</span>
+        <span id="leao-status">Seja bem-vindo ao Portal Daniel! Toque em qualquer lugar para me ouvir.</span>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Pergunte algo ao Leão (ex: James Webb, Solo Leveling)...">
+        <button class="btn-search" onclick="perguntarLeao()">Perguntar</button>
+    </div>
 
     <main class="main-content">
-
         <article class="section" data-cat="cursos">
             <h2>Excel & Power BI Profissional 📊</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" title="Curso Excel e Power BI" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <p>Domine as planilhas e o mercado de trabalho com o curso completo de Excel e Power BI.</p>
-            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" target="_blank" class="btn-acao btn-compra">🚀 QUERO MEU ACESSO AGORA</a>
+            <p>Torne-se um especialista em dados com nosso treinamento completo.</p>
+            <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" target="_blank" class="btn-acao btn-compra">🚀 ACESSAR CURSO AGORA</a>
         </article>
 
-        <article class="section" data-cat="astronomia">
-            <h2>James Webb revela segredos de planetas em formação 🌌</h2>
-            <img src="astro-plataforma.jpg" alt="Telescópio James Webb Astronomia Notícias">
-            <p>Novas imagens mostram como a água e o gás interagem em sistemas solares jovens.</p>
-            
+        <article class="section" data-cat="astronomia" id="post-astro">
+            <h2>Mistérios do James Webb 🌌</h2>
+            <img src="astro-plataforma.jpg" alt="Notícias Astronomia">
+            <p>O telescópio James Webb continua revelando o nascimento de novas galáxias.</p>
             <div id="extra-astro" class="extra-content">
-                O Telescópio Espacial James Webb detectou vapor de água em discos protoplanetários, sugerindo que a água pode estar presente desde o início da criação dos planetas. Isso reforça a busca por vida fora da Terra.
+                Cientistas descobriram que o universo primitivo era muito mais organizado do que se pensava. A astronomia vive sua era de ouro!
             </div>
             <button onclick="toggleText('extra-astro', this)" class="btn-acao">Ler Mais</button>
         </article>
 
-        <article class="section" data-cat="animes">
-            <h2>Solo Leveling: Arise e 2ª Temporada confirmados ⛩️</h2>
-            <img src="imagem-anime.jpg" alt="Solo Leveling Anime Notícias">
-            <p>O sucesso mundial de Sung Jinwoo continua com o anúncio da nova temporada e do novo jogo.</p>
-            
+        <article class="section" data-cat="animes" id="post-anime">
+            <h2>Solo Leveling e a Cultura Otaku ⛩️</h2>
+            <img src="imagem-anime.jpg" alt="Notícias Animes">
+            <p>O sucesso de Solo Leveling abriu portas para novos animes de alta qualidade.</p>
             <div id="extra-anime" class="extra-content">
-                A produtora confirmou que a sequência está em produção acelerada. Além disso, o novo RPG de Solo Leveling está batendo recordes de pré-registro, mostrando a força da cultura otaku no Brasil.
+                A segunda temporada promete arcos épicos. Fique ligado no Portal Daniel para as datas oficiais!
             </div>
             <button onclick="toggleText('extra-anime', this)" class="btn-acao">Ler Mais</button>
         </article>
 
+        <article class="section" data-cat="variedades">
+            <h2>Curiosidades do Mundo 💡</h2>
+            <p>Você sabia que a luz do Sol demora cerca de 8 minutos para chegar à Terra? No Portal Daniel você aprende algo novo todo dia!</p>
+        </article>
     </main>
 
     <footer class="footer">
-        <p>© 2026 Portal Daniel - Especialista em Tecnologia e Ciência.</p>
+        <p>© 2026 Portal Daniel - Ciência, Cultura e Tecnologia.</p>
     </footer>
 
     <script>
+        let vozAtivada = false;
+
+        function iniciarVoz() {
+            if(!vozAtivada) {
+                falar("Seja bem-vindo ao Portal Daniel! Eu sou o IA Leão e estou aqui para te ajudar a explorar o universo e o mundo dos animes.");
+                vozAtivada = true;
+            }
+        }
+
+        function falar(texto) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = texto;
+            msg.lang = 'pt-BR';
+            window.speechSynthesis.speak(msg);
+            document.getElementById('leao-status').innerText = texto;
+        }
+
+        function perguntarLeao() {
+            const busca = document.getElementById('searchBar').value.toLowerCase();
+            
+            if(busca.includes("james webb") || busca.includes("astronomia")) {
+                falar("Sobre astronomia, o James Webb é nossa maior ferramenta atual. Veja o post sobre galáxias!");
+                filter('astronomia');
+            } else if (busca.includes("solo leveling") || busca.includes("anime")) {
+                falar("Os animes estão bombando! Solo Leveling é o destaque do momento no portal.");
+                filter('animes');
+            } else if (busca.includes("curso") || busca.includes("excel")) {
+                falar("Quer evoluir na carreira? O curso de Excel é o caminho certo!");
+                filter('cursos');
+            } else {
+                falar("Ainda estou aprendendo sobre isso, mas continue explorando o Portal Daniel!");
+                filter('all');
+            }
+        }
+
         function openNav() { document.getElementById("mySidenav").style.width = "270px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
