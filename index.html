@@ -3,330 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Portal Daniel Ferreira | Excel, Astronomia e Tecnologia</title>
-    <meta name="description" content="Aprenda Excel Profissional com Daniel Ferreira. Explore curiosidades sobre Astronomia, Animes e as últimas tendências em Tecnologia.">
-    <meta name="keywords" content="Curso Excel Daniel Ferreira, Hotmart Excel, Astronomia, Animes, Tecnologia, Assistente Leão">
-    <meta name="author" content="Daniel Ferreira">
-    <meta name="robots" content="index, follow">
-
+    <title>Portal Leão 🦁</title>
     <style>
-        :root {
-            --bg: #05070a;
-            --card: rgba(22, 27, 34, 0.95);
-            --gold: #d4af37;
-            --blue: #58a6ff;
-            --green: #2ea44f;
-            --text: #ffffff;
-            --border: #30363d;
-        }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: var(--bg) url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text);
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        /* HEADER DO LEÃO - IDENTIDADE FORTE */
-        .leao-header {
-            width: 100%;
-            background: rgba(13, 17, 23, 0.9);
-            border-bottom: 2px solid var(--gold);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1500;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .leao-img {
-            width: 110px; height: 110px; 
-            /* IMAGEM DE UM LEÃO REAL */
-            background: url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=300&q=80') no-repeat center center;
-            background-size: cover;
-            border-radius: 50%; border: 3px solid var(--gold);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-        }
-
-        .balao-fala {
-            background: white; color: #000; padding: 15px 25px; border-radius: 20px;
-            font-size: 1rem; font-weight: bold; text-align: center;
-            max-width: 85%; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            margin: 10px 0; border: 2px solid var(--gold);
-        }
-
-        /* PESQUISA */
-        .search-container {
-            display: flex; width: 90%; max-width: 400px; gap: 8px; margin-top: 5px;
-        }
-        .search-container input {
-            flex: 1; padding: 10px 15px; border-radius: 25px; border: 1px solid var(--gold); outline: none; background: #f0f6fc;
-        }
-        .search-container button {
-            background: var(--gold); border: none; border-radius: 50%; width: 40px; height: 40px; color: white; cursor: pointer;
-        }
-
-        /* BOTÃO HOTMART */
-        .btn-compra {
-            display: block; width: 100%; background: var(--green); color: white;
-            text-align: center; padding: 15px; border-radius: 10px; text-decoration: none;
-            font-weight: bold; font-size: 1.2rem; margin-top: 15px; transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(46, 164, 79, 0.4);
-        }
-        .btn-compra:hover { transform: scale(1.02); filter: brightness(1.1); }
-
-        /* MENU LATERAL */
-        #side-menu {
-            height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0;
-            background-color: rgba(13, 17, 23, 0.98); overflow-x: hidden; transition: 0.5s;
-            padding-top: 60px; border-right: 1px solid var(--gold);
-        }
-        #side-menu a { padding: 15px 25px; text-decoration: none; font-size: 1.2rem; color: var(--text); display: block; border-bottom: 1px solid #30363d; }
-
-        .open-btn {
-            font-size: 25px; cursor: pointer; position: fixed; top: 25px; left: 15px;
-            z-index: 1600; background: var(--gold); color: white; padding: 8px 12px; border-radius: 8px; border: none;
-        }
-
-        .main-content { padding: 30px 20px; max-width: 600px; margin: auto; }
-        .section { background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 25px; margin-bottom: 30px; }
-        
-        h2 { margin-top: 0; color: var(--blue); }
-
-        .video-wrapper {
-            position: relative; padding-bottom: 56.25%; height: 0;
-            border-radius: 10px; overflow: hidden; margin: 15px 0; border: 1px solid var(--gold);
-        }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-        .hidden { display: none !important; }
-        footer { text-align: center; padding: 30px; font-size: 0.8rem; background: rgba(0,0,0,0.8); border-top: 2px solid var(--gold); }
-    </style>
-</head>
-<body>
-
-    <button class="open-btn" onclick="openNav()">&#9776;</button>
-
-    <header class="leao-header">
-        <div class="leao-img" title="Leão - Assistente Inteligente"></div>
-        <div class="balao-fala" id="leao-texto">Olá! Eu sou o Leão. Seja bem-vindo ao portal.</div>
-        
-        
-
-    <div id="side-menu">
-        <a href="javascript:void(0)" style="font-size:30px; text-align:right;" onclick="closeNav()">&times;</a>
-        <a href="#" onclick="filter('all')">🏠 Início Geral</a>
-        <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
-        <a href="#" onclick="filter('animes')">⛩️ Animes</a>
-        <a href="#" onclick="filter('cursos')">📊 Cursos Digitais</a>
-        <a href="#" onclick="filter('tecnologia')">💻 Tecnologia</a>
-    </div>
-
-    <div class="main-content">
-        
-        <div class="section">
-            <h2>Excel Profissional: Domine as Planilhas 📊</h2>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
-            </div>
-            <p>Seja referência no trabalho com o curso de Excel mais completo da Hotmart.</p>
-            <a href="https://go.hotmart.com/K102868779N?redirectionUr" target="_blank" class="btn-compra">🚀 COMPRAR CURSO DE EXCEL AGORA!</a>
-        </div>
-
-        <div class="section">
-            <h2>Astronomia: O Cosmos e Você 🌌</h2>
-            <p>Cada partícula de ferro no seu sangue foi forjada em explosões de estrelas massivas. O universo não está apenas "lá fora", ele está em você.</p>
-        </div>
-        
-        <div class="section" data-cat="astronomia">
-    <h2 style="color:var(--blue);">Astronomia: A Fronteira Final do Conhecimento 🌌</h2>
-    <img src="astro-plataforma.jpg" style="width:100%; border-radius:15px; margin-bottom: 15px;" alt="Universo">
-    
-    <p style="text-align: justify;">O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas distantes até a composição oculta da matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim por galáxias e buracos negros.</p>
-
-    <div id="texto-universo-completo" style="display: none; text-align: justify; line-height: 1.6;">
-        <p>A cosmologia moderna nos ensina que tudo começou com o Big Bang, uma expansão repentina que deu origem ao tempo e ao espaço. Estudar os astros é, na verdade, entender a nossa própria origem, pois cada átomo em nosso corpo foi forjado no coração de estrelas que explodiram há bilhões de anos.</p>
-        
-        <p>A Via Láctea, nossa galáxia, abriga bilhões de sistemas solares. Compreender a mecânica celeste exige precisão matemática e uma curiosidade insaciável. Os buracos negros, por exemplo, são regiões onde a gravidade é tão intensa que nem a luz consegue escapar, funcionando como verdadeiros laboratórios de física extrema que desafiam as leis que conhecemos na Terra.</p>
-        
-        <p>Cada nova imagem capturada por sondas espaciais e pelo telescópio James Webb nos aproxima de uma compreensão mais profunda. Estamos sozinhos? Essa é a pergunta que move a busca por exoplanetas em zonas habitáveis. O portal Leão traz essa clareza para você, transformando dados complexos em conhecimento acessível.</p>
-    </div>
-
-    <button onclick="expandirUniverso()" id="btn-universo" style="background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 15px;">
-        Ler Mais sobre o Universo
-    </button>
-</div>
-        
-    </div>
-
-    <footer>
-        <p>© 2026 Portal Daniel Ferreira - Autoridade em Ciência e Tecnologia</p>
-        <p>Desenvolvido com foco em SEO e conversão.</p>
-    </footer>
-
-    <script>
-        function openNav() { document.getElementById("side-menu").style.width = "260px"; }
-        function closeNav() { document.getElementById("side-menu").style.width = "0"; }
-
-        const balao = document.getElementById('leao-texto');
-
-        // SAUDAÇÃO DO LEÃO
-        function saudacaoIncial() {
-            const hora = new Date().getHours();
-            let msg = "";
-            if (hora >= 6 && hora < 12) msg = "Bom dia! Preparado para caçar conhecimento hoje?";
-            else if (hora >= 12 && hora < 18) msg = "Boa tarde! A jornada do conhecimento não para. Como posso ajudar?";
-            else msg = "Boa noite! O céu está estrelado e o portal está pronto para você.";
-            balao.innerText = msg;
-        }
-        window.onload = saudacaoIncial;
-
-        function leaoChat() {
-            const input = document.getElementById('leao-search').value.toLowerCase();
-            if(input.includes('dia') || input.includes('hoje')) {
-                const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-                balao.innerText = "Hoje é " + dias[new Date().getDay()] + "! Dia de progresso.";
-            } else if(input.includes('excel') || input.includes('curso')) {
-                balao.innerText = "O curso de Excel é o melhor investimento para sua carreira. Clique no botão verde!";
-            } else {
-                balao.innerText = "Sou o Leão, o guardião do conhecimento deste portal. O que deseja explorar?";
-            }
-        }
-<script>
-// 1. Lógica da Barra de Pesquisa (Luna responde)
-function leaoChat() {
-    const query = document.getElementById('leao-search').value.toLowerCase();
-    const lunaTexto = document.getElementById('luna-texto');
-    
-    if (query.includes('dia') || query.includes('hoje')) {
-        const hoje = new Date();
-        const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-        lunaTexto.innerText = "Hoje é " + dias[hoje.getDay()] + ", Daniel!";
-    } else {
-        lunaTexto.innerText = "Estou processando sua dúvida sobre: " + query;
-    }
-}
-
-// 2. Filtro Automático por Título (O que você pediu!)
-function filter(cat) {
-    const sections = document.querySelectorAll('.section');
-    const lunaTexto = document.getElementById('luna-texto');
-
-    sections.forEach(s => {
-        const titulo = s.querySelector('h2').innerText.toLowerCase();
-        
-        if (cat === 'all') {
-            s.style.display = "block";
-            lunaTexto.innerText = "Bem-vindo ao Portal!";
-        } 
-        // Se clicar em Astronomia, ele procura a palavra no título
-        else if (cat === 'astronomia' && titulo.includes('astronomia')) {
-            s.style.display = "block";
-            lunaTexto.innerText = "Carregando Astronomia...";
-        } 
-        // Se clicar em Animes, procura anime no título
-        else if (cat === 'animes' && titulo.includes('anime')) {
-            s.style.display = "block";
-            lunaTexto.innerText = "Carregando Animes!";
-        } 
-        // Se não for nenhum dos dois, cai em Variedades
-        else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) {
-            s.style.display = "block";
-        } else {
-            s.style.display = "none";
-        }
-    });
-    closeNav(); 
-}
-
-// 3. Função do botão Ler Mais
-function expandirUniverso() {
-    var texto = document.getElementById("texto-universo-completo");
-    var btn = document.getElementById("btn-universo");
-    if (texto.style.display === "none") {
-        texto.style.display = "block";
-        btn.innerText = "Ler Menos";
-    } else {
-        texto.style.display = "none";
-        btn.innerText = "Ler Mais sobre o Universo";
-    }
-}
-</script>
-   <style>
-        /* Estilos do Portal Leão */
         :root { --blue: #007bff; --dark: #333; --light: #f4f4f4; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); }
-        
-        .header { background: white; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        
-        /* Menu Lateral */
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); color: var(--dark); }
+
+        /* Menu Lateral Estilizado */
         .sidenav { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
-        .sidenav a { padding: 8px 32px; text-decoration: none; font-size: 20px; color: #818181; display: block; transition: 0.3s; }
+        .sidenav a { padding: 10px 32px; text-decoration: none; font-size: 22px; color: #818181; display: block; transition: 0.3s; }
         .sidenav a:hover { color: #f1f1f1; }
         .sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px; }
 
-        .main-content { padding: 20px; max-width: 800px; margin: auto; }
-        .section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .section img { width: 100%; border-radius: 10px; }
-        
-        .search-container { margin-bottom: 20px; display: flex; gap: 10px; }
-        .search-container input { flex: 1; padding: 12px; border-radius: 25px; border: 1px solid #ddd; outline: none; }
-        .search-container button { padding: 10px 20px; border-radius: 25px; border: none; background: var(--blue); color: white; cursor: pointer; }
+        /* Cabeçalho com a sua Imagem */
+        .header { background: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .perfil-img { width: 65px; height: 65px; border-radius: 50%; border: 3px solid var(--blue); object-fit: cover; }
 
-        .ler-mais-btn { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        .main-content { padding: 20px; max-width: 850px; margin: auto; }
+
+        /* Seções de Conteúdo */
+        .section { background: white; padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: block; }
+        .section img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
+        .section h2 { color: var(--blue); margin-top: 0; }
+
+        /* Barra de Pesquisa */
+        .search-container { margin-bottom: 25px; display: flex; gap: 10px; }
+        .search-container input { flex: 1; padding: 15px; border-radius: 30px; border: 1px solid #ddd; outline: none; font-size: 16px; }
+        .search-container button { padding: 10px 25px; border-radius: 30px; border: none; background: var(--blue); color: white; cursor: pointer; font-weight: bold; }
+
+        /* Botão Ler Mais */
+        .ler-mais-btn { background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 15px; transition: 0.3s; }
+        .ler-mais-btn:hover { background: #0056b3; }
+        
+        #texto-universo-completo { display: none; text-align: justify; line-height: 1.6; margin-top: 15px; border-top: 1px solid #eee; pt: 15px; }
     </style>
 </head>
 <body>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#" onclick="filter('all')">Início</a>
-        <a href="#" onclick="filter('astronomia')">Astronomia</a>
-        <a href="#" onclick="filter('animes')">Animes</a>
+        <a href="#" onclick="filter('all')">🏠 Início</a>
+        <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
+        <a href="#" onclick="filter('animes')">⛩️ Animes</a>
     </div>
 
     <header class="header">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <span style="font-size:35px;cursor:pointer;color:var(--blue);" onclick="openNav()">&#9776;</span>
         <div style="text-align: center; flex: 1;">
-            <h1 style="margin:0; color:var(--blue);">Portal Leão 🦁</h1>
-            <p id="luna-texto" style="margin:0; font-size: 14px; color: #666;">Olá, Daniel! O que vamos explorar hoje?</p>
+            <img src="luna-perfil.jpg" class="perfil-img" alt="Leão">
+            <h1 style="margin:5px 0 0 0; color:var(--blue); font-size: 26px;">Portal Leão 🦁</h1>
+            <p id="luna-texto" style="margin:0; font-size: 15px; color: #555; font-weight: 500;">Olá, Daniel! O que vamos explorar hoje?</p>
         </div>
     </header>
 
     <div class="main-content">
         <div class="search-container">
-            <input type="text" id="leao-search" placeholder="Pergunte ao Leão...">
+            <input type="text" id="leao-search" placeholder="Pergunte algo para o Leão...">
             <button onclick="leaoChat()">🔍 Buscar</button>
         </div>
 
         <div class="section" data-cat="astronomia">
-            <h2 style="color:var(--blue);">Astronomia: A Fronteira Final do Conhecimento 🌌</h2>
+            <h2>Astronomia: Mistérios do Universo 🌌</h2>
             <img src="astro-plataforma.jpg" alt="Universo">
-            <p>O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas até a matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim.</p>
+            <p>O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas distantes até a matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim.</p>
             
-            <div id="texto-universo-completo" style="display: none; text-align: justify; margin-top: 15px;">
-                <p>A cosmologia moderna ensina que tudo começou com o Big Bang. Estudar os astros é entender a nossa própria origem, pois somos feitos de poeira de estrelas. A Via Láctea abriga bilhões de sistemas solares e os buracos negros desafiam as leis da física que conhecemos.</p>
-                <p>Com o telescópio James Webb, estamos vendo o passado do universo. O Portal Leão traz essa clareza para você, transformando dados complexos em conhecimento para todos os entusiastas do céu estrelado.</p>
+            <div id="texto-universo-completo">
+                <p>A cosmologia moderna nos ensina que tudo começou com o Big Bang há cerca de 13,8 bilhões de anos. Estudar os astros é entender a nossa própria origem, pois cada átomo em nosso corpo foi forjado no coração de estrelas.</p>
+                <p>Com telescópios como o James Webb, estamos conseguindo enxergar as primeiras galáxias formadas. O Portal Leão traz essa clareza para você, transformando dados complexos em conhecimento acessível para todos os entusiastas.</p>
+                <p>A busca por vida em outros planetas e o estudo de buracos negros continuam sendo os maiores desafios da ciência atual. Fique ligado para mais atualizações sobre o cosmos!</p>
             </div>
+            
             <button onclick="expandirUniverso()" id="btn-universo" class="ler-mais-btn">Ler Mais sobre o Universo</button>
         </div>
 
         <div class="section" data-cat="animes">
-            <h2 style="color:var(--blue);">Animes: O Mundo Otaku ⛩️</h2>
+            <h2>Animes: O Mundo Otaku ⛩️</h2>
             <img src="imagem-anime.jpg" alt="Animes">
-            <p>Explore as melhores análises e as novidades mais quentes do mundo dos animes aqui no Portal Leão.</p>
+            <p>Explore as melhores análises, lançamentos de temporadas e curiosidades do mundo dos animes aqui no Portal Leão.</p>
         </div>
     </div>
 
     <script>
-        // Abrir e Fechar Menu
-        function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
+        // Funções do Menu
+        function openNav() { document.getElementById("mySidenav").style.width = "270px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
         // Chat do Leão
@@ -342,15 +100,24 @@ function expandirUniverso() {
             }
         }
 
-        // Filtro Automático por Título
+        // Sistema de Filtro Automático
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
             const leaoTexto = document.getElementById('luna-texto');
             sections.forEach(s => {
                 const titulo = s.querySelector('h2').innerText.toLowerCase();
-                if (cat === 'all') { s.style.display = "block"; leaoTexto.innerText = "Início"; }
-                else if (cat === 'astronomia' && titulo.includes('astronomia')) { s.style.display = "block"; leaoTexto.innerText = "Pasta de Astronomia"; }
-                else if (cat === 'animes' && titulo.includes('anime')) { s.style.display = "block"; leaoTexto.innerText = "Pasta de Animes"; }
+                if (cat === 'all') { 
+                    s.style.display = "block"; 
+                    leaoTexto.innerText = "Início do Portal"; 
+                }
+                else if (cat === 'astronomia' && titulo.includes('astronomia')) { 
+                    s.style.display = "block"; 
+                    leaoTexto.innerText = "Explorando Astronomia..."; 
+                }
+                else if (cat === 'animes' && titulo.includes('anime')) { 
+                    s.style.display = "block"; 
+                    leaoTexto.innerText = "Carregando Animes!"; 
+                }
                 else { s.style.display = "none"; }
             });
             closeNav();
@@ -360,7 +127,7 @@ function expandirUniverso() {
         function expandirUniverso() {
             const texto = document.getElementById("texto-universo-completo");
             const btn = document.getElementById("btn-universo");
-            if (texto.style.display === "none") {
+            if (texto.style.display === "none" || texto.style.display === "") {
                 texto.style.display = "block";
                 btn.innerText = "Ler Menos";
             } else {
