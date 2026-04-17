@@ -5,30 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Daniel 🦁 | Astronomia, Animes e Conhecimento</title>
     
-    <meta name="description" content="Portal Daniel - Novidades sobre Astronomia, Animes, Variedades e Cursos Profissionais de Excel.">
-    <meta name="keywords" content="Portal Daniel, Astronomia, Animes, Curso Excel, James Webb, Solo Leveling, Curiosidades">
+    <meta name="description" content="Explore a salada de conhecimentos do Portal Daniel: Astronomia, Animes e Cursos Profissionais.">
     <meta name="author" content="Daniel Ferreira">
 
     <style>
         :root { --blue: #007bff; --bg: #f8f9fa; --white: #ffffff; --text: #333; --green: #28a745; }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); }
 
-        /* Menu Lateral */
         .sidenav { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
-        .sidenav a { padding: 12px 32px; text-decoration: none; font-size: 20px; color: #818181; display: block; transition: 0.3s; }
+        .sidenav a { padding: 12px 32px; text-decoration: none; font-size: 20px; color: #818181; display: block; }
         .sidenav a:hover { color: #f1f1f1; }
         .sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
 
-        /* Header */
         .header { background: var(--white); padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         
-        /* Barra de Pesquisa */
-        .search-container { padding: 15px; max-width: 800px; margin: auto; display: flex; gap: 10px; }
-        #searchBar { flex: 1; padding: 12px; border-radius: 25px; border: 1px solid #ddd; outline: none; }
-        .btn-search { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; }
+        .search-container { padding: 15px; max-width: 800px; margin: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+        #searchBar { flex: 1; padding: 12px; border-radius: 25px; border: 1px solid #ddd; outline: none; min-width: 200px; }
+        .btn-search { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .btn-mic { background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: bold; }
 
-        /* Area do IA Leão */
-        .leao-box { background: #eef6ff; padding: 15px; border-radius: 10px; border-left: 5px solid var(--blue); margin: 10px auto; max-width: 770px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+        .leao-box { background: #eef6ff; padding: 15px; border-radius: 10px; border-left: 5px solid var(--blue); margin: 10px auto; max-width: 770px; display: flex; flex-direction: column; gap: 5px; }
+        .leao-status { font-weight: bold; color: var(--blue); }
 
         .main-content { padding: 10px; max-width: 800px; margin: auto; }
         .section { background: var(--white); padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
@@ -38,13 +35,14 @@
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
         h2 { color: var(--blue); margin-top: 0; }
-        .extra-content { display: none; margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px; }
-        .btn-acao { background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; text-decoration: none; display: inline-block; }
+        .btn-acao { background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; text-decoration: none; display: inline-block; font-weight: bold; }
         .btn-compra { background: var(--green); width: 100%; text-align: center; box-sizing: border-box; font-size: 18px; }
         .footer { text-align: center; padding: 30px; color: #666; }
     </style>
 </head>
-<body onclick="iniciarVoz()"> <div id="mySidenav" class="sidenav">
+<body onclick="iniciarVoz()">
+
+    <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="#" onclick="filter('all')">🏠 Início</a>
         <a href="#" onclick="filter('cursos')">📊 Cursos</a>
@@ -55,108 +53,121 @@
 
     <header class="header">
         <span style="font-size:30px;cursor:pointer;color:var(--blue);" onclick="openNav()">&#9776;</span>
-        <h1 style="margin:0; color:var(--blue); font-size: 24px; flex: 1; text-align: center;">Portal Daniel 🦁</h1>
-        <div style="width: 30px;"></div> </header>
+        <h1 style="margin:0; color:var(--blue); font-size: 24px;">Portal Daniel 🦁</h1>
+        <div style="width: 30px;"></div>
+    </header>
 
     <div class="leao-box">
-        <span>🦁 IA Leão:</span>
-        <span id="leao-status">Seja bem-vindo ao Portal Daniel! Toque em qualquer lugar para me ouvir.</span>
+        <div class="leao-status">🦁 IA LEÃO DIZ:</div>
+        <div id="leao-texto">Toque na tela para o IA Leão te dar as boas-vindas!</div>
     </div>
 
     <div class="search-container">
-        <input type="text" id="searchBar" placeholder="Pergunte algo ao Leão (ex: James Webb, Solo Leveling)...">
+        <input type="text" id="searchBar" placeholder="Digite sua dúvida aqui...">
         <button class="btn-search" onclick="perguntarLeao()">Perguntar</button>
+        <button class="btn-mic" onclick="ouvirLeao()">🎙️ Falar "Oi Leão"</button>
     </div>
 
     <main class="main-content">
+        <article class="section" data-cat="variedades">
+            <h2>Por que essa "Salada" de Conteúdo? 💡</h2>
+            <p>Muitos perguntam: Daniel, o que Astronomia tem a ver com Animes? A resposta é simples: **Curiosidade Infinita**.</p>
+            <p>O Portal Daniel foi criado para ser uma "salada de conhecimento". Aqui, exploramos desde a tecnologia das planilhas no Excel até os mistérios das galáxias distantes, sem esquecer da criatividade dos Animes. Entender o cosmos nos dá perspectiva, e curtir animes nos dá imaginação. Juntar tudo isso é o que nos torna mais inteligentes e versáteis!</p>
+        </article>
+
         <article class="section" data-cat="cursos">
-            <h2>Excel & Power BI Profissional 📊</h2>
+            <h2>Excel Profissional 📊</h2>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/oXBANG0VMUs" allowfullscreen></iframe>
             </div>
-            <p>Torne-se um especialista em dados com nosso treinamento completo.</p>
+            <p>Aprenda com quem entende e transforme sua carreira.</p>
             <a href="https://go.hotmart.com/K102868779N?redirectionUrl=https%3A%2F%2Fexperttcursos.com%2Fexcelpowerbi" target="_blank" class="btn-acao btn-compra">🚀 ACESSAR CURSO AGORA</a>
         </article>
 
-        <article class="section" data-cat="astronomia" id="post-astro">
-            <h2>Mistérios do James Webb 🌌</h2>
-            <img src="astro-plataforma.jpg" alt="Notícias Astronomia">
-            <p>O telescópio James Webb continua revelando o nascimento de novas galáxias.</p>
-            <div id="extra-astro" class="extra-content">
-                Cientistas descobriram que o universo primitivo era muito mais organizado do que se pensava. A astronomia vive sua era de ouro!
-            </div>
-            <button onclick="toggleText('extra-astro', this)" class="btn-acao">Ler Mais</button>
+        <article class="section" data-cat="astronomia">
+            <h2>Notícias do James Webb 🌌</h2>
+            <img src="astro-plataforma.jpg" alt="Universo">
+            <p>As descobertas que estão mudando os livros de história.</p>
         </article>
 
-        <article class="section" data-cat="animes" id="post-anime">
-            <h2>Solo Leveling e a Cultura Otaku ⛩️</h2>
-            <img src="imagem-anime.jpg" alt="Notícias Animes">
-            <p>O sucesso de Solo Leveling abriu portas para novos animes de alta qualidade.</p>
-            <div id="extra-anime" class="extra-content">
-                A segunda temporada promete arcos épicos. Fique ligado no Portal Daniel para as datas oficiais!
-            </div>
-            <button onclick="toggleText('extra-anime', this)" class="btn-acao">Ler Mais</button>
-        </article>
-
-        <article class="section" data-cat="variedades">
-            <h2>Curiosidades do Mundo 💡</h2>
-            <p>Você sabia que a luz do Sol demora cerca de 8 minutos para chegar à Terra? No Portal Daniel você aprende algo novo todo dia!</p>
+        <article class="section" data-cat="animes">
+            <h2>Mundo Otaku ⛩️</h2>
+            <img src="imagem-anime.jpg" alt="Animes">
+            <p>As melhores análises de animes você encontra aqui.</p>
         </article>
     </main>
 
     <footer class="footer">
-        <p>© 2026 Portal Daniel - Ciência, Cultura e Tecnologia.</p>
+        <p>© 2026 Portal Daniel - Todos os direitos reservados.</p>
     </footer>
 
     <script>
         let vozAtivada = false;
 
-        function iniciarVoz() {
-            if(!vozAtivada) {
-                falar("Seja bem-vindo ao Portal Daniel! Eu sou o IA Leão e estou aqui para te ajudar a explorar o universo e o mundo dos animes.");
-                vozAtivada = true;
-            }
-        }
-
         function falar(texto) {
             const msg = new SpeechSynthesisUtterance();
             msg.text = texto;
             msg.lang = 'pt-BR';
+            msg.rate = 0.9; // Um pouco mais lento para ser imponente
+            
+            // Tenta encontrar uma voz masculina
+            const voices = window.speechSynthesis.getVoices();
+            const vozMasculina = voices.find(v => v.name.includes('Daniel') || v.name.includes('Antonio') || v.name.includes('Male') || v.name.includes('Google português do Brasil'));
+            if(vozMasculina) msg.voice = vozMasculina;
+
             window.speechSynthesis.speak(msg);
-            document.getElementById('leao-status').innerText = texto;
+            document.getElementById('leao-texto').innerText = texto;
+        }
+
+        function iniciarVoz() {
+            if(!vozAtivada) {
+                const boasVindas = "Seja muito bem-vindo ao Portal Daniel! Eu sou o IA Leão, seu assistente e guardião deste portal. Prepare-se, pois aqui você encontrará uma verdadeira salada de conhecimentos feita para expandir sua mente. Explore os três pontinhos no canto superior para navegar entre nossas categorias especiais. Temos o curso de excel e power b í para sua carreira, as maravilhas da astronomia que revelam o passado do universo, e a energia dos animes para sua diversão e criatividade. Tudo aqui foi selecionado pelo Daniel para te transformar em alguém mais curioso. Sinta-se em casa e pergunte o que quiser!";
+                falar(boasVindas);
+                vozAtivada = true;
+            }
         }
 
         function perguntarLeao() {
             const busca = document.getElementById('searchBar').value.toLowerCase();
-            
-            if(busca.includes("james webb") || busca.includes("astronomia")) {
-                falar("Sobre astronomia, o James Webb é nossa maior ferramenta atual. Veja o post sobre galáxias!");
-                filter('astronomia');
-            } else if (busca.includes("solo leveling") || busca.includes("anime")) {
-                falar("Os animes estão bombando! Solo Leveling é o destaque do momento no portal.");
+            processarComando(busca);
+        }
+
+        function ouvirLeao() {
+            const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!Recognition) {
+                alert("Seu navegador não suporta reconhecimento de voz.");
+                return;
+            }
+            const rec = new Recognition();
+            rec.lang = 'pt-BR';
+            rec.start();
+            document.getElementById('leao-texto').innerText = "Ouvindo você...";
+
+            rec.onresult = (event) => {
+                const comando = event.results[0][0].transcript.toLowerCase();
+                processarComando(comando);
+            };
+        }
+
+        function processarComando(cmd) {
+            if(cmd.includes("oi leão") || cmd.includes("olá") || cmd.includes("leão")) {
+                falar("Olá! Estou te ouvindo perfeitamente. Como posso ajudar o seu dia hoje?");
+            } else if(cmd.includes("anime")) {
+                falar("O mundo otaku é fantástico! Filtrando os melhores animes para você.");
                 filter('animes');
-            } else if (busca.includes("curso") || busca.includes("excel")) {
-                falar("Quer evoluir na carreira? O curso de Excel é o caminho certo!");
+            } else if(cmd.includes("astronomia") || cmd.includes("espaço")) {
+                falar("Olhar para as estrelas é olhar para o passado. Veja o que temos sobre o cosmos.");
+                filter('astronomia');
+            } else if(cmd.includes("curso") || cmd.includes("excel")) {
+                falar("Excelente escolha! O conhecimento técnico abre portas profissionais incríveis.");
                 filter('cursos');
             } else {
-                falar("Ainda estou aprendendo sobre isso, mas continue explorando o Portal Daniel!");
-                filter('all');
+                document.getElementById('leao-texto').innerText = "Você disse: " + cmd + ". O Leão está processando...";
             }
         }
 
         function openNav() { document.getElementById("mySidenav").style.width = "270px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
-
-        function toggleText(id, btn) {
-            const extra = document.getElementById(id);
-            if (extra.style.display === "none" || extra.style.display === "") {
-                extra.style.display = "block";
-                btn.innerText = "Ler Menos";
-            } else {
-                extra.style.display = "none";
-                btn.innerText = "Ler Mais";
-            }
-        }
 
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
@@ -167,6 +178,9 @@
             });
             closeNav();
         }
+
+        // Carrega vozes
+        window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
     </script>
 </body>
 </html>
