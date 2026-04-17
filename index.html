@@ -258,76 +258,116 @@ function expandirUniverso() {
     }
 }
 </script>
+   <style>
+        /* Estilos do Portal Leão */
+        :root { --blue: #007bff; --dark: #333; --light: #f4f4f4; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); }
         
-// Função para abrir o menu lateral
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-// Função para fechar o menu lateral
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-        <script>
-// 1. Pesquisa Inteligente com o Leão
-function leaoChat() {
-    const input = document.getElementById('leao-search');
-    const leaoTexto = document.getElementById('luna-texto'); // Mantendo o ID que está no seu HTML para não quebrar
-    
-    if (!input || !leaoTexto) return;
-    const query = input.value.toLowerCase();
-    
-    if (query.includes('dia') || query.includes('hoje')) {
-        const hoje = new Date();
-        const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-        leaoTexto.innerText = "Hoje é " + dias[hoje.getDay()] + ", Daniel!";
-    } else {
-        leaoTexto.innerText = "Leão procurando por: " + query;
-    }
-}
-
-// 2. Filtro Automático (Astronomia/Animes/Variedades)
-function filter(cat) {
-    const sections = document.querySelectorAll('.section');
-    const leaoTexto = document.getElementById('luna-texto');
-
-    sections.forEach(s => {
-        const h2 = s.querySelector('h2');
-        if (!h2) return;
-        const titulo = h2.innerText.toLowerCase();
+        .header { background: white; padding: 15px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         
-        if (cat === 'all') {
-            s.style.display = "block";
-            leaoTexto.innerText = "Bem-vindo ao Portal Leão!";
-        } else if (cat === 'astronomia' && titulo.includes('astronomia')) {
-            s.style.display = "block";
-            leaoTexto.innerText = "Abrindo arquivos de Astronomia...";
-        } else if (cat === 'animes' && titulo.includes('anime')) {
-            s.style.display = "block";
-            leaoTexto.innerText = "Carregando área de Animes!";
-        } else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) {
-            s.style.display = "block";
-            leaoTexto.innerText = "Explorando variedades...";
-        } else {
-            s.style.display = "none";
+        /* Menu Lateral */
+        .sidenav { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
+        .sidenav a { padding: 8px 32px; text-decoration: none; font-size: 20px; color: #818181; display: block; transition: 0.3s; }
+        .sidenav a:hover { color: #f1f1f1; }
+        .sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px; }
+
+        .main-content { padding: 20px; max-width: 800px; margin: auto; }
+        .section { background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .section img { width: 100%; border-radius: 10px; }
+        
+        .search-container { margin-bottom: 20px; display: flex; gap: 10px; }
+        .search-container input { flex: 1; padding: 12px; border-radius: 25px; border: 1px solid #ddd; outline: none; }
+        .search-container button { padding: 10px 20px; border-radius: 25px; border: none; background: var(--blue); color: white; cursor: pointer; }
+
+        .ler-mais-btn { background: var(--blue); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="filter('all')">Início</a>
+        <a href="#" onclick="filter('astronomia')">Astronomia</a>
+        <a href="#" onclick="filter('animes')">Animes</a>
+    </div>
+
+    <header class="header">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <div style="text-align: center; flex: 1;">
+            <h1 style="margin:0; color:var(--blue);">Portal Leão 🦁</h1>
+            <p id="luna-texto" style="margin:0; font-size: 14px; color: #666;">Olá, Daniel! O que vamos explorar hoje?</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="search-container">
+            <input type="text" id="leao-search" placeholder="Pergunte ao Leão...">
+            <button onclick="leaoChat()">🔍 Buscar</button>
+        </div>
+
+        <div class="section" data-cat="astronomia">
+            <h2 style="color:var(--blue);">Astronomia: A Fronteira Final do Conhecimento 🌌</h2>
+            <img src="astro-plataforma.jpg" alt="Universo">
+            <p>O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas até a matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim.</p>
+            
+            <div id="texto-universo-completo" style="display: none; text-align: justify; margin-top: 15px;">
+                <p>A cosmologia moderna ensina que tudo começou com o Big Bang. Estudar os astros é entender a nossa própria origem, pois somos feitos de poeira de estrelas. A Via Láctea abriga bilhões de sistemas solares e os buracos negros desafiam as leis da física que conhecemos.</p>
+                <p>Com o telescópio James Webb, estamos vendo o passado do universo. O Portal Leão traz essa clareza para você, transformando dados complexos em conhecimento para todos os entusiastas do céu estrelado.</p>
+            </div>
+            <button onclick="expandirUniverso()" id="btn-universo" class="ler-mais-btn">Ler Mais sobre o Universo</button>
+        </div>
+
+        <div class="section" data-cat="animes">
+            <h2 style="color:var(--blue);">Animes: O Mundo Otaku ⛩️</h2>
+            <img src="imagem-anime.jpg" alt="Animes">
+            <p>Explore as melhores análises e as novidades mais quentes do mundo dos animes aqui no Portal Leão.</p>
+        </div>
+    </div>
+
+    <script>
+        // Abrir e Fechar Menu
+        function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
+        function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
+
+        // Chat do Leão
+        function leaoChat() {
+            const query = document.getElementById('leao-search').value.toLowerCase();
+            const leaoTexto = document.getElementById('luna-texto');
+            if (query.includes('dia') || query.includes('hoje')) {
+                const hoje = new Date();
+                const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+                leaoTexto.innerText = "Hoje é " + dias[hoje.getDay()] + ", Daniel!";
+            } else {
+                leaoTexto.innerText = "Leão procurando por: " + query;
+            }
         }
-    });
-    if (typeof closeNav === 'function') closeNav();
-}
 
-// 3. Botão Ler Mais
-function expandirUniverso() {
-    const texto = document.getElementById("texto-universo-completo");
-    const btn = document.getElementById("btn-universo");
-    if (texto.style.display === "none" || texto.style.display === "") {
-        texto.style.display = "block";
-        btn.innerText = "Ler Menos";
-    } else {
-        texto.style.display = "none";
-        btn.innerText = "Ler Mais sobre o Universo";
-    }
-}
-</script>
+        // Filtro Automático por Título
+        function filter(cat) {
+            const sections = document.querySelectorAll('.section');
+            const leaoTexto = document.getElementById('luna-texto');
+            sections.forEach(s => {
+                const titulo = s.querySelector('h2').innerText.toLowerCase();
+                if (cat === 'all') { s.style.display = "block"; leaoTexto.innerText = "Início"; }
+                else if (cat === 'astronomia' && titulo.includes('astronomia')) { s.style.display = "block"; leaoTexto.innerText = "Pasta de Astronomia"; }
+                else if (cat === 'animes' && titulo.includes('anime')) { s.style.display = "block"; leaoTexto.innerText = "Pasta de Animes"; }
+                else { s.style.display = "none"; }
+            });
+            closeNav();
+        }
+
+        // Função Ler Mais
+        function expandirUniverso() {
+            const texto = document.getElementById("texto-universo-completo");
+            const btn = document.getElementById("btn-universo");
+            if (texto.style.display === "none") {
+                texto.style.display = "block";
+                btn.innerText = "Ler Menos";
+            } else {
+                texto.style.display = "none";
+                btn.innerText = "Ler Mais sobre o Universo";
+            }
+        }
+    </script>
 </body>
 </html>
-       
