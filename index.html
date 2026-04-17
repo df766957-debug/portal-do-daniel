@@ -258,19 +258,66 @@ function expandirUniverso() {
 }
 </script>
 
+        <script>
+// 1. Pesquisa Inteligente com o Leão
+function leaoChat() {
+    const input = document.getElementById('leao-search');
+    const leaoTexto = document.getElementById('luna-texto'); // Mantendo o ID que está no seu HTML para não quebrar
+    
+    if (!input || !leaoTexto) return;
+    const query = input.value.toLowerCase();
+    
+    if (query.includes('dia') || query.includes('hoje')) {
+        const hoje = new Date();
+        const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+        leaoTexto.innerText = "Hoje é " + dias[hoje.getDay()] + ", Daniel!";
+    } else {
+        leaoTexto.innerText = "Leão procurando por: " + query;
+    }
+}
+
+// 2. Filtro Automático (Astronomia/Animes/Variedades)
+function filter(cat) {
+    const sections = document.querySelectorAll('.section');
+    const leaoTexto = document.getElementById('luna-texto');
+
+    sections.forEach(s => {
+        const h2 = s.querySelector('h2');
+        if (!h2) return;
+        const titulo = h2.innerText.toLowerCase();
         
-        function filter(cat) {
-            const sections = document.querySelectorAll('.section');
-            closeNav();
-            sections.forEach(s => {
-                const titulo = s.querySelector('h2').innerText.toLowerCase();
-                if (cat === 'all') s.classList.remove('hidden');
-                else if (titulo.includes(cat)) s.classList.remove('hidden');
-                else s.classList.add('hidden');
-            });
-            balao.innerText = "Organizando o território para: " + cat.toUpperCase();
-            setTimeout(() => { balao.innerText = "Leão Assistant: Pronto."; }, 3000);
+        if (cat === 'all') {
+            s.style.display = "block";
+            leaoTexto.innerText = "Bem-vindo ao Portal Leão!";
+        } else if (cat === 'astronomia' && titulo.includes('astronomia')) {
+            s.style.display = "block";
+            leaoTexto.innerText = "Abrindo arquivos de Astronomia...";
+        } else if (cat === 'animes' && titulo.includes('anime')) {
+            s.style.display = "block";
+            leaoTexto.innerText = "Carregando área de Animes!";
+        } else if (cat === 'variedades' && !titulo.includes('astronomia') && !titulo.includes('anime')) {
+            s.style.display = "block";
+            leaoTexto.innerText = "Explorando variedades...";
+        } else {
+            s.style.display = "none";
         }
-    </script>
+    });
+    if (typeof closeNav === 'function') closeNav();
+}
+
+// 3. Botão Ler Mais
+function expandirUniverso() {
+    const texto = document.getElementById("texto-universo-completo");
+    const btn = document.getElementById("btn-universo");
+    if (texto.style.display === "none" || texto.style.display === "") {
+        texto.style.display = "block";
+        btn.innerText = "Ler Menos";
+    } else {
+        texto.style.display = "none";
+        btn.innerText = "Ler Mais sobre o Universo";
+    }
+}
+</script>
 </body>
 </html>
+       
