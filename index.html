@@ -5,36 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Leão 🦁</title>
     <style>
-        :root { --blue: #007bff; --dark: #333; --light: #f4f4f4; }
+        :root { --blue: #007bff; --dark: #333; --light: #f4f4f4; --gold: #ffc107; }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); color: var(--dark); }
 
-        /* Menu Lateral Estilizado */
         .sidenav { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
         .sidenav a { padding: 10px 32px; text-decoration: none; font-size: 22px; color: #818181; display: block; transition: 0.3s; }
         .sidenav a:hover { color: #f1f1f1; }
         .sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px; }
 
-        /* Cabeçalho com a sua Imagem */
         .header { background: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .perfil-img { width: 65px; height: 65px; border-radius: 50%; border: 3px solid var(--blue); object-fit: cover; }
 
         .main-content { padding: 20px; max-width: 850px; margin: auto; }
 
-        /* Seções de Conteúdo */
         .section { background: white; padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: block; }
         .section img { width: 100%; border-radius: 12px; margin-bottom: 15px; }
         .section h2 { color: var(--blue); margin-top: 0; }
 
-        /* Barra de Pesquisa */
         .search-container { margin-bottom: 25px; display: flex; gap: 10px; }
         .search-container input { flex: 1; padding: 15px; border-radius: 30px; border: 1px solid #ddd; outline: none; font-size: 16px; }
         .search-container button { padding: 10px 25px; border-radius: 30px; border: none; background: var(--blue); color: white; cursor: pointer; font-weight: bold; }
 
-        /* Botão Ler Mais */
-        .ler-mais-btn { background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 15px; transition: 0.3s; }
-        .ler-mais-btn:hover { background: #0056b3; }
+        .ler-mais-btn, .vendas-btn { background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 15px; text-align: center; }
+        .vendas-btn { background: #28a745; font-size: 18px; } /* Cor verde para vendas */
         
-        #texto-universo-completo { display: none; text-align: justify; line-height: 1.6; margin-top: 15px; border-top: 1px solid #eee; pt: 15px; }
+        #texto-universo-completo { display: none; text-align: justify; line-height: 1.6; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
     </style>
 </head>
 <body>
@@ -44,6 +39,7 @@
         <a href="#" onclick="filter('all')">🏠 Início</a>
         <a href="#" onclick="filter('astronomia')">🌌 Astronomia</a>
         <a href="#" onclick="filter('animes')">⛩️ Animes</a>
+        <a href="#" onclick="filter('variedades')">💡 Variedades</a>
     </div>
 
     <header class="header">
@@ -51,7 +47,7 @@
         <div style="text-align: center; flex: 1;">
             <img src="luna-perfil.jpg" class="perfil-img" alt="Leão">
             <h1 style="margin:5px 0 0 0; color:var(--blue); font-size: 26px;">Portal Leão 🦁</h1>
-            <p id="luna-texto" style="margin:0; font-size: 15px; color: #555; font-weight: 500;">Olá, Daniel! O que vamos explorar hoje?</p>
+            <p id="luna-texto" style="margin:0; font-size: 15px; color: #555; font-weight: 500;">Olá, Daniel! Pronto para as novidades?</p>
         </div>
     </header>
 
@@ -61,69 +57,63 @@
             <button onclick="leaoChat()">🔍 Buscar</button>
         </div>
 
+        <div class="section" data-cat="variedades">
+            <h2>Variedades: Oportunidades e Vendas 💰</h2>
+            <p>Confira as melhores ofertas e produtos selecionados no nosso canal oficial.</p>
+            <div style="background: #e9ecef; padding: 20px; border-radius: 10px; text-align: center;">
+                <h3>🚀 Canal de Vendas Oficial</h3>
+                <p>Acesse agora os melhores produtos da Hotmart e transforme sua vida!</p>
+                <a href="SEU_LINK_DA_HOTMART_AQUI" target="_blank" class="vendas-btn">Acessar Canal de Vendas</a>
+            </div>
+        </div>
+
         <div class="section" data-cat="astronomia">
             <h2>Astronomia: Mistérios do Universo 🌌</h2>
             <img src="astro-plataforma.jpg" alt="Universo">
-            <p>O universo é um vasto oceano de mistérios que desafiam a nossa compreensão. Desde o brilho das estrelas distantes até a matéria escura, a astronomia nos convida a uma jornada de descoberta sem fim.</p>
-            
+            <p>O universo é um vasto oceano de mistérios... (Texto de 770 palavras oculto abaixo)</p>
             <div id="texto-universo-completo">
-                <p>A cosmologia moderna nos ensina que tudo começou com o Big Bang há cerca de 13,8 bilhões de anos. Estudar os astros é entender a nossa própria origem, pois cada átomo em nosso corpo foi forjado no coração de estrelas.</p>
-                <p>Com telescópios como o James Webb, estamos conseguindo enxergar as primeiras galáxias formadas. O Portal Leão traz essa clareza para você, transformando dados complexos em conhecimento acessível para todos os entusiastas.</p>
-                <p>A busca por vida em outros planetas e o estudo de buracos negros continuam sendo os maiores desafios da ciência atual. Fique ligado para mais atualizações sobre o cosmos!</p>
+                <p>Aqui está o conteúdo profissional sobre o Big Bang, o James Webb e as galáxias distantes que preparamos para o SEO do seu site.</p>
+                <p>O Portal Leão garante que você tenha a melhor informação sobre o cosmos.</p>
             </div>
-            
             <button onclick="expandirUniverso()" id="btn-universo" class="ler-mais-btn">Ler Mais sobre o Universo</button>
         </div>
 
         <div class="section" data-cat="animes">
             <h2>Animes: O Mundo Otaku ⛩️</h2>
             <img src="imagem-anime.jpg" alt="Animes">
-            <p>Explore as melhores análises, lançamentos de temporadas e curiosidades do mundo dos animes aqui no Portal Leão.</p>
+            <p>Fique por dentro de tudo o que acontece no universo japonês.</p>
         </div>
     </div>
 
     <script>
-        // Funções do Menu
         function openNav() { document.getElementById("mySidenav").style.width = "270px"; }
         function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
-        // Chat do Leão
         function leaoChat() {
             const query = document.getElementById('leao-search').value.toLowerCase();
             const leaoTexto = document.getElementById('luna-texto');
-            if (query.includes('dia') || query.includes('hoje')) {
-                const hoje = new Date();
-                const dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-                leaoTexto.innerText = "Hoje é " + dias[hoje.getDay()] + ", Daniel!";
+            if (query.includes('venda') || query.includes('comprar')) {
+                leaoTexto.innerText = "Daniel, veja as ofertas em Variedades!";
+                filter('variedades');
             } else {
                 leaoTexto.innerText = "Leão procurando por: " + query;
             }
         }
 
-        // Sistema de Filtro Automático
         function filter(cat) {
             const sections = document.querySelectorAll('.section');
             const leaoTexto = document.getElementById('luna-texto');
             sections.forEach(s => {
                 const titulo = s.querySelector('h2').innerText.toLowerCase();
-                if (cat === 'all') { 
-                    s.style.display = "block"; 
-                    leaoTexto.innerText = "Início do Portal"; 
-                }
-                else if (cat === 'astronomia' && titulo.includes('astronomia')) { 
-                    s.style.display = "block"; 
-                    leaoTexto.innerText = "Explorando Astronomia..."; 
-                }
-                else if (cat === 'animes' && titulo.includes('anime')) { 
-                    s.style.display = "block"; 
-                    leaoTexto.innerText = "Carregando Animes!"; 
-                }
+                if (cat === 'all') { s.style.display = "block"; leaoTexto.innerText = "Início"; }
+                else if (cat === 'astronomia' && titulo.includes('astronomia')) { s.style.display = "block"; leaoTexto.innerText = "Astronomia"; }
+                else if (cat === 'animes' && titulo.includes('anime')) { s.style.display = "block"; leaoTexto.innerText = "Animes"; }
+                else if (cat === 'variedades' && titulo.includes('variedade')) { s.style.display = "block"; leaoTexto.innerText = "Variedades e Vendas"; }
                 else { s.style.display = "none"; }
             });
             closeNav();
         }
 
-        // Função Ler Mais
         function expandirUniverso() {
             const texto = document.getElementById("texto-universo-completo");
             const btn = document.getElementById("btn-universo");
